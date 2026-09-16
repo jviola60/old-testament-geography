@@ -1,0 +1,84 @@
+/* ==========================================================================
+   OLD TESTAMENT GEOGRAPHY - MOBILE & RESPONSIVE STYLES
+   Responsive drawer, touch targets, mobile bottom sheet
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 56px;
+    --filterbar-height: 42px;
+    --timeline-height: 84px;
+    --sidebar-width: 100%;
+  }
+
+  .header-center {
+    display: none; /* Replaced by mobile search toggle */
+  }
+
+  .header-quick-jump-container {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  /* Full Screen Slide-Up Drawer for Mobile */
+  .detail-sidebar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 72vh;
+    border-left: none;
+    border-top: 3px solid var(--color-gold);
+    border-radius: 16px 16px 0 0;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .detail-sidebar.closed {
+    transform: translateY(100%);
+  }
+
+  /* Mobile Drag Handle */
+  .mobile-drag-handle {
+    width: 40px;
+    height: 4px;
+    background: #6E573E;
+    border-radius: 2px;
+    margin: 6px auto 2px auto;
+  }
+
+  .timeline-container {
+    padding: 6px 10px 8px 10px;
+  }
+
+  .timeline-quick-epochs {
+    display: none;
+  }
+
+  .map-legend {
+    display: none;
+  }
+
+  .tour-hud {
+    width: 95%;
+    padding: 8px 12px;
+  }
+}

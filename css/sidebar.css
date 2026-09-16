@@ -1,0 +1,466 @@
+/* ==========================================================================
+   OLD TESTAMENT GEOGRAPHY - SIDEBAR DOSSIER & DRAWER STYLES
+   5-Tab Deep Research Drawer with Hebrew Pronunciation & Multi-Scripture Compare
+   ========================================================================== */
+
+.detail-sidebar {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  background: var(--bg-card);
+  border-left: 2px solid var(--border-gold);
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.28);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.detail-sidebar.closed {
+  transform: translateX(100%);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 1rem 1.25rem 0.75rem 1.25rem;
+  background: linear-gradient(180deg, #2E2117 0%, #20170F 100%);
+  color: #F8F5EE;
+  border-bottom: 2px solid var(--color-gold);
+  position: relative;
+}
+
+.sidebar-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sidebar-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFDF8;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #F8F5EE;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  transform: scale(1.08);
+}
+
+/* Hebrew Identity Card in Header */
+.hebrew-identity-card {
+  margin-top: 8px;
+  background: rgba(18, 13, 8, 0.65);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hebrew-primary {
+  display: flex;
+  flex-direction: column;
+}
+
+.hebrew-script {
+  font-family: var(--font-hebrew);
+  font-size: 1.45rem;
+  color: #FCE7B2;
+  line-height: 1.2;
+  direction: rtl;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.hebrew-translit {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #D6C2A5;
+}
+
+.hebrew-meaning {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  background: rgba(197, 160, 89, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  text-align: right;
+  max-width: 170px;
+}
+
+/* Tab Navigation Bar */
+.sidebar-tabs {
+  display: flex;
+  background: #EDE2CD;
+  border-bottom: 1px solid var(--border-parchment-dark);
+  overflow-x: auto;
+}
+
+.sidebar-tab-btn {
+  flex: 1;
+  padding: 9px 6px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.sidebar-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary);
+}
+
+.sidebar-tab-btn.active {
+  background: var(--bg-card);
+  color: var(--color-crimson-deep);
+  border-bottom-color: var(--color-crimson);
+  font-weight: 700;
+}
+
+/* Sidebar Scrollable Body */
+.sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  background: var(--bg-card);
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeInPane 0.25s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Overview Tab Styling */
+.dossier-lead {
+  font-family: var(--font-scripture);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.dossier-section {
+  margin-bottom: 1.35rem;
+}
+
+.dossier-section-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-parchment);
+  padding-bottom: 3px;
+}
+
+/* Teachings & Covenants Tab */
+.covenant-box {
+  background: #FAF5E9;
+  border-left: 4px solid var(--color-gold);
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  border: 1px solid var(--border-parchment);
+  border-left-width: 4px;
+}
+
+.covenant-box-title {
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  margin-bottom: 3px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+/* Scripture Version Comparison Engine */
+.scripture-version-selector {
+  display: flex;
+  background: var(--bg-parchment-deep);
+  border-radius: 6px;
+  padding: 2px;
+  margin-bottom: 1rem;
+  gap: 2px;
+}
+
+.scripture-version-btn {
+  flex: 1;
+  padding: 6px 3px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.scripture-version-btn.active {
+  background: #FFF;
+  color: var(--color-crimson-deep);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+}
+
+.scripture-card {
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-parchment);
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease;
+}
+
+.scripture-card:hover {
+  border-color: var(--color-gold);
+}
+
+.scripture-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.scripture-header-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.scripture-ref {
+  font-family: var(--font-serif-title);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-crimson);
+}
+
+.version-badge {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.version-badge.niv-badge {
+  background: #EBF3FA;
+  color: #1E3A8A;
+  border: 1px solid #BFDBFE;
+}
+
+.version-badge.hebrew-badge {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.version-badge.jst-badge {
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.version-badge.insight-badge {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.version-badge.kjv-badge {
+  background: #F3F4F6;
+  color: #374151;
+  border: 1px solid #E5E7EB;
+}
+
+.scripture-link-church {
+  font-size: 0.72rem;
+  color: var(--color-lapis);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.scripture-link-church:hover {
+  text-decoration: underline;
+  color: var(--color-lapis-light);
+}
+
+.scripture-text {
+  font-family: var(--font-scripture);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: normal;
+}
+
+.scripture-text.hebrew-mode {
+  font-family: var(--font-hebrew);
+  font-size: 1.25rem;
+  line-height: 1.75;
+  direction: rtl;
+  color: #1A120B;
+  background: #FDF9F0;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border-right: 4px solid var(--color-gold);
+}
+
+.hebrew-translit-line {
+  font-style: italic;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  direction: ltr;
+  display: block;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* People & Patriarchs Tab */
+.patriarch-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-parchment);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.patriarch-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C5A059 0%, #84532B 100%);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border-gold);
+}
+
+.patriarch-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.patriarch-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.patriarch-bio {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Archaeology & History Tab */
+.timeline-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  border-left: 2px solid var(--color-gold);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-gold-dark);
+  border: 2px solid #FFF;
+}
+
+.timeline-date {
+  font-family: var(--font-serif-title);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-crimson);
+}
+
+.timeline-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}

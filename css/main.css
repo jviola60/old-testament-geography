@@ -1,0 +1,492 @@
+/* ==========================================================================
+   OLD TESTAMENT GEOGRAPHY - CORE DESIGN SYSTEM & THEME
+   Ancient Cartographic Parchment + Sacred Biblical Tones (Gold, Lapis, Terracotta, Olive)
+   Honoring Biblical Hebrew, Old Testament & Pearl of Great Price Scriptures
+   ========================================================================== */
+
+:root {
+  /* Parchment Base Palette */
+  --bg-parchment: #F7F3E9;
+  --bg-parchment-deep: #EDE4D0;
+  --bg-parchment-dark: #DECDB3;
+  --bg-parchment-card: #FAF6ED;
+  --bg-card: rgba(253, 250, 243, 0.96);
+  --bg-card-glass: rgba(253, 250, 243, 0.88);
+  --bg-overlay: rgba(28, 21, 14, 0.72);
+
+  /* Biblical Color Accents (Strictly No Purple/Violet) */
+  --color-gold-light: #F6D678;
+  --color-gold: #C5A059;
+  --color-gold-dark: #977329;
+  --color-crimson: #A32822;
+  --color-crimson-deep: #7D1B16;
+  --color-lapis: #1D4E89;
+  --color-lapis-dark: #0F325E;
+  --color-lapis-light: #2D6CB5;
+  --color-terracotta: #C45B38;
+  --color-terracotta-dark: #9C3F21;
+  --color-olive: #5B6B38;
+  --color-olive-dark: #3F4D24;
+  --color-bronze: #84532B;
+  --color-amber: #D97706;
+
+  /* Tribal Colors for 12 Tribes */
+  --tribe-judah: #A32822;
+  --tribe-ephraim: #1D4E89;
+  --tribe-manasseh: #2D6CB5;
+  --tribe-benjamin: #C45B38;
+  --tribe-dan: #84532B;
+  --tribe-simeon: #B45309;
+  --tribe-reuben: #977329;
+  --tribe-gad: #5B6B38;
+  --tribe-asher: #0D9488;
+  --tribe-naphtali: #0284C7;
+  --tribe-zebulun: #D97706;
+  --tribe-issachar: #78350F;
+  --tribe-levi: #C5A059;
+
+  /* Typography Colors */
+  --text-primary: #221B13;
+  --text-secondary: #564736;
+  --text-muted: #84735E;
+  --text-gold: #966C1E;
+  --text-light: #FBF8F1;
+  --text-hebrew: #1B130E;
+
+  /* Borders & Dividers */
+  --border-parchment: #D9C8AC;
+  --border-parchment-dark: #BFA98A;
+  --border-gold: rgba(197, 160, 89, 0.55);
+  --border-gold-strong: #C5A059;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 5px rgba(34, 27, 19, 0.08);
+  --shadow-md: 0 4px 14px rgba(34, 27, 19, 0.12);
+  --shadow-lg: 0 10px 30px rgba(34, 27, 19, 0.2);
+  --shadow-gold: 0 0 16px rgba(197, 160, 89, 0.45);
+  --shadow-lapis: 0 0 14px rgba(29, 78, 137, 0.35);
+
+  /* Fonts */
+  --font-serif-title: 'Cinzel', Georgia, serif;
+  --font-scripture: 'Cormorant Garamond', Garamond, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-hebrew: 'Frank Ruhl Libre', 'David Libre', 'Noto Serif Hebrew', 'SBL Hebrew', serif;
+
+  /* Dimensions */
+  --header-height: 64px;
+  --filterbar-height: 46px;
+  --timeline-height: 98px;
+  --sidebar-width: 460px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--bg-parchment);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Header */
+.app-header {
+  position: relative;
+  z-index: 1000;
+  height: var(--header-height);
+  background: linear-gradient(180deg, #241A13 0%, #17110C 100%);
+  color: #F8F5EE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.brand-symbol {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.25) 0%, rgba(0,0,0,0) 75%);
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold);
+  transition: transform 0.3s ease;
+}
+
+.app-branding:hover .brand-symbol {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.menorah-cross-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #FFFDF7;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+.brand-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-gold-light);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+/* Header Center: Global Search */
+.header-center {
+  flex: 1;
+  max-width: 480px;
+  margin: 0 1.5rem;
+  position: relative;
+}
+
+.search-box-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-gold);
+  pointer-events: none;
+}
+
+#globalSearchInput {
+  width: 100%;
+  height: 38px;
+  padding: 0 36px 0 36px;
+  background: rgba(45, 34, 24, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  color: #F8F5EE;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#globalSearchInput::placeholder {
+  color: #A89884;
+  font-size: 0.82rem;
+}
+
+#globalSearchInput:focus {
+  background: rgba(56, 42, 30, 0.95);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.35), inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #A89884;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.clear-search-btn:hover {
+  color: #FFF;
+}
+
+/* Search Dropdown Results */
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-parchment-dark);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 2000;
+  padding: 6px 0;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(217, 200, 172, 0.35);
+  transition: background 0.15s ease;
+}
+
+.search-result-item:hover, .search-result-item.selected {
+  background: var(--bg-parchment-deep);
+}
+
+.search-result-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.search-result-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-result-hebrew {
+  font-family: var(--font-hebrew);
+  font-size: 0.95rem;
+  color: var(--color-crimson-deep);
+  direction: rtl;
+  font-weight: 600;
+}
+
+.search-result-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.search-result-tag {
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--bg-parchment-dark);
+  color: var(--text-secondary);
+}
+
+/* Header Right: Actions */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Standard Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-outline {
+  background: rgba(45, 34, 24, 0.7);
+  border-color: var(--border-gold);
+  color: #F8F5EE;
+}
+
+.btn-outline:hover {
+  background: rgba(65, 49, 35, 0.9);
+  border-color: var(--color-gold-light);
+  color: #FFF;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #C5A059 0%, #977329 100%);
+  color: #1A120B;
+  border-color: #E2BF7A;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #D6B26A 0%, #A88339 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.45);
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: rgba(45, 34, 24, 0.7);
+  border: 1px solid var(--border-gold);
+  color: #F8F5EE;
+  border-radius: 6px;
+}
+
+.btn-icon:hover {
+  background: rgba(65, 49, 35, 0.9);
+  color: #FFF;
+  border-color: var(--color-gold-light);
+}
+
+/* Dropdown Container */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-parchment-dark);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  min-width: 230px;
+  z-index: 2000;
+  display: none;
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-parchment-deep);
+  color: var(--text-gold);
+}
+
+/* Quick Jump Select */
+.header-quick-jump-container {
+  display: flex;
+  align-items: center;
+  background: rgba(45, 34, 24, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.header-quick-jump-select {
+  background: transparent;
+  border: none;
+  color: #F8F5EE;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  outline: none;
+  cursor: pointer;
+  max-width: 190px;
+}
+
+.header-quick-jump-select option {
+  background: #241A13;
+  color: #F8F5EE;
+}
+
+/* Mode Toggle */
+.btn-mode-toggle {
+  background: rgba(45, 34, 24, 0.7);
+  border: 1px solid var(--border-gold);
+  color: #F8F5EE;
+  padding: 6px 10px;
+}
+
+.btn-mode-toggle:hover {
+  background: rgba(65, 49, 35, 0.9);
+  border-color: var(--color-gold-light);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-header-actions {
+  display: none;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-parchment);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-parchment-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}

@@ -1,0 +1,285 @@
+/* ==========================================================================
+   OLD TESTAMENT GEOGRAPHY - MAP & CARTOGRAPHIC STYLES
+   Custom Biblical Markers, Parchment Filters, Route Styling, and Popups
+   ========================================================================== */
+
+#map {
+  width: 100%;
+  height: calc(100vh - var(--header-height) - var(--filterbar-height) - var(--timeline-height));
+  background-color: #EFE7D5;
+  position: relative;
+  z-index: 10;
+}
+
+/* Filter Chip Bar below Header */
+.filter-bar {
+  height: var(--filterbar-height);
+  background: linear-gradient(180deg, #EDE4D0 0%, #E3D6BC 100%);
+  border-bottom: 1px solid var(--border-parchment-dark);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  z-index: 900;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-parchment-dark);
+  border-radius: 16px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover {
+  background: #FFF;
+  border-color: var(--color-gold);
+  color: var(--text-primary);
+}
+
+.filter-chip.active {
+  background: linear-gradient(135deg, #382A1C 0%, #20170E 100%);
+  color: #F8F5EE;
+  border-color: var(--color-gold);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.filter-chip.active .chip-icon {
+  color: var(--color-gold-light);
+}
+
+.chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Map Theming: Parchment Mode Filter */
+.parchment-tiles {
+  filter: sepia(0.48) saturate(0.85) contrast(1.08) brightness(0.97) hue-rotate(-8deg);
+}
+
+/* Custom Biblical Markers */
+.ot-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.ot-marker:hover {
+  transform: scale(1.22);
+  z-index: 1000 !important;
+}
+
+.marker-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  transition: all 0.2s ease;
+}
+
+/* City Marker Types */
+.marker-sanctuary .marker-inner {
+  background: radial-gradient(circle, #FFFBEB 30%, #C5A059 100%);
+  border: 2px solid #84532B;
+  color: #5C3D18;
+}
+
+.marker-royal-city .marker-inner {
+  background: radial-gradient(circle, #FEF2F2 30%, #A32822 100%);
+  border: 2px solid #57120E;
+  color: #FFF;
+}
+
+.marker-mountain .marker-inner {
+  background: radial-gradient(circle, #ECFDF5 30%, #5B6B38 100%);
+  border: 2px solid #2B3518;
+  color: #FFF;
+}
+
+.marker-patriarch .marker-inner {
+  background: radial-gradient(circle, #EFF6FF 30%, #1D4E89 100%);
+  border: 2px solid #0D2B52;
+  color: #FFF;
+}
+
+.marker-exile .marker-inner {
+  background: radial-gradient(circle, #FDF4E7 30%, #C45B38 100%);
+  border: 2px solid #7C2D12;
+  color: #FFF;
+}
+
+/* Marker Labels on Map */
+.ot-map-label {
+  background: rgba(254, 252, 247, 0.94);
+  border: 1px solid var(--border-parchment-dark);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #261E16;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.ot-map-label .hebrew-sub {
+  display: block;
+  font-family: var(--font-hebrew);
+  font-size: 0.8rem;
+  color: var(--color-crimson-deep);
+  line-height: 1.1;
+  direction: rtl;
+}
+
+/* Active Highlight Ring */
+.pulse-ring {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--color-gold);
+  animation: pulse-ring-anim 1.8s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring-anim {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Custom Leaflet Tooltip & Popup */
+.leaflet-popup-content-wrapper {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-gold-strong) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.popup-container {
+  padding: 12px 14px;
+  max-width: 270px;
+}
+
+.popup-header {
+  border-bottom: 1px solid var(--border-parchment);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.popup-title {
+  font-family: var(--font-serif-title);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup-hebrew {
+  font-family: var(--font-hebrew);
+  font-size: 1.1rem;
+  color: var(--color-crimson-deep);
+  direction: rtl;
+}
+
+.popup-translit {
+  font-size: 0.74rem;
+  font-style: italic;
+  color: var(--color-gold-dark);
+}
+
+.popup-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.popup-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  background: var(--color-gold);
+  color: #1A120B;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.popup-btn:hover {
+  background: var(--color-gold-light);
+}
+
+/* Map Legend */
+.map-legend {
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-parchment-dark);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  padding: 8px 12px;
+  z-index: 800;
+  font-size: 0.75rem;
+  max-width: 220px;
+}
+
+.map-legend-header {
+  font-family: var(--font-serif-title);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text-gold);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+}
+
+.legend-line {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+}

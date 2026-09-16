@@ -1,0 +1,167 @@
+/* ==========================================================================
+   OLD TESTAMENT GEOGRAPHY - TIMELINE SCRUBBER STYLES
+   Biblical Epoch Scrubber spanning ~4000 BC to 400 BC (Adam to Malachi)
+   ========================================================================== */
+
+.timeline-container {
+  position: relative;
+  z-index: 1000;
+  height: var(--timeline-height);
+  background: linear-gradient(180deg, #241A13 0%, #150F0B 100%);
+  color: #F8F5EE;
+  border-top: 2px solid var(--color-gold);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 1.5rem 10px 1.5rem;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.timeline-play-btn {
+  background: linear-gradient(135deg, #C5A059 0%, #977329 100%);
+  border: 1px solid #E2BF7A;
+  color: #1A120B;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.timeline-play-btn:hover {
+  transform: scale(1.08);
+  background: #E2BF7A;
+}
+
+.timeline-play-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.timeline-status {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-year-display {
+  font-family: var(--font-serif-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.timeline-era-label {
+  font-size: 0.72rem;
+  color: #C0B09A;
+  font-weight: 500;
+}
+
+.timeline-quick-epochs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.epoch-jump-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  color: #E2D6C3;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.epoch-jump-btn:hover, .epoch-jump-btn.active {
+  background: var(--color-gold);
+  color: #17110C;
+  border-color: #FFF;
+}
+
+/* Scrubber Slider */
+.timeline-scrubber-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.timeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #3B2E21;
+  outline: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF2D1 20%, #C5A059 80%);
+  border: 2px solid #573E1E;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.8);
+  transition: transform 0.15s ease;
+}
+
+.timeline-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Era Markers under scrubber */
+.timeline-markers-track {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  font-size: 0.64rem;
+  color: #A0907C;
+  padding-top: 2px;
+}
+
+.marker-tick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.marker-tick::before {
+  content: '';
+  width: 1px;
+  height: 4px;
+  background: #6A5641;
+  margin-bottom: 2px;
+}
+
+.marker-tick:hover {
+  color: var(--color-gold-light);
+}

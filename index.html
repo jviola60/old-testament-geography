@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Old Testament Geography - Interactive Biblical Atlas (~4000 BC – 400 BC)</title>
+  <meta name="description" content="An interactive cartographic atlas of the Old Testament world spanning ~4000 BC to 400 BC. Explore Patriarchal journeys, the Exodus, 12 Tribal allotments, the Ark of the Covenant, and First Temple Jerusalem with authentic Biblical Hebrew and Pearl of Great Price scriptures from ChurchofJesusChrist.org.">
+  <meta name="keywords" content="Old Testament Geography, Bible Atlas, Book of Abraham, Book of Moses, 12 Tribes of Israel, Exodus Route, Mount Sinai, First Temple Jerusalem, Biblical Hebrew, Church of Jesus Christ">
+  <meta name="author" content="Interactive Scripture Atlas">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Old Testament Geography - Interactive Biblical Atlas">
+  <meta property="og:description" content="Interactive map of the Old Testament from ~4000 BC to 400 BC with Patriarchal journeys, Exodus wanderings, tribal allotments, and authentic Biblical Hebrew.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+
+  <!-- Google Fonts: Cinzel (Classic Inscription), Cormorant Garamond (Scriptural/Literary), Inter & Outfit (Clean UI), Frank Ruhl Libre (Hebrew) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body class="parchment-theme">
+  <!-- Top Navigation Bar -->
+  <header class="app-header" id="appHeader">
+    <div class="header-left">
+      <button id="mobileMenuBtn" class="btn btn-icon mobile-menu-btn" type="button" title="Open atlas menu" aria-label="Open atlas menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+
+      <div class="app-branding" id="appBrandHome" title="Reset View to Promised Land">
+        <div class="brand-symbol">
+          <!-- Menorah & Tablets Symbol for Old Testament -->
+          <svg viewBox="0 0 40 40" class="menorah-cross-icon" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.6"/>
+            <!-- Menorah Branches -->
+            <path d="M20 10 L20 32 M13 14 Q13 24 20 24 M27 14 Q27 24 20 24 M8 12 Q8 28 20 28 M32 12 Q32 28 20 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <!-- Base -->
+            <path d="M14 32 L26 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Flames -->
+            <circle cx="20" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="13" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="27" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="8" cy="11" r="1.5" fill="currentColor"/>
+            <circle cx="32" cy="11" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1 class="brand-title">Old Testament Geography</h1>
+          <span class="brand-subtitle">Interactive Biblical Atlas & Timeline • ~4000 BC – 400 BC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Search with Hebrew & English Support -->
+    <div class="header-center">
+      <div class="search-box-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="globalSearchInput" placeholder="Search city, mountain, Hebrew term, or scripture..." autocomplete="off" aria-label="Search the Old Testament Atlas">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
+        <div id="searchResultsDropdown" class="search-results-dropdown" style="display: none;"></div>
+      </div>
+    </div>
+
+    <!-- Header Actions -->
+    <div class="header-right">
+      <!-- Quick Region Focus Dropdown -->
+      <div class="dropdown-container">
+        <button id="regionSelectBtn" class="btn btn-outline" title="Zoom to biblical region">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+          <span class="btn-text">Regions</span>
+        </button>
+        <div id="regionDropdown" class="dropdown-menu">
+          <button data-region="holy-land" class="dropdown-item">📍 Promised Land & 12 Tribes</button>
+          <button data-region="jerusalem" class="dropdown-item">🏛️ First Temple Jerusalem & Mount Moriah</button>
+          <button data-region="galilee" class="dropdown-item">🌊 Sea of Chinnereth (Galilee) & North</button>
+          <button data-region="sinai-exodus" class="dropdown-item">🏔️ Mount Sinai & Wilderness</button>
+          <button data-region="egypt-goshen" class="dropdown-item">🏺 Land of Goshen & Nile Delta</button>
+          <button data-region="mesopotamia" class="dropdown-item">👑 Mesopotamia (Ur & Babylon)</button>
+          <button data-region="ararat" class="dropdown-item">⛰️ Mount Ararat (Noah's Ark)</button>
+        </div>
+      </div>
+
+      <!-- Curated Tours Button -->
+      <button id="storyToursBtn" class="btn btn-primary glow-gold" title="Explore Curated Scripture Tours">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Guided Tours</span>
+      </button>
+
+      <!-- Location Quick Jump Select -->
+      <div class="header-quick-jump-container" title="Jump directly to any Old Testament City or Site">
+        <span style="font-size:0.85rem; margin-right:4px;">📍</span>
+        <select id="quickJumpSelect" class="header-quick-jump-select" aria-label="Jump to Any Biblical Location">
+          <option value="" disabled selected>Jump to Biblical Location...</option>
+        </select>
+      </div>
+
+      <!-- Map Style Mode Dropdown -->
+      <div class="dropdown-container">
+        <button id="mapStyleToggle" class="btn btn-mode-toggle" title="Switch Map Base Style">
+          <span class="mode-icon parchment-icon" id="mapStyleIcon">📜</span>
+          <span class="mode-text" id="mapStyleText">Ancient Relief</span>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 2px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div id="mapStyleDropdown" class="dropdown-menu">
+          <button data-style="parchment" class="dropdown-item">📜 Ancient Shaded Relief (Biblical Terrain)</button>
+          <button data-style="satellite" class="dropdown-item">🛰️ Satellite Earth Terrain (Whole Map)</button>
+          <button data-style="modern" class="dropdown-item">🗺️ Modern Roads & Infrastructure</button>
+        </div>
+      </div>
+
+      <!-- Sidebar Toggle -->
+      <button id="sidebarToggleBtn" class="btn btn-icon" title="Toggle Information Panel" aria-label="Toggle drawer">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Filter Chips Bar -->
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-chip active" data-filter="all">
+      <span class="chip-dot" style="background:#C5A059;"></span>
+      <span>All Visible</span>
+    </button>
+    <button class="filter-chip active" data-filter="tribes">
+      <span class="chip-dot" style="background:#A32822;"></span>
+      <span>12 Tribes Allotments</span>
+    </button>
+    <button class="filter-chip active" data-filter="abraham">
+      <span class="chip-dot" style="background:#C5A059;"></span>
+      <span>Abraham's Journey</span>
+    </button>
+    <button class="filter-chip active" data-filter="exodus">
+      <span class="chip-dot" style="background:#DC2626;"></span>
+      <span>Exodus & Wilderness</span>
+    </button>
+    <button class="filter-chip active" data-filter="ark">
+      <span class="chip-dot" style="background:#D97706;"></span>
+      <span>Ark of the Covenant</span>
+    </button>
+    <button class="filter-chip active" data-filter="cities">
+      <span class="chip-dot" style="background:#1D4E89;"></span>
+      <span>Sanctuaries & Cities</span>
+    </button>
+    <button class="filter-chip active" data-filter="jerusalem">
+      <span class="chip-dot" style="background:#84532B;"></span>
+      <span>First Temple Jerusalem</span>
+    </button>
+    <button class="filter-chip active" data-filter="hydrography">
+      <span class="chip-dot" style="background:#2563EB;"></span>
+      <span>Rivers & Seas</span>
+    </button>
+  </div>
+
+  <!-- Main Map Viewport -->
+  <main id="map" role="region" aria-label="Old Testament Interactive Map"></main>
+
+  <!-- Bottom Timeline Scrubber -->
+  <footer class="timeline-container" id="timelineBar">
+    <div class="timeline-header">
+      <div class="timeline-controls-left">
+        <button id="timelinePlayBtn" class="timeline-play-btn" title="Play Timeline Animation" aria-label="Play timeline animation">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </button>
+        <div class="timeline-status">
+          <div class="timeline-year-display" id="timelineYearDisplay">1000 BC</div>
+          <div class="timeline-era-label" id="timelineEraDisplay">United Monarchy • Reign of King David & Golden Age of Israel</div>
+        </div>
+      </div>
+
+      <!-- Quick Epoch Jumps -->
+      <div class="timeline-quick-epochs">
+        <button class="epoch-jump-btn" data-year="-2000">Patriarchs</button>
+        <button class="epoch-jump-btn" data-year="-1446">Exodus</button>
+        <button class="epoch-jump-btn" data-year="-1400">Judges</button>
+        <button class="epoch-jump-btn active" data-year="-1000">United Monarchy</button>
+        <button class="epoch-jump-btn" data-year="-722">Divided Kingdoms</button>
+        <button class="epoch-jump-btn" data-year="-586">Babylonian Exile</button>
+        <button class="epoch-jump-btn" data-year="-445">Restoration</button>
+      </div>
+    </div>
+
+    <!-- Scrubber Slider -->
+    <div class="timeline-scrubber-wrapper">
+      <input type="range" class="timeline-slider" id="timelineSlider" min="-4000" max="-400" value="-1000" step="10" aria-label="Biblical Year Slider">
+    </div>
+
+    <!-- Era Markers Track -->
+    <div class="timeline-markers-track">
+      <span class="marker-tick" title="Creation / Adam (~4000 BC)">4000 BC (Creation)</span>
+      <span class="marker-tick" title="Abraham (~2000 BC)">2000 BC (Abraham)</span>
+      <span class="marker-tick" title="The Exodus (~1446 BC)">1446 BC (Exodus)</span>
+      <span class="marker-tick" title="Reign of King David (~1000 BC)">1000 BC (David)</span>
+      <span class="marker-tick" title="Fall of Jerusalem (~586 BC)">586 BC (Exile)</span>
+      <span class="marker-tick" title="Ministry of Malachi (~400 BC)">400 BC (Malachi)</span>
+    </div>
+  </footer>
+
+  <!-- Slide-Out 5-Tab Detail Sidebar -->
+  <aside class="detail-sidebar closed" id="detailSidebar" aria-label="Biblical Place Dossier Drawer">
+    <div class="mobile-drag-handle"></div>
+    <div class="sidebar-header">
+      <div class="sidebar-header-top">
+        <div class="sidebar-title-group">
+          <div class="sidebar-title" id="sidebarTitle">Jerusalem</div>
+        </div>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Drawer" aria-label="Close details drawer">&times;</button>
+      </div>
+
+      <!-- Vocalized Hebrew Identity Card -->
+      <div class="hebrew-identity-card" id="sidebarHebrewCard">
+        <div class="hebrew-primary">
+          <div class="hebrew-script" id="sidebarHebrewScript">יְרוּשָׁלַיִם</div>
+          <div class="hebrew-translit" id="sidebarHebrewTranslit">Yerushalayim</div>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <div class="hebrew-meaning" id="sidebarHebrewMeaning">City / Foundation of Peace</div>
+          <button id="btnPronounceHebrew" class="btn-pronounce" title="Pronounce Hebrew">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Tab Navigation -->
+    <nav class="sidebar-tabs" aria-label="Dossier Tabs">
+      <button class="sidebar-tab-btn active" data-tab="overview">1. Overview</button>
+      <button class="sidebar-tab-btn" data-tab="teachings">2. Covenants</button>
+      <button class="sidebar-tab-btn" data-tab="scriptures">3. Scriptures</button>
+      <button class="sidebar-tab-btn" data-tab="people">4. Patriarchs</button>
+      <button class="sidebar-tab-btn" data-tab="history">5. Archaeology</button>
+    </nav>
+
+    <!-- Scrollable Tab Content Body -->
+    <div class="sidebar-body">
+      <div class="tab-pane active" id="tab-overview"></div>
+      <div class="tab-pane" id="tab-teachings"></div>
+      <div class="tab-pane" id="tab-scriptures"></div>
+      <div class="tab-pane" id="tab-people"></div>
+      <div class="tab-pane" id="tab-history"></div>
+    </div>
+  </aside>
+
+  <!-- Guided Scripture Tours Modal -->
+  <div class="modal-backdrop" id="toursModalBackdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Curated Old Testament Scripture Tours</span>
+        </div>
+        <button class="modal-close-btn" id="toursModalCloseBtn" aria-label="Close guided tours modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
+          Select a guided journey to step through sacred Old Testament and Pearl of Great Price geographical narratives:
+        </p>
+        <div class="tours-grid" id="toursGridContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Datasets (Old Testament & Pearl of Great Price) -->
+  <script src="js/data/cities.js"></script>
+  <script src="js/data/regions.js"></script>
+  <script src="js/data/hydrography.js"></script>
+  <script src="js/data/journeys.js"></script>
+  <script src="js/data/placeDossiers.js"></script>
+  <script src="js/data/scriptureTranslations.js"></script>
+  <script src="js/data/timelineEvents.js"></script>
+  <script src="js/data/jerusalemSites.js"></script>
+  <script src="js/data/tours.js"></script>
+  <script src="js/data/churchMedia.js"></script>
+
+  <!-- Controllers -->
+  <script src="js/mapController.js"></script>
+  <script src="js/timelineController.js"></script>
+  <script src="js/uiController.js"></script>
+  <script src="js/mobileShell.js"></script>
+
+  <!-- Application Entry -->
+  <script src="js/app.js"></script>
+</body>
+</html>

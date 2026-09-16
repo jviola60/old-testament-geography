@@ -1,0 +1,100 @@
+/**
+ * OLD TESTAMENT GEOGRAPHY - FIRST TEMPLE JERUSALEM SITES
+ * Landmarks, holy spaces, springs, and defensive topography
+ * of Jerusalem during the United Monarchy and Prophetic Eras.
+ */
+
+const JERUSALEM_SITES = [
+  {
+    id: "solomons-temple",
+    name: "Solomon's Temple (First Temple)",
+    hebrew: "בֵּית הַמִּקְדָּשׁ הָרִאשׁוֹן",
+    transliteration: "Beit HaMikdash HaRishon",
+    lat: 31.7780,
+    lng: 35.2354,
+    category: "temple",
+    description: "Built upon the summit of Mount Moriah (the threshing floor of Araunah). Adorned with cedar of Lebanon, cypress, olivewood, and pure gold. Housed the Ark of the Covenant, golden table of shewbread, menorahs, and the bronze altar of sacrifice.",
+    scripture: "1 Kings 6-8; 2 Chronicles 3-5"
+  },
+  {
+    id: "city-of-david",
+    name: "City of David (Zion)",
+    hebrew: "עִיר דָּוִד (מְצֻדַת צִיּוֹן)",
+    transliteration: "Ir David (Metzudat Tziyon)",
+    lat: 31.7733,
+    lng: 35.2360,
+    category: "palace",
+    description: "The original narrow southern limestone ridge conquered by David from the Jebusites via the water conduit. Contained David's royal palace, administrative quarters, and royal tombs.",
+    scripture: "2 Samuel 5:6-9; 1 Chronicles 11:4-9"
+  },
+  {
+    id: "gihon-spring",
+    name: "Gihon Spring",
+    hebrew: "מַעְיַן הַגִּיחוֹן",
+    transliteration: "Ma'ayan HaGichon",
+    lat: 31.7730,
+    lng: 35.2372,
+    category: "water",
+    description: "The sole perennial freshwater spring in ancient Jerusalem, issuing from a subterranean cave in the Kidron Valley. Where Solomon was anointed king by Zadok the Priest (1 Kings 1:38-40).",
+    scripture: "1 Kings 1:38-40; 2 Chronicles 32:30"
+  },
+  {
+    id: "hezekiahs-tunnel",
+    name: "Hezekiah's Tunnel",
+    hebrew: "נִקְבַּת חִזְקִיָּהוּ",
+    transliteration: "Nikbat Chizkiyahu",
+    lat: 31.7715,
+    lng: 35.2358,
+    category: "water",
+    description: "Carved 1,750 feet through solid bedrock under King Hezekiah to divert the waters of the Gihon Spring into the city walls before the Assyrian siege in 701 BC.",
+    scripture: "2 Kings 20:20; 2 Chronicles 32:30"
+  },
+  {
+    id: "pool-of-siloam",
+    name: "Pool of Siloam (Shiloah)",
+    hebrew: "בְּרֵכַת הַשִּׁלֹחַ",
+    transliteration: "Berechat HaShilo'ach",
+    lat: 31.7700,
+    lng: 35.2345,
+    category: "water",
+    description: "Southern reservoir fed by the waters of Shiloah that go softly (Isaiah 8:6). Gathered water inside the fortified southern walls of the City of David.",
+    scripture: "Isaiah 8:6; Nehemiah 3:15"
+  },
+  {
+    id: "kidron-valley",
+    name: "Kidron Valley (Valley of Jehoshaphat)",
+    hebrew: "נַחַל קִדְרוֹן / עֵמֶק יְהוֹשָׁפָט",
+    transliteration: "Nachal Kidron / Emek Yehoshafat",
+    lat: 31.7760,
+    lng: 35.2385,
+    category: "topography",
+    description: "Deep gorge separating the Temple Mount and City of David from the Mount of Olives. Cross point for King David when fleeing Absalom (2 Samuel 15:23); site of royal tombs.",
+    scripture: "2 Samuel 15:23; 1 Kings 15:13; Joel 3:2"
+  },
+  {
+    id: "hinnom-valley",
+    name: "Valley of Hinnom (Gehenna)",
+    hebrew: "גֵּיא בֶן־הִנֹּם",
+    transliteration: "Gey Ben-Hinnom",
+    lat: 31.7705,
+    lng: 35.2280,
+    category: "topography",
+    description: "Deep ravine curving along the west and south of the ancient city. Where apostate kings burned incense and sacrificed children to Molech at Tophet, later defiled by King Josiah.",
+    scripture: "Jeremiah 7:31-32; 2 Kings 23:10"
+  },
+  {
+    id: "mount-of-olives",
+    name: "Mount of Olives",
+    hebrew: "הַר הַזֵּיתִים",
+    transliteration: "Har HaZeitim",
+    lat: 31.7785,
+    lng: 35.2440,
+    category: "topography",
+    description: "Prominent limestone ridge east of Jerusalem overlooking the Temple Mount. Where David wept with his head covered during Absalom's rebellion; prophetic scene of Zechariah's apocalyptic prophecy.",
+    scripture: "2 Samuel 15:30; Zechariah 14:4"
+  }
+];
+
+if (typeof window !== "undefined") {
+  window.JERUSALEM_SITES = JERUSALEM_SITES;
+}
