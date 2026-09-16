@@ -14,6 +14,7 @@ class MapController {
       hydrography: L.layerGroup(),
       cities: L.layerGroup(),
       tribes: L.layerGroup(),
+      dividedKingdoms: L.layerGroup(),
       abrahamJourney: L.layerGroup(),
       exodusRoute: L.layerGroup(),
       arkJourney: L.layerGroup(),
@@ -33,6 +34,7 @@ class MapController {
     this.filterState = {
       all: true,
       tribes: true,
+      "divided-kingdoms": true,
       abraham: true,
       exodus: true,
       ark: true,
@@ -71,6 +73,7 @@ class MapController {
     // Render geographic data
     this.drawHydrography();
     this.drawTribes();
+    this.drawDividedKingdoms();
     this.drawJourneys();
     this.drawJerusalemSites();
     this.drawCities();
@@ -208,6 +211,80 @@ class MapController {
 
       polygon.addTo(this.layers.tribes);
     });
+  }
+
+  // Draw the Divided Kingdoms of Israel (North) and Judah (South)
+  drawDividedKingdoms() {
+    this.layers.dividedKingdoms.clearLayers();
+    if (typeof REGIONS_DATA === "undefined" || !REGIONS_DATA.dividedKingdoms) return;
+
+    // 1. Draw Northern & Southern Kingdoms Polygons
+    REGIONS_DATA.dividedKingdoms.forEach(kingdom => {
+      const polygon = L.polygon(kingdom.coordinates, {
+        color: kingdom.borderColor || kingdom.color,
+        weight: 3.5,
+        dashArray: kingdom.id === "northern-kingdom" ? "7, 5" : null,
+        fillColor: kingdom.fillColor,
+        fillOpacity: kingdom.fillOpacity || 0.22
+      });
+
+      polygon.bindTooltip(`
+        <div style="text-align:center; min-width:200px; padding:4px;">
+          <div style="font-weight:800; font-size:0.88rem; color:${kingdom.color}; text-transform:uppercase; letter-spacing:0.04em;">${kingdom.name}</div>
+          <div style="font-family:'Frank Ruhl Libre', serif; font-size:1.25rem; font-weight:700; color:#1a1a1a; direction:rtl; margin:2px 0;">${kingdom.hebrew}</div>
+          <div style="font-size:0.75rem; color:#444; margin:2px 0;"><strong>Capital:</strong> ${kingdom.capital}</div>
+          <div style="font-size:0.72rem; color:#666; font-style:italic;">${kingdom.era}</div>
+          <div style="font-size:0.7rem; color:${kingdom.color}; font-weight:700; margin-top:4px; border-top:1px solid #ddd; padding-top:2px;">Click to view full Kingdom Dossier</div>
+        </div>
+      `, {
+        sticky: true,
+        className: "ot-map-label"
+      });
+
+      polygon.on("click", () => {
+        if (window.app && window.app.ui) {
+          window.app.ui.showKingdomDossier(kingdom);
+        }
+      });
+
+      polygon.addTo(this.layers.dividedKingdoms);
+
+      // Add center banner badge on the map
+      const labelIcon = L.divIcon({
+        className: "kingdom-banner-icon",
+        html: `
+          <div style="background:rgba(255,253,248,0.94); border:2.5px solid ${kingdom.color}; border-radius:6px; padding:5px 10px; box-shadow:0 3px 8px rgba(0,0,0,0.3); text-align:center; white-space:nowrap; pointer-events:auto; cursor:pointer;" onclick="if(window.app && window.app.ui) window.app.ui.showKingdomDossier(REGIONS_DATA.dividedKingdoms.find(k=>k.id==='${kingdom.id}'));">
+            <div style="font-size:0.72rem; font-weight:800; color:${kingdom.color}; letter-spacing:0.06em; text-transform:uppercase;">${kingdom.shortName}</div>
+            <div style="font-family:'Frank Ruhl Libre', serif; font-size:1.05rem; font-weight:700; color:#1a1a1a; direction:rtl;">${kingdom.hebrew}</div>
+            <div style="font-size:0.65rem; color:#555; font-weight:600;">Capital: ${kingdom.capital.split(' ')[0]} • ${kingdom.era.split(' ')[2]}</div>
+          </div>
+        `,
+        iconAnchor: [70, 24]
+      });
+
+      const bannerMarker = L.marker(kingdom.center, { icon: labelIcon });
+      bannerMarker.addTo(this.layers.dividedKingdoms);
+    });
+
+    // 2. Draw Historical Frontier Border Line between Israel and Judah
+    if (REGIONS_DATA.kingdomBorderLine) {
+      const borderLine = L.polyline(REGIONS_DATA.kingdomBorderLine, {
+        color: "#D97706",
+        weight: 4,
+        dashArray: "4, 6",
+        opacity: 0.95
+      });
+
+      borderLine.bindTooltip(`
+        <div style="text-align:center; padding:3px 6px;">
+          <strong style="color:#B45309; font-size:0.82rem;">⚔️ Israel–Judah Historical Frontier</strong><br>
+          <span style="font-size:0.75rem; color:#333;">Contested border between Bethel (Israel) & Ramah/Mizpah (Judah)</span><br>
+          <small style="color:#666;">Fortified by King Asa of Judah (1 Kings 15)</small>
+        </div>
+      `, { sticky: true, className: "ot-map-label" });
+
+      borderLine.addTo(this.layers.dividedKingdoms);
+    }
   }
 
   // Draw Biblical Journeys & Routes
@@ -395,6 +472,9 @@ class MapController {
   // Quick Region presets
   zoomToRegion(regionKey) {
     const REGION_COORDS = {
+      "divided-kingdoms": { center: [32.05, 35.20], zoom: 8 },
+      "northern-kingdom": { center: [32.48, 35.30], zoom: 9 },
+      "southern-kingdom": { center: [31.55, 35.10], zoom: 9 },
       "holy-land": { center: [31.77, 35.23], zoom: 8 },
       "jerusalem": { center: [31.7767, 35.2345], zoom: 14 },
       "galilee": { center: [32.82, 35.58], zoom: 10 },
@@ -416,6 +496,7 @@ class MapController {
 
     const layerMapping = {
       tribes: this.layers.tribes,
+      "divided-kingdoms": this.layers.dividedKingdoms,
       abraham: this.layers.abrahamJourney,
       exodus: this.layers.exodusRoute,
       ark: this.layers.arkJourney,

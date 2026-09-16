@@ -22,6 +22,7 @@ class UIController {
     this.setupFilterChips();
     this.setupSidebarTabs();
     this.setupToursModal();
+    this.setupWelcomeModal();
     this.populateQuickJumpSelect();
   }
 
@@ -300,27 +301,26 @@ class UIController {
     if (overviewPane) {
       const overviewText = dossier ? dossier.overview : city.significance;
       
-      // Check for matching Bible & Pearl of Great Price Videos
+      // Check for matching Bible & Pearl of Great Price Videos banner
       const matchingVideos = (typeof CHURCH_BIBLE_VIDEOS !== "undefined")
         ? CHURCH_BIBLE_VIDEOS.filter(v => v.locations && v.locations.includes(siteId))
         : [];
 
-      let videosHtml = "";
+      let videoBannerHtml = "";
       if (matchingVideos.length > 0) {
-        videosHtml = `
-          <div class="dossier-section" style="margin-top:1.25rem;">
-            <div class="dossier-section-title">🎬 Church Scripture & Bible Videos</div>
-            ${matchingVideos.map(vid => `
-              <div style="background:var(--bg-parchment-card); border:1px solid var(--border-gold); border-radius:6px; padding:10px; margin-bottom:8px; box-shadow:var(--shadow-sm);">
-                <div style="font-weight:700; font-size:0.86rem; color:var(--color-crimson);">${vid.title}</div>
-                <div style="font-size:0.72rem; color:var(--text-muted); margin:2px 0;">${vid.scriptureRef} • ${vid.category}</div>
-                <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.45;">${vid.description}</div>
-                <a href="${vid.churchUrl}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:5px; margin-top:6px; font-size:0.75rem; font-weight:700; color:var(--color-lapis); text-decoration:none;">
-                  <span>▶ Watch Video on ChurchofJesusChrist.org</span>
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+        videoBannerHtml = `
+          <div style="margin-top:1.15rem; padding:10px 12px; background:rgba(27,54,93,0.06); border:1px solid rgba(27,54,93,0.22); border-radius:6px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:all 0.2s ease;" onclick="document.getElementById('tabBtn-videos').click();" title="Click to view Bible Videos for ${city.name}">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:1.15rem;">🎬</span>
+              <div>
+                <div style="font-size:0.8rem; font-weight:700; color:var(--color-lapis);">Church Bible Videos Available</div>
+                <div style="font-size:0.72rem; color:var(--text-secondary);">${matchingVideos.length} official Church presentation${matchingVideos.length > 1 ? 's' : ''} for ${city.name}</div>
               </div>
-            `).join("")}
+            </div>
+            <span style="font-size:0.74rem; font-weight:700; color:var(--color-crimson); display:flex; align-items:center; gap:3px;">
+              <span>Watch Tab</span>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
           </div>
         `;
       }
@@ -329,13 +329,13 @@ class UIController {
         <div class="dossier-lead">${overviewText.replace(/\n\n/g, "<br><br>")}</div>
         <div class="dossier-section">
           <div class="dossier-section-title">📍 Geographic & Scriptural Coordinates</div>
-          <p style="font-size:0.8rem; color:var(--text-secondary);">
+          <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.6;">
             <strong>Region:</strong> ${city.region}<br>
             <strong>Biblical Era:</strong> ${city.era} (${city.startYear < 0 ? Math.abs(city.startYear) + ' BC' : city.startYear})<br>
             <strong>Key Passages:</strong> <em>${city.scriptureHighlight}</em>
           </p>
         </div>
-        ${videosHtml}
+        ${videoBannerHtml}
       `;
     }
 
@@ -375,7 +375,10 @@ class UIController {
     // 4. Tab 3: Scriptures (Multi-Version Engine)
     this.renderScripturesTab(city, dossier);
 
-    // 5. Tab 4: Patriarchs & Prophets
+    // 5. Tab 4: Bible Videos (Dedicated Tab)
+    this.renderVideosTab(city, dossier);
+
+    // 6. Tab 5: Patriarchs & Prophets
     const peoplePane = document.getElementById("tab-people");
     if (peoplePane) {
       if (dossier && dossier.peopleAndCovenant) {
@@ -399,7 +402,7 @@ class UIController {
       }
     }
 
-    // 6. Tab 5: Archaeology & History
+    // 7. Tab 6: Archaeology & History
     const historyPane = document.getElementById("tab-history");
     if (historyPane) {
       if (dossier && dossier.archaeologyAndHistory) {
@@ -416,6 +419,87 @@ class UIController {
 
     // Open drawer
     this.sidebar.classList.remove("closed");
+  }
+
+  // Render Dedicated Bible Videos Tab (Matching New Testament Geography)
+  renderVideosTab(city, dossier) {
+    const videosPane = document.getElementById("tab-videos");
+    if (!videosPane) return;
+
+    const siteId = city ? city.id : "";
+    const allVideos = (typeof CHURCH_BIBLE_VIDEOS !== "undefined") ? CHURCH_BIBLE_VIDEOS : [];
+
+    // 1. Direct location matches
+    const directMatches = allVideos.filter(v => v.locations && v.locations.includes(siteId));
+
+    // 2. Secondary matches: same era or region, excluding direct matches
+    const secondaryMatches = allVideos.filter(v => {
+      if (directMatches.some(dm => dm.id === v.id)) return false;
+      if (city && city.era && v.category && v.category.toLowerCase().includes(city.era.toLowerCase())) return true;
+      return false;
+    });
+
+    let displayVideos = [...directMatches];
+    if (displayVideos.length === 0) {
+      displayVideos = allVideos.slice(0, 4);
+    } else if (displayVideos.length < 3 && secondaryMatches.length > 0) {
+      displayVideos = [...displayVideos, ...secondaryMatches.slice(0, 3 - displayVideos.length)];
+    }
+
+    videosPane.innerHTML = `
+      <div class="video-tab-header">
+        <div class="video-tab-title">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Church Scripture & Bible Videos</span>
+        </div>
+        <div class="video-tab-subtitle">
+          Official dramatizations, Old Testament media, and Pearl of Great Price presentations from ChurchofJesusChrist.org.
+        </div>
+      </div>
+
+      <div class="video-cards-list">
+        ${displayVideos.map(vid => `
+          <div class="video-card">
+            <div class="video-card-top">
+              <span class="video-badge">🎬 ${vid.category}</span>
+              ${directMatches.some(dm => dm.id === vid.id) ? '<span style="font-size:0.68rem; font-weight:700; color:var(--color-gold-dark); background:rgba(197,160,89,0.15); padding:2px 6px; border-radius:3px;">⭐ Featured Location</span>' : ''}
+            </div>
+            <div class="video-title">${vid.title}</div>
+            <div class="video-scripture-ref">📖 ${vid.scriptureRef}</div>
+            <div class="video-desc">${vid.description}</div>
+            <a href="${vid.churchUrl}" target="_blank" rel="noopener" class="video-church-btn">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Watch Video on ChurchofJesusChrist.org</span>
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:auto;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="video-church-portal-box">
+        <div class="video-portal-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          <span>Official Church Scripture Media Libraries</span>
+        </div>
+        <p style="font-size:0.75rem; color:var(--text-secondary); margin:4px 0 8px 0; line-height:1.4;">
+          Access hundreds of high-definition dramatizations and educational videos created by The Church of Jesus Christ of Latter-day Saints:
+        </p>
+        <div class="video-portal-links">
+          <a href="https://www.churchofjesuschrist.org/media/collection/old-testament-bible-videos?lang=eng" target="_blank" rel="noopener" class="video-portal-link-item">
+            <span>🎥 Old Testament Bible Videos Library</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.churchofjesuschrist.org/media/collection/pearl-of-great-price-videos?lang=eng" target="_blank" rel="noopener" class="video-portal-link-item">
+            <span>📜 Pearl of Great Price Video Collection</span>
+            <span>↗</span>
+          </a>
+          <a href="https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026?lang=eng" target="_blank" rel="noopener" class="video-portal-link-item">
+            <span>📖 Come, Follow Me — Old Testament Learning</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    `;
   }
 
   // Render Scriptures with Multi-Version Selector (KJV, NIV, Hebrew, JST/PGP, Insight)
@@ -604,6 +688,258 @@ class UIController {
     if (overviewPane) overviewPane.classList.add("active");
 
     this.sidebar.classList.remove("closed");
+  }
+
+  // Show Divided Kingdom Dossier (Northern Kingdom of Israel or Southern Kingdom of Judah)
+  showKingdomDossier(kingdom) {
+    if (!this.sidebar || !kingdom) return;
+
+    const titleElem = document.getElementById("sidebarTitle");
+    const hebrewScriptElem = document.getElementById("sidebarHebrewScript");
+    const hebrewTranslitElem = document.getElementById("sidebarHebrewTranslit");
+    const hebrewMeaningElem = document.getElementById("sidebarHebrewMeaning");
+
+    if (titleElem) titleElem.textContent = kingdom.name;
+    if (hebrewScriptElem) hebrewScriptElem.textContent = kingdom.hebrew;
+    if (hebrewTranslitElem) hebrewTranslitElem.textContent = kingdom.transliteration;
+    if (hebrewMeaningElem) hebrewMeaningElem.textContent = `Capital: ${kingdom.capital}`;
+
+    // 1. Overview Tab
+    const overviewPane = document.getElementById("tab-overview");
+    if (overviewPane) {
+      overviewPane.innerHTML = `
+        <div class="dossier-lead">${kingdom.description}</div>
+        <div class="dossier-section">
+          <div class="dossier-section-title">📍 Kingdom Coordinates & Vital Facts</div>
+          <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.6;">
+            <strong>Era:</strong> ${kingdom.era}<br>
+            <strong>Royal Capital:</strong> ${kingdom.capital}<br>
+            <strong>Constituent Tribes:</strong> ${kingdom.tribes.join(", ")}<br>
+            <strong>Key Monarchs:</strong> ${kingdom.kings.join(", ")}<br>
+            <strong>Prophets Sent by Jehovah:</strong> ${kingdom.prophets.join(", ")}
+          </p>
+        </div>
+      `;
+    }
+
+    // 2. Covenants Tab
+    const teachingsPane = document.getElementById("tab-teachings");
+    if (teachingsPane) {
+      teachingsPane.innerHTML = `
+        <div class="covenant-box">
+          <div class="covenant-box-title">Kingdom Identity & Historical Setting</div>
+          <div>${kingdom.name} (${kingdom.hebrew}) — ${kingdom.era}</div>
+        </div>
+        <div class="covenant-box">
+          <div class="covenant-box-title">Prophetic Voices & Calling to Repentance</div>
+          <div>Prophets: ${kingdom.prophets.join(", ")}</div>
+        </div>
+        <div class="covenant-box">
+          <div class="covenant-box-title">Covenant Stewardship & Historical Destiny</div>
+          <div>${kingdom.id === "northern-kingdom" 
+            ? "Rebelled against the House of David (~930 BC). Jeroboam erected golden calves at Dan and Bethel to prevent pilgrimages to Jerusalem. Elijah and Elisha performed miracles demonstrating that Jehovah alone is God. Rejection of prophetic warnings led to Assyrian captivity in 722 BC and the scattering of the Ten Tribes."
+            : "Preserved the Davidic Covenant and Solomon's Temple. Despite periodic apostasy, righteous kings (Asa, Jehoshaphat, Hezekiah, Josiah) reinstituted the Passover and cleansed the land. Miraculously preserved against Sennacherib under Isaiah. Fallen in 586 BC to Babylon, followed by 70 years of exile and prophetic restoration under Zerubbabel, Ezra, and Nehemiah."}</div>
+        </div>
+      `;
+    }
+
+    // 3. Scriptures Tab
+    const scripturesPane = document.getElementById("tab-scriptures");
+    if (scripturesPane) {
+      const kingdomPassages = kingdom.id === "northern-kingdom"
+        ? [
+            { ref: "1 Kings 12:16", text: "So when all Israel saw that the king hearkened not unto them, the people answered the king, saying, What portion have we in David? neither have we inheritance in the son of Jesse: to your tents, O Israel!", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/12?lang=eng#16" },
+            { ref: "1 Kings 12:28-29", text: "Whereupon the king took counsel, and made two calves of gold, and said unto them, It is too much for you to go up to Jerusalem: behold thy gods, O Israel, which brought thee up out of the land of Egypt. And he set the one in Beth-el, and the other put he in Dan.", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/12?lang=eng#28" },
+            { ref: "2 Kings 17:6", text: "In the ninth year of Hoshea the king of Assyria took Samaria, and carried Israel away into Assyria, and placed them in Halah and in Habor by the river of Gozan, and in the cities of the Medes.", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/17?lang=eng#6" }
+          ]
+        : [
+            { ref: "2 Samuel 7:16", text: "And thine house and thy kingdom shall be established for ever before thee: thy throne shall be established for ever.", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/2-sam/7?lang=eng#16" },
+            { ref: "1 Kings 8:10-11", text: "And it came to pass, when the priests were come out of the holy place, that the cloud filled the house of the Lord, So that the priests could not stand to minister because of the cloud: for the glory of the Lord had filled the house of the Lord.", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/8?lang=eng#10" },
+            { ref: "2 Kings 19:34-35", text: "For I will defend this city, to save it, for mine own sake, and for my servant David's sake. And it came to pass that night, that the angel of the Lord went out, and smote in the camp of the Assyrians an hundred fourscore and five thousand.", churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/19?lang=eng#34" }
+          ];
+
+      this.renderCustomScriptureCards(scripturesPane, kingdomPassages);
+    }
+
+    // 4. Videos Tab
+    this.renderVideosTab({ id: kingdom.id === 'northern-kingdom' ? 'samaria' : 'jerusalem', name: kingdom.name, era: kingdom.era });
+
+    // 5. Patriarchs & Kings Tab
+    const peoplePane = document.getElementById("tab-people");
+    if (peoplePane) {
+      peoplePane.innerHTML = `
+        <div style="font-weight:700; font-size:0.88rem; color:var(--color-crimson); margin-bottom:10px;">👑 Notable Monarchs & Prophets of ${kingdom.name}</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          ${kingdom.kings.map(k => `
+            <div class="patriarch-card">
+              <div class="patriarch-avatar">👑</div>
+              <div class="patriarch-details">
+                <div class="patriarch-name">King ${k}</div>
+                <div class="patriarch-bio">Reigned in ${kingdom.capital} over ${kingdom.shortName}.</div>
+              </div>
+            </div>
+          `).join("")}
+          ${kingdom.prophets.map(p => `
+            <div class="patriarch-card">
+              <div class="patriarch-avatar">📜</div>
+              <div class="patriarch-details">
+                <div class="patriarch-name">${p}</div>
+                <div class="patriarch-bio">Prophet of Jehovah sent to summon ${kingdom.shortName} to covenant righteousness.</div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    // 6. Archaeology Tab
+    const historyPane = document.getElementById("tab-history");
+    if (historyPane) {
+      historyPane.innerHTML = kingdom.id === "northern-kingdom" ? `
+        <div class="timeline-item">
+          <div class="timeline-date">c. 930 BC</div>
+          <div class="timeline-desc">Secession of the Ten Northern Tribes under Jeroboam I; royal capitals established at Shechem and Tirzah.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">c. 880 BC</div>
+          <div class="timeline-desc">King Omri purchases the hill of Samaria and constructs the royal capital; renowned for the famous Phoenician-style Samaria Ivories.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">c. 841 BC</div>
+          <div class="timeline-desc">Jehu anoints himself king and pays tribute to Assyria, famously recorded on the Black Obelisk of Shalmaneser III in the British Museum.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">722 BC</div>
+          <div class="timeline-desc">Fall of Samaria to Sargon II after a three-year siege; twenty-seven thousand Israelites deported into Assyrian exile (the Lost Ten Tribes).</div>
+        </div>
+      ` : `
+        <div class="timeline-item">
+          <div class="timeline-date">c. 1000 BC</div>
+          <div class="timeline-desc">King David establishes Jerusalem as the capital of the united monarchy, followed by Solomon erecting the First Temple on Mount Moriah.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">701 BC</div>
+          <div class="timeline-desc">Sennacherib invades Judah, destroying Lachish; King Hezekiah carves the 1,750-foot Siloam water tunnel and Jerusalem is miraculously delivered.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">c. 600 BC</div>
+          <div class="timeline-desc">Prophets Jeremiah and Lehi warn Jerusalem of impending doom; Lehi departs into the wilderness; Ketef Hinnom silver amulets inscribed with the Priestly Blessing.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">586 BC</div>
+          <div class="timeline-desc">Nebuchadnezzar of Babylon sacks Jerusalem, burns Solomon's Temple, and exiles the citizens to Babylon for 70 years.</div>
+        </div>
+      `;
+    }
+
+    // Open sidebar and set to overview tab
+    const overviewTabBtn = document.getElementById("tabBtn-overview");
+    if (overviewTabBtn) overviewTabBtn.click();
+    this.sidebar.classList.remove("closed");
+  }
+
+  renderCustomScriptureCards(pane, list) {
+    pane.innerHTML = `
+      <div class="scripture-version-selector">
+        <button class="scripture-version-btn ${this.currentScriptureVersion === 'kjv' ? 'active' : ''}" data-version="kjv">KJV</button>
+        <button class="scripture-version-btn ${this.currentScriptureVersion === 'niv' ? 'active' : ''}" data-version="niv">NIV</button>
+        <button class="scripture-version-btn ${this.currentScriptureVersion === 'hebrew' ? 'active' : ''}" data-version="hebrew">Hebrew</button>
+        <button class="scripture-version-btn ${this.currentScriptureVersion === 'jst' ? 'active' : ''}" data-version="jst">JST / PGP</button>
+        <button class="scripture-version-btn ${this.currentScriptureVersion === 'insight' ? 'active' : ''}" data-version="insight">Insight</button>
+      </div>
+      <div id="scriptureCardsContainer">
+        ${list.map(item => {
+          const translation = (typeof SCRIPTURE_TRANSLATIONS !== "undefined")
+            ? SCRIPTURE_TRANSLATIONS.get(item.ref, item.text)
+            : null;
+          let text = item.text;
+          let cls = "";
+          let badge = '<span class="version-badge kjv-badge">King James Version</span>';
+          if (this.currentScriptureVersion === "niv") {
+            text = (translation && translation.niv) ? translation.niv : item.text;
+            badge = '<span class="version-badge niv-badge">NIV</span>';
+          } else if (this.currentScriptureVersion === "hebrew") {
+            if (translation && translation.hebrew) {
+              text = `${translation.hebrew}<span class="hebrew-translit-line"><strong>Translit:</strong> ${translation.translit || ''}</span>`;
+              cls = "hebrew-mode";
+            }
+            badge = '<span class="version-badge hebrew-badge">Hebrew</span>';
+          } else if (this.currentScriptureVersion === "jst") {
+            text = (translation && translation.jst) ? translation.jst : item.text;
+            badge = '<span class="version-badge jst-badge">JST / PGP</span>';
+          } else if (this.currentScriptureVersion === "insight") {
+            text = (translation && translation.insight) ? translation.insight : item.text;
+            badge = '<span class="version-badge insight-badge">Insight</span>';
+          }
+          return `
+            <div class="scripture-card">
+              <div class="scripture-header">
+                <div class="scripture-header-title">
+                  <span class="scripture-ref">${item.ref}</span>
+                  ${badge}
+                </div>
+                <a href="${item.churchLink}" target="_blank" rel="noopener" class="scripture-link-church">
+                  <span>Church Study Link</span>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <div class="scripture-text ${cls}">${text}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    pane.querySelectorAll(".scripture-version-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        this.currentScriptureVersion = btn.getAttribute("data-version");
+        this.renderCustomScriptureCards(pane, list);
+      });
+    });
+  }
+
+  // Welcome to Old Testament Geography Modal
+  setupWelcomeModal() {
+    const modal = document.getElementById("welcomeModalBackdrop");
+    const openBtn = document.getElementById("welcomeGuideBtn");
+    const closeBtn = document.getElementById("welcomeModalCloseBtn");
+    const getStartedBtn = document.getElementById("welcomeGetStartedBtn");
+    const doNotShowCheckbox = document.getElementById("welcomeDoNotShowAgain");
+
+    if (!modal) return;
+
+    const showModal = () => {
+      modal.classList.add("open");
+    };
+
+    const closeModal = () => {
+      modal.classList.remove("open");
+      if (doNotShowCheckbox && doNotShowCheckbox.checked) {
+        localStorage.setItem("ot_atlas_welcomed", "true");
+      }
+    };
+
+    if (openBtn) {
+      openBtn.addEventListener("click", () => showModal());
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => closeModal());
+    }
+
+    if (getStartedBtn) {
+      getStartedBtn.addEventListener("click", () => closeModal());
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Auto-show on first visit if not dismissed
+    const hasSeen = localStorage.getItem("ot_atlas_welcomed");
+    if (!hasSeen) {
+      setTimeout(() => showModal(), 400);
+    }
   }
 
   // Audio Pronunciation Engine (Web Speech API)

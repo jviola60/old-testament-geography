@@ -24,6 +24,15 @@ const CHURCH_BIBLE_VIDEOS = [
     churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/7?lang=eng"
   },
   {
+    id: "noah-ark-covenant",
+    title: "Noah and the Ark: The Rainbow Covenant of Peace",
+    scriptureRef: "Genesis 6-9; Moses 8:19-30",
+    category: "Pearl of Great Price & Patriarchs",
+    locations: ["mount-ararat"],
+    description: "Noah preaches faith and repentance, builds the ark of gopher wood, and rests upon the mountains of Ararat, where he builds an altar and the Lord establishes the everlasting rainbow covenant.",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/8?lang=eng"
+  },
+  {
     id: "abraham-ur",
     title: "Abraham Delivered from the Altar of Elkenah",
     scriptureRef: "Abraham 1-2",
@@ -175,6 +184,69 @@ const CHURCH_BIBLE_VIDEOS = [
     locations: ["jerusalem"],
     description: "Nehemiah leads the returned exiles to rebuild Jerusalem's charred stone walls in 52 days with a trowel in one hand and a sword in the other.",
     churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/neh/2?lang=eng"
+  },
+  {
+    id: "moses-nebo-translation",
+    title: "Moses Upon Mount Nebo: The Promised Land Beheld",
+    scriptureRef: "Deuteronomy 34; Alma 45:19",
+    category: "Exodus & Conquest",
+    locations: ["mount-nebo", "jericho"],
+    description: "Moses surveys the entire land of promise from Pisgah's summit on Mount Nebo, lays hands upon Joshua to lead Israel, and is translated by the Spirit into heaven.",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/deut/34?lang=eng"
+  },
+  {
+    id: "hannah-samuel-shiloh",
+    title: "Hannah's Prayer & Samuel Called of God at Shiloh",
+    scriptureRef: "1 Samuel 1-3",
+    category: "Judges & Prophets",
+    locations: ["shiloh", "ramah"],
+    description: "Hannah weeps in silent faith at the Tabernacle in Shiloh, dedicating young Samuel to the sanctuary where he answers the Lord's call: 'Speak; for thy servant heareth.'",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/1-sam/3?lang=eng"
+  },
+  {
+    id: "jacob-ladder-bethel",
+    title: "Jacob's Ladder & The House of God at Bethel",
+    scriptureRef: "Genesis 28:10-22; Genesis 35",
+    category: "Patriarchs",
+    locations: ["bethel", "shechem"],
+    description: "Jacob rests his head upon a stone at Luz and dreams of a heavenly ladder with angels ascending and descending, naming the holy ground Beth-El ('House of God').",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/28?lang=eng"
+  },
+  {
+    id: "joshua-covenant-shechem",
+    title: "Joshua's Covenant at Shechem: Choose You This Day",
+    scriptureRef: "Joshua 24",
+    category: "Conquest & Covenant",
+    locations: ["shechem", "mount-gerizim-ebal"],
+    description: "Aged Joshua gathers the twelve tribes to the sanctuary of Shechem, setting up a great stone under the oak and proclaiming: 'As for me and my house, we will serve the Lord.'",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/josh/24?lang=eng"
+  },
+  {
+    id: "david-saul-engedi",
+    title: "David Spares Saul in the Crags of En-gedi",
+    scriptureRef: "1 Samuel 24",
+    category: "Kingdom",
+    locations: ["engedi"],
+    description: "Pursued by Saul among the wild goat rocks and desert springs of En-gedi, David demonstrates covenant integrity by refusing to stretch forth his hand against the Lord's anointed.",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/1-sam/24?lang=eng"
+  },
+  {
+    id: "jonah-nineveh",
+    title: "Jonah and the Repentance of Nineveh",
+    scriptureRef: "Jonah 1-4",
+    category: "Prophets",
+    locations: ["nineveh", "joppa"],
+    description: "Jonah flees to Joppa, is swallowed by the great fish, and delivers the Lord's message of repentance to the great imperial city of Nineveh.",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/jonah/3?lang=eng"
+  },
+  {
+    id: "gibeon-sun-stood-still",
+    title: "The Battle of Gibeon: The Sun and Moon Stand Still",
+    scriptureRef: "Joshua 10:1-14; 1 Kings 3",
+    category: "Conquest & Kingdom",
+    locations: ["gibeon"],
+    description: "Joshua defends Gibeon, calling upon Jehovah as the sun stands still in the midst of heaven. Later, King Solomon offers sacrifices at the high place and receives wisdom.",
+    churchUrl: "https://www.churchofjesuschrist.org/study/scriptures/ot/josh/10?lang=eng"
   }
 ];
 

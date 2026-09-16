@@ -279,6 +279,83 @@ const REGIONS_DATA = {
       center: [32.0, 50.0],
       description: "Overthrew Babylon in 539 BC under Cyrus the Great, who issued the royal decree permitting Jewish exiles under Zerubbabel, Ezra, and Nehemiah to return and rebuild the Temple and city walls."
     }
+  ],
+
+  dividedKingdoms: [
+    {
+      id: "northern-kingdom",
+      name: "Northern Kingdom of Israel (Samaria / 10 Tribes)",
+      shortName: "Kingdom of Israel (North)",
+      hebrew: "מַמְלֶכֶת יִשְׂרָאֵל",
+      transliteration: "Mamlekhet Yisrael",
+      capital: "Samaria (earlier Shechem & Tirzah)",
+      era: "Divided Monarchy (930 BC – 722 BC)",
+      color: "#2E7D32",
+      fillColor: "#4CAF50",
+      fillOpacity: 0.24,
+      borderColor: "#1B5E20",
+      center: [32.48, 35.30],
+      tribes: ["Ephraim", "Manasseh", "Issachar", "Zebulun", "Naphtali", "Asher", "Dan", "Gad", "Reuben", "Simeon"],
+      kings: ["Jeroboam I", "Baasha", "Omri", "Ahab", "Jehu", "Jeroboam II", "Hoshea"],
+      prophets: ["Elijah the Tishbite", "Elisha", "Amos", "Hosea"],
+      coordinates: [
+        [33.35, 35.55], // Dan / Mount Hermon base
+        [33.25, 35.85], // Northern Golan / Bashan
+        [32.65, 36.15], // East Gilead / Ramoth-gilead
+        [32.10, 35.95], // Jabbok / Ammon border
+        [31.86, 35.50], // Jordan River above Dead Sea (Border with Judah)
+        [31.88, 35.32], // North of Jericho / between Bethel and Ramah
+        [31.90, 35.22], // Bethel frontier (Israel's southern calf sanctuary)
+        [31.93, 35.05], // Beth-horon descent
+        [32.00, 34.80], // Sharon coastal plain / Joppa approaches
+        [32.50, 34.90], // Mount Carmel ridge / Mediterranean coast
+        [33.00, 35.10], // Tyre / Phoenician border
+        [33.30, 35.30], // Upper Galilee / Kedesh
+        [33.35, 35.55]
+      ],
+      description: "Established around 930 BC after the ten northern tribes rebelled against Rehoboam son of Solomon ('What portion have we in David? to your tents, O Israel!'). Jeroboam I instituted golden calf shrines at Bethel and Dan. Marked by the dynamic prophetic ministries of Elijah and Elisha, the ivory palaces of Samaria under Omri and Ahab, and frequent wars with Aram-Damascus. Conquered by the Assyrian Empire in 722 BC under Shalmaneser V and Sargon II, resulting in the deportation and scattering of the Ten Tribes."
+    },
+    {
+      id: "southern-kingdom",
+      name: "Southern Kingdom of Judah (House of David)",
+      shortName: "Kingdom of Judah (South)",
+      hebrew: "מַמְלֶכֶת יְהוּדָה",
+      transliteration: "Mamlekhet Yehudah",
+      capital: "Jerusalem (Zion / Mount Moriah)",
+      era: "Divided Monarchy (930 BC – 586 BC)",
+      color: "#8C1D18",
+      fillColor: "#C53030",
+      fillOpacity: 0.24,
+      borderColor: "#67110D",
+      center: [31.55, 35.08],
+      tribes: ["Judah", "Benjamin", "Levites & Priests"],
+      kings: ["Rehoboam", "Asa", "Jehoshaphat", "Hezekiah", "Josiah", "Zedekiah"],
+      prophets: ["Isaiah", "Micah", "Jeremiah", "Zephaniah", "Habakkuk", "Lehi"],
+      coordinates: [
+        [31.90, 35.22], // Southern frontier border just north of Ramah & Mizpah
+        [31.88, 35.32], // North of Jericho
+        [31.86, 35.50], // Jordan River mouth / North Dead Sea
+        [31.30, 35.45], // Western shore of Dead Sea (En-gedi)
+        [31.05, 35.38], // Southern Dead Sea / Sodom plain
+        [30.80, 35.25], // Tamar / northern Arabah desert
+        [31.10, 34.80], // Negev / Arad & Beersheba wilderness
+        [31.35, 34.55], // Gerar / Philistine border near Gaza
+        [31.65, 34.85], // Shephelah foothills (Lachish, Azekah, Valley of Elah)
+        [31.80, 34.95], // Beth-shemesh / Sorek valley
+        [31.85, 35.08], // Gezer / Aijalon valley
+        [31.90, 35.22]
+      ],
+      description: "Steadfast bastion of the Davidic Dynasty, reigning uninterrupted from Solomon's Temple in Jerusalem for nearly three and a half centuries. Comprising the tribes of Judah and Benjamin along with the Aaronic and Levitical priesthood. Blessed by righteous reformations under kings Asa, Jehoshaphat, Hezekiah, and Josiah. Miraculously delivered from Sennacherib's Assyrian army when the Angel of the Lord destroyed 185,000 soldiers. Eventually conquered by Nebuchadnezzar of Babylon in 586 BC due to covenant infidelity, leading to the destruction of the First Temple and 70 years exile."
+    }
+  ],
+
+  kingdomBorderLine: [
+    [31.88, 34.90], // Gezer / Aijalon approaches
+    [31.91, 35.05], // Lower Beth-horon
+    [31.90, 35.15], // Mizpah / Gibeon ridge
+    [31.90, 35.22], // Between Ramah of Benjamin (Judah) and Bethel (Israel)
+    [31.88, 35.32], // Wadi Qelt descent north of Jericho
+    [31.86, 35.50]  // Jordan River
   ]
 };
 

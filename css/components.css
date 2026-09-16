@@ -239,3 +239,174 @@
   color: #1A120B;
   transform: scale(1.1);
 }
+
+/* Welcome to Old Testament Modal */
+.welcome-dialog {
+  max-width: 760px;
+  max-height: 90vh;
+  border: 2px solid var(--color-gold);
+}
+
+.welcome-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  background: var(--bg-card);
+}
+
+.welcome-hero-banner {
+  background: linear-gradient(135deg, rgba(132, 83, 43, 0.12) 0%, rgba(197, 160, 89, 0.15) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.15rem 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.welcome-hero-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-dark);
+  background: rgba(197, 160, 89, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+.welcome-hero-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-crimson-deep);
+  margin: 0 0 6px 0;
+}
+
+.welcome-hero-lead {
+  font-family: var(--font-scripture);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.welcome-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .welcome-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.welcome-feature-card {
+  background: var(--bg-parchment-card);
+  border: 1px solid var(--border-parchment);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+}
+
+.welcome-feature-card:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-feature-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  background: rgba(197, 160, 89, 0.15);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-feature-content {
+  flex: 1;
+}
+
+.welcome-feature-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-crimson-deep);
+  margin-bottom: 4px;
+}
+
+.welcome-feature-desc {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.welcome-quick-tips {
+  background: rgba(27, 54, 93, 0.05);
+  border: 1px dashed rgba(27, 54, 93, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 1.25rem;
+}
+
+.welcome-tips-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-lapis);
+  margin-bottom: 6px;
+}
+
+.welcome-tips-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.welcome-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-parchment-dark);
+  flex-wrap: wrap;
+}
+
+.welcome-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.welcome-checkbox-label input[type="checkbox"] {
+  accent-color: var(--color-crimson);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.welcome-start-btn {
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}

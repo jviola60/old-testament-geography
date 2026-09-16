@@ -83,6 +83,12 @@
 
     <!-- Header Actions -->
     <div class="header-right">
+      <!-- Welcome Guide Button -->
+      <button id="welcomeGuideBtn" class="btn btn-outline" title="Welcome to Old Testament Geography & User Guide">
+        <span style="font-size:0.95rem;">📜</span>
+        <span class="btn-text">Welcome</span>
+      </button>
+
       <!-- Quick Region Focus Dropdown -->
       <div class="dropdown-container">
         <button id="regionSelectBtn" class="btn btn-outline" title="Zoom to biblical region">
@@ -90,6 +96,9 @@
           <span class="btn-text">Regions</span>
         </button>
         <div id="regionDropdown" class="dropdown-menu">
+          <button data-region="divided-kingdoms" class="dropdown-item" style="color:#C5A059; font-weight:700;">⚔️ Divided Kingdoms: Israel & Judah</button>
+          <button data-region="northern-kingdom" class="dropdown-item">👑 Northern Kingdom of Israel (Samaria)</button>
+          <button data-region="southern-kingdom" class="dropdown-item">🏛️ Southern Kingdom of Judah (Jerusalem)</button>
           <button data-region="holy-land" class="dropdown-item">📍 Promised Land & 12 Tribes</button>
           <button data-region="jerusalem" class="dropdown-item">🏛️ First Temple Jerusalem & Mount Moriah</button>
           <button data-region="galilee" class="dropdown-item">🌊 Sea of Chinnereth (Galilee) & North</button>
@@ -107,10 +116,10 @@
       </button>
 
       <!-- Location Quick Jump Select -->
-      <div class="header-quick-jump-container" title="Jump directly to any Old Testament City or Site">
+      <div class="header-quick-jump-container" title="Jump directly to any of the 112+ Old Testament Cities or Sites">
         <span style="font-size:0.85rem; margin-right:4px;">📍</span>
         <select id="quickJumpSelect" class="header-quick-jump-select" aria-label="Jump to Any Biblical Location">
-          <option value="" disabled selected>Jump to Biblical Location...</option>
+          <option value="" disabled selected>Jump to Biblical Location (112+ Sites)...</option>
         </select>
       </div>
 
@@ -144,6 +153,10 @@
     <button class="filter-chip active" data-filter="tribes">
       <span class="chip-dot" style="background:#A32822;"></span>
       <span>12 Tribes Allotments</span>
+    </button>
+    <button class="filter-chip active" data-filter="divided-kingdoms">
+      <span class="chip-dot" style="background:#2E7D32;"></span>
+      <span>👑 Divided Kingdoms (Israel & Judah)</span>
     </button>
     <button class="filter-chip active" data-filter="abraham">
       <span class="chip-dot" style="background:#C5A059;"></span>
@@ -243,13 +256,14 @@
       </div>
     </div>
 
-    <!-- 5 Tab Navigation -->
+    <!-- 6 Tab Navigation (Matching New Testament Geography) -->
     <nav class="sidebar-tabs" aria-label="Dossier Tabs">
-      <button class="sidebar-tab-btn active" data-tab="overview">1. Overview</button>
-      <button class="sidebar-tab-btn" data-tab="teachings">2. Covenants</button>
-      <button class="sidebar-tab-btn" data-tab="scriptures">3. Scriptures</button>
-      <button class="sidebar-tab-btn" data-tab="people">4. Patriarchs</button>
-      <button class="sidebar-tab-btn" data-tab="history">5. Archaeology</button>
+      <button class="sidebar-tab-btn active" data-tab="overview" id="tabBtn-overview">1. Overview</button>
+      <button class="sidebar-tab-btn" data-tab="teachings" id="tabBtn-teachings">2. Covenants</button>
+      <button class="sidebar-tab-btn" data-tab="scriptures" id="tabBtn-scriptures">3. Scriptures</button>
+      <button class="sidebar-tab-btn" data-tab="videos" id="tabBtn-videos">4. Bible Videos</button>
+      <button class="sidebar-tab-btn" data-tab="people" id="tabBtn-people">5. Patriarchs</button>
+      <button class="sidebar-tab-btn" data-tab="history" id="tabBtn-history">6. Archaeology</button>
     </nav>
 
     <!-- Scrollable Tab Content Body -->
@@ -257,10 +271,95 @@
       <div class="tab-pane active" id="tab-overview"></div>
       <div class="tab-pane" id="tab-teachings"></div>
       <div class="tab-pane" id="tab-scriptures"></div>
+      <div class="tab-pane" id="tab-videos"></div>
       <div class="tab-pane" id="tab-people"></div>
       <div class="tab-pane" id="tab-history"></div>
     </div>
   </aside>
+
+  <!-- Welcome to Old Testament Geography Modal -->
+  <div class="modal-backdrop" id="welcomeModalBackdrop">
+    <div class="modal-dialog welcome-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span style="font-size:1.3rem;">📜</span>
+          <span>Welcome to Old Testament Geography</span>
+        </div>
+        <button class="modal-close-btn" id="welcomeModalCloseBtn" aria-label="Close welcome modal">&times;</button>
+      </div>
+      <div class="modal-body welcome-body">
+        <div class="welcome-hero-banner">
+          <div class="welcome-hero-badge">Interactive Biblical Atlas & Sacred Scripture Codex</div>
+          <h2 class="welcome-hero-title">~4000 BC – 400 BC • From Eden & Ararat to the Restoration</h2>
+          <p class="welcome-hero-lead">
+            Welcome to the interactive geography of the Old Testament and Pearl of Great Price. Step into the ancient world of the Patriarchs, the Exodus, the Promised Land of the Twelve Tribes, the Divided Kingdoms of Israel and Judah, and the holy ministries of the Prophets.
+          </p>
+        </div>
+
+        <div class="welcome-features-grid">
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">👑</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">Divided Kingdoms & 112+ Locations</div>
+              <p class="welcome-feature-desc">
+                Clearly visualize the <strong>Northern Kingdom of Israel (Samaria)</strong> and <strong>Southern Kingdom of Judah (Jerusalem)</strong>, with 112+ comprehensively documented biblical cities, sanctuaries, mountains, and battlegrounds.
+              </p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">📜</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">Authentic Biblical Hebrew (עִבְרִית)</div>
+              <p class="welcome-feature-desc">
+                Study every location with authentic vocalized Hebrew script (Niqqud), phonetic transliterations, root meanings, Strong’s Concordance numbers, and audio pronunciations.
+              </p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">📖</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">Multi-Version Scripture Engine</div>
+              <p class="welcome-feature-desc">
+                Instantly switch between King James Version (KJV), New International Version (NIV), Biblical Hebrew, Joseph Smith Translation / Pearl of Great Price (JST/PGP), and doctrinal insights.
+              </p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">🎬</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">Dedicated Church Bible Videos</div>
+              <p class="welcome-feature-desc">
+                A dedicated multimedia tab featuring official Church Bible videos, dramatizations, and Pearl of Great Price presentations linked directly to ChurchofJesusChrist.org.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-quick-tips">
+          <div class="welcome-tips-title">💡 How to Explore:</div>
+          <ul class="welcome-tips-list">
+            <li><strong>Click any marker</strong> or territory on the map to open the complete 6-tab Dossier.</li>
+            <li>Use the <strong>"Jump to Biblical Location..."</strong> dropdown or search bar to find any of the 112+ places.</li>
+            <li>Toggle between <strong>Ancient Relief</strong>, <strong>Satellite Earth</strong>, and <strong>Modern Roads</strong> in the top bar.</li>
+            <li>Explore the <strong>Divided Kingdoms</strong> filter chip to isolate Israel and Judah.</li>
+          </ul>
+        </div>
+
+        <div class="welcome-footer-actions">
+          <label class="welcome-checkbox-label">
+            <input type="checkbox" id="welcomeDoNotShowAgain">
+            <span>Do not show this welcome message automatically</span>
+          </label>
+          <button id="welcomeGetStartedBtn" class="btn btn-primary glow-gold welcome-start-btn">
+            <span>Explore the Old Testament Atlas &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Guided Scripture Tours Modal -->
   <div class="modal-backdrop" id="toursModalBackdrop">

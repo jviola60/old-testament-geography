@@ -484,11 +484,124 @@
         translit: "Har Nevo",
         significance: "Associated with Mount Pisgah ('the cleft / peak'), the threshold between forty years of wilderness and covenant rest."
       }
+    },
+
+    "mount-ararat": {
+      overview: "Mount Ararat (16,854 ft / 5,137 m), towering as a dormant volcanic massif in the Armenian Highlands (ancient kingdom of Urartu), is venerated across sacred history as the resting sanctuary of Noah's Ark following the Great Flood.\n\nHere, amid the cleansing waters of a renewed creation, Noah's ark rested upon the mountains of Ararat on the seventeenth day of the seventh month (Genesis 8:4). Upon departing the ark, the righteous patriarch Noah erected an altar unto the Lord, offering burnt offerings of clean beasts and fowls. In return, Jehovah made an everlasting covenant with Noah, his seed, and every living creature never again to destroy all flesh with a flood, consecrating the rainbow as the celestial token of this eternal peace (Genesis 9:12–17). In Latter-day Saint revelation (Moses 8), Noah is identified as the angel Gabriel, an ordained prophet who preached the gospel of Jesus Christ with unwavering diligence in an age of violence and rebellion.",
+      teachings: {
+        teacher: "Noah (the Angel Gabriel) and Jehovah",
+        audience: "The antediluvian world before the flood; Noah's family and subsequent generations after the flood",
+        whatWasTaught: "Repentance, baptism, and faith in Jesus Christ; the sanctity of life; the solemnity of covenant altars; and God's rainbow token of mercy and enduring covenant peace.",
+        whyTaught: "To preserve a righteous seed upon the earth and establish the eternal covenant that the earth will be sanctified and prepared for celestial glory.",
+        context: "The mountain crest emerging above the floodwaters of baptismal renewal.",
+        howAccepted: "Noah's sons (Shem, Ham, Japheth) and their wives re-populated the ancient world, re-establishing worship of the true God.",
+        passages: ["Genesis 8:4, 20-22", "Genesis 9:12-17", "Moses 8:19-30"]
+      },
+      scriptures: [
+        v("Genesis 8:4, 20-22", "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat... And Noah builded an altar unto the Lord; and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.", ot("gen", "8", "4")),
+        v("Genesis 9:12-17", "And God said, This is the token of the covenant which I make between me and you and every living creature that is with you... I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.", ot("gen", "9", "12")),
+        v("Moses 8:19-30", "And the Lord ordained Noah after his own order, and commanded him that he should go forth and declare his Gospel unto the children of men, even as it was given unto Enoch... saying, Believe and repent of your sins and be baptized in the name of Jesus Christ.", pgp("moses", "8", "19"))
+      ],
+      peopleAndCovenant: "• Noah (Gabriel): Patriarch, prophet, and ark-builder who found grace in the eyes of the Lord.\n\n• The Matriarch (Noah's Wife): Stood faithfully with Noah through century-long preparation and the renewal of creation.\n\n• Shem, Ham, and Japheth: Sons of Noah who received covenant promises to re-establish civilization in righteousness.\n\n• The Lord Jehovah: Made the everlasting rainbow covenant, affirming eternal divine mercy to mankind.",
+      archaeologyAndHistory: "• Biblical Urartu (Ararat): Ancient Iron Age kingdom situated around Lake Van, Mount Ararat, and modern Armenia, matching the Hebrew term 'Ararat' (Assyrian Urartu).\n\n• Durupinar Site & Tendürek Formation: Geological boat-shaped formation south of Mount Ararat studied by biblical archaeologists and geologists.\n\n• Summit Plateau & Ice Cap: The permanent glacier of Mount Ararat reaching 16,854 feet, long subject to high-altitude exploration and historical expeditions.",
+      hebrewInfo: {
+        root: "אררט (Urartu / high land)",
+        strongs: "H780",
+        vocalized: "הָרֵי אֲרָרָט",
+        translit: "Harei Ararat",
+        significance: "Literally 'Mountains of Ararat' (plural in the Hebrew text), denoting the highlands of ancient Urartu where new life began after the Flood."
+      }
     }
   };
 
+  // Helper function to build direct Church of Jesus Christ scripture URLs
+  function buildChurchScriptureLink(ref) {
+    if (!ref) return "https://www.churchofjesuschrist.org/study/scriptures?lang=eng";
+    const clean = ref.trim();
+
+    const bookMap = [
+      { regex: /^Genesis/i, path: "ot/gen" },
+      { regex: /^Exodus/i, path: "ot/ex" },
+      { regex: /^Leviticus/i, path: "ot/lev" },
+      { regex: /^Numbers/i, path: "ot/num" },
+      { regex: /^Deut(?:eronomy)?/i, path: "ot/deut" },
+      { regex: /^Joshua/i, path: "ot/josh" },
+      { regex: /^Judges/i, path: "ot/judg" },
+      { regex: /^Ruth/i, path: "ot/ruth" },
+      { regex: /^1\s*Samuel/i, path: "ot/1-sam" },
+      { regex: /^2\s*Samuel/i, path: "ot/2-sam" },
+      { regex: /^1\s*Kings/i, path: "ot/1-kgs" },
+      { regex: /^2\s*Kings/i, path: "ot/2-kgs" },
+      { regex: /^1\s*Chronicles/i, path: "ot/1-chr" },
+      { regex: /^2\s*Chronicles/i, path: "ot/2-chr" },
+      { regex: /^Ezra/i, path: "ot/ezra" },
+      { regex: /^Nehemiah/i, path: "ot/neh" },
+      { regex: /^Esther/i, path: "ot/esth" },
+      { regex: /^Job/i, path: "ot/job" },
+      { regex: /^Psalms?/i, path: "ot/ps" },
+      { regex: /^Proverbs/i, path: "ot/prov" },
+      { regex: /^Ecclesiastes/i, path: "ot/eccl" },
+      { regex: /^Song of Solomon/i, path: "ot/song" },
+      { regex: /^Isaiah/i, path: "ot/isa" },
+      { regex: /^Jeremiah/i, path: "ot/jer" },
+      { regex: /^Lamentations/i, path: "ot/lam" },
+      { regex: /^Ezekiel/i, path: "ot/ezek" },
+      { regex: /^Daniel/i, path: "ot/dan" },
+      { regex: /^Hosea/i, path: "ot/hosea" },
+      { regex: /^Joel/i, path: "ot/joel" },
+      { regex: /^Amos/i, path: "ot/amos" },
+      { regex: /^Obadiah/i, path: "ot/obad" },
+      { regex: /^Jonah/i, path: "ot/jonah" },
+      { regex: /^Micah/i, path: "ot/micah" },
+      { regex: /^Nahum/i, path: "ot/nahum" },
+      { regex: /^Habakkuk/i, path: "ot/hab" },
+      { regex: /^Zephaniah/i, path: "ot/zeph" },
+      { regex: /^Haggai/i, path: "ot/hag" },
+      { regex: /^Zechariah/i, path: "ot/zech" },
+      { regex: /^Malachi/i, path: "ot/mal" },
+      { regex: /^Moses/i, path: "pgp/moses" },
+      { regex: /^Abraham/i, path: "pgp/abr" },
+      { regex: /^1\s*Nephi/i, path: "bofm/1-ne" },
+      { regex: /^2\s*Nephi/i, path: "bofm/2-ne" },
+      { regex: /^Alma/i, path: "bofm/alma" },
+      { regex: /^D&C|^Doctrine and Covenants/i, path: "dc-testament/dc" }
+    ];
+
+    for (const b of bookMap) {
+      if (b.regex.test(clean)) {
+        const match = clean.match(/(\d+):(\d+)/);
+        if (match) {
+          return `https://www.churchofjesuschrist.org/study/scriptures/${b.path}/${match[1]}?lang=eng#${match[2]}`;
+        }
+        const chapMatch = clean.match(/(\d+)/);
+        if (chapMatch) {
+          return `https://www.churchofjesuschrist.org/study/scriptures/${b.path}/${chapMatch[1]}?lang=eng`;
+        }
+        return `https://www.churchofjesuschrist.org/study/scriptures/${b.path}?lang=eng`;
+      }
+    }
+    return "https://www.churchofjesuschrist.org/study/scriptures?lang=eng";
+  }
+
+  // Parses ALL semicolon-separated scriptures from city data so every passage has its own card
+  function parseAllScriptures(scriptureHighlight, cityName, significance) {
+    if (!scriptureHighlight) return [];
+    const rawList = scriptureHighlight.split(";").map(s => s.trim()).filter(Boolean);
+    return rawList.map(ref => {
+      let text = `${cityName} in ${ref}: ${significance}`;
+      if (typeof SCRIPTURE_TRANSLATIONS !== "undefined" && SCRIPTURE_TRANSLATIONS.db && SCRIPTURE_TRANSLATIONS.db[ref]) {
+        text = SCRIPTURE_TRANSLATIONS.db[ref].kjv;
+      }
+      return {
+        ref: ref,
+        text: text,
+        churchLink: buildChurchScriptureLink(ref)
+      };
+    });
+  }
+
   // Automated Universal Enrichment Engine:
-  // Dynamically fills in any missing dossier fields from CITIES_DATA so every site has a complete 5-tab dossier!
+  // Dynamically fills in any missing dossier fields from CITIES_DATA so every site has a complete 6-tab dossier!
   window.getPlaceDossier = function(placeId) {
     if (PLACE_DOSSIERS[placeId]) {
       return PLACE_DOSSIERS[placeId];
@@ -497,7 +610,9 @@
     const city = (typeof CITIES_DATA !== "undefined") ? CITIES_DATA.find(c => c.id === placeId) : null;
     if (!city) return null;
 
-    // Generate complete 5-tab dossier dynamically from scriptural data
+    const allPassages = city.scriptureHighlight ? city.scriptureHighlight.split(";").map(s => s.trim()).filter(Boolean) : [];
+
+    // Generate complete dossier dynamically from scriptural data with ALL scriptures represented
     return {
       overview: `${city.name} (${city.hebrew} • ${city.transliteration}), meaning "${city.meaning}", was a vital biblical location in the ${city.region} during the ${city.era} (~${Math.abs(city.startYear)} BC).\n\n${city.significance}\n\nKey scriptural events here revealed God's covenant dealings with the House of Israel and demonstrated the eternal truths preserved in holy scripture.`,
       teachings: {
@@ -507,11 +622,9 @@
         whyTaught: `To turn the hearts of the people toward the Lord and prepare them for covenant blessings.`,
         context: `Historical biblical setting in ${city.region}.`,
         howAccepted: `Revered by the faithful and recorded in holy scripture for future generations.`,
-        passages: [city.scriptureHighlight]
+        passages: allPassages
       },
-      scriptures: [
-        v(city.scriptureHighlight.split(";")[0].trim(), `${city.name} is commemorated across the scriptures: ${city.significance}`, `https://www.churchofjesuschrist.org/study/scriptures?lang=eng`)
-      ],
+      scriptures: parseAllScriptures(city.scriptureHighlight, city.name, city.significance),
       peopleAndCovenant: `• Patriarchs & Prophets: Righteous leaders, kings, and matriarchs associated with ${city.name} who walked in covenant faith with God.\n\n• The People of Israel: Inhabitants who witnessed the power and providence of Jehovah in ${city.region}.`,
       archaeologyAndHistory: `• Archaeological Excavations: Discoveries in ${city.region} reveal Middle Bronze and Iron Age Israelite occupation, fortification walls, and pottery confirming the biblical timeline.\n\n• Historical Chronology: Active biblical landmark from ~${Math.abs(city.startYear)} BC through ~${Math.abs(city.endYear)} BC.`,
       hebrewInfo: {

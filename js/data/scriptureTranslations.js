@@ -61,6 +61,57 @@ const SCRIPTURE_TRANSLATIONS = {
       churchLink: "https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?lang=eng#9"
     },
 
+    // --- NOAH & MOUNT ARARAT (RENEWED CREATION) ---
+    "Genesis 8:4, 20-22": {
+      kjv: "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat... And Noah builded an altar unto the Lord; and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar.",
+      niv: "And on the seventeenth day of the seventh month the ark came to rest on the mountains of Ararat... Then Noah built an altar to the Lord and, taking some of all the clean animals and clean birds, he sacrificed burnt offerings on it.",
+      hebrew: "וַתָּנַח הַתֵּבָה בַּחֹדֶשׁ הַשְּׁבִיעִי בְּשִׁבְעָה־עָשָׂר יוֹם לַחֹדֶשׁ עַל הָרֵי אֲרָרָט... וַיִּבֶן נֹחַ מִזְבֵּחַ לַיהוָה וַיִּקַּח מִכֹּל הַבְּהֵמָה הַטְּהֹרָה וּמִכֹּל הָעוֹף הַטָּהוֹר וַיַּעַל עֹלֹת בַּמִּזְבֵּחַ׃",
+      translit: "Va-tanach ha-tevah ba-chodesh ha-sh'vi'i b'shiv'ah-asar yom la-chodesh al harei Ararat... Va-yiven Noach mizbe'ach l'Adonai va-yikkach mikol ha-b'hemah ha-t'horah u'mikol ha-of ha-tahor va-ya'al olot ba-mizbe'ach.",
+      jst: "JST Genesis 8 restores the covenant ordinances: the Flood served as the immersion baptism of the earth, and Noah's altar renewed the patriarchal order of sacrifices pointing to Christ.",
+      insight: "Mount Ararat: The mountain sanctuary where human life and covenant worship recommenced. Noah built an altar before establishing any dwelling or settlement.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/8?lang=eng#4"
+    },
+
+    "Genesis 8:4": {
+      kjv: "And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+      niv: "And on the seventeenth day of the seventh month the ark came to rest on the mountains of Ararat.",
+      hebrew: "וַתָּנַח הַתֵּבָה בַּחֹדֶשׁ הַשְּׁבִיעִי בְּשִׁבְעָה־עָשָׂר יוֹם לַחֹדֶשׁ עַל הָרֵי אֲרָרָט׃",
+      translit: "Va-tanach ha-tevah ba-chodesh ha-sh'vi'i b'shiv'ah-asar yom la-chodesh al harei Ararat.",
+      jst: "The resting of the ark upon the heights of Ararat signifies safety, deliverance, and divine preservation of the covenant family.",
+      insight: "Ararat represents the bridge between the antediluvian world and post-flood patriarchal civilization.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/8?lang=eng#4"
+    },
+
+    "Genesis 8:20-22": {
+      kjv: "And Noah builded an altar unto the Lord; and took of every clean beast, and of every clean fowl, and offered burnt offerings on the altar... While the earth remaineth, seedtime and harvest, and cold and heat, and summer and winter, and day and night shall not cease.",
+      niv: "Then Noah built an altar to the Lord and, taking some of all the clean animals and clean birds, he sacrificed burnt offerings on it... 'As long as the earth endures, seedtime and harvest, cold and heat, summer and winter, day and night will never cease.'",
+      hebrew: "וַיִּבֶן נֹחַ מִזְבֵּחַ לַיהוָה וַיִּקַּח מִכֹּל הַבְּהֵמָה הַטְּהֹרָה וּמִכֹּל הָעוֹף הַטָּהוֹר וַיַּעַל עֹלֹת בַּמִּזְבֵּחַ... עֹד כָּל־יְמֵי הָאָרֶץ זֶרַע וְקָצִיר וְקֹר וָחֹם וְקַיִץ וָחֹרֶף וְיוֹם וָלַיְלָה לֹא יִשְׁבֹּתוּ׃",
+      translit: "Va-yiven Noach mizbe'ach l'Adonai va-yikkach mikol ha-b'hemah ha-t'horah... Od kol-y'mei ha'aretz zera v'katzir v'kor va-chom v'kayitz va-choref v'yom va-laylah lo yishbotu.",
+      jst: "Noah's offerings at Ararat were accepted by the Lord, who promised that the seasonal order of the earth would endure until the final harvest.",
+      insight: "The altar at Ararat is a type of gratitude and total surrender to God following profound deliverance.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/8?lang=eng#20"
+    },
+
+    "Genesis 9:12-17": {
+      kjv: "And God said, This is the token of the covenant which I make between me and you and every living creature that is with you, for perpetual generations: I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+      niv: "And God said, 'This is the token of the covenant I am making between me and you and every living creature with you, a covenant for all generations to come: I have set my rainbow in the clouds, and it will be the sign of the covenant between me and the earth.'",
+      hebrew: "וַיֹּאמֶר אֱלֹהִים זֹאת אוֹת־הַבְּרִית אֲשֶׁר־אֲנִי נֹתֵן בֵּינִי וּבֵינֵיכֶם וּבֵין כָּל־נֶפֶשׁ חַיָּה אֲשֶׁר אִתְּכֶם לְדֹרֹת עוֹלָם׃ אֶת־קַשְׁתִּי נָתַתִּי בֶּעָנָן וְהָיְתָה לְאוֹת בְּרִית בֵּינִי וּבֵין הָאָרֶץ׃",
+      translit: "Va-yomer Elohim zot ot-ha-b'rit asher-ani noten beini u'veineikhem u'vein kol-nefesh chayah... Et-kashti natatti be'anan v'hay'tah l'ot b'rit beini u'vein ha'aretz.",
+      jst: "JST Genesis 9:21-25 clarifies that when the righteous shall observe the covenant in the last days, Enoch's Zion from above shall meet the righteous on earth.",
+      insight: "The Rainbow Token: In Latter-day Saint theology, the presence of the rainbow in the sky signifies that the earth continues under divine mercy in preparation for the Second Coming.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/gen/9?lang=eng#12"
+    },
+
+    "Moses 8:19-30": {
+      kjv: "And the Lord ordained Noah after his own order, and commanded him that he should go forth and declare his Gospel unto the children of men, even as it was given unto Enoch... saying, Believe and repent of your sins and be baptized in the name of Jesus Christ, the Son of God.",
+      niv: "And the Lord ordained Noah after his own holy order, and commanded him to declare his Gospel to humankind, even as it was given to Enoch... saying, 'Believe, repent of your sins, and be baptized in the name of Jesus Christ, the Son of God.'",
+      hebrew: "וַיִּסְמֹךְ יְהוָה אֶת־נֹחַ כְּמִשְׁפָּטוֹ וַיְצַוֵּהוּ לָלֶכֶת וּלְהַכְרִיז אֶת־בְּשׂוֹרָתוֹ לִבְנֵי הָאָדָם... לֵאמֹר: הַאֲמִינוּ וְשׁוּבוּ מֵחַטֹּאתֵיכֶם וְהִטָּבְלוּ בְּשֵׁם יֵשׁוּעַ הַמָּשִׁיחַ בֶּן־הָאֱלֹהִים׃",
+      translit: "Va-yismokh Adonai et-Noach k'mishpato va-y'tzavvehu lalekhet u'l'hakhriz et-b'sorato livnei ha-adam... lemor: ha'aminu v'shuvu me-chattoteikhem v'hittavlu b'shem Yeshua ha-Mashiach Ben-ha-Elohim.",
+      jst: "Moses 8 in the Pearl of Great Price restores Noah's prophetic ordination to the Melchizedek Priesthood, demonstrating that the fullness of the gospel was taught from the beginning.",
+      insight: "Noah's divine commission on Mount Ararat and beyond was preaching repentance and faith in Jesus Christ as the only name under heaven whereby man can be saved.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/8?lang=eng#19"
+    },
+
     // --- PATRIARCHAL JOURNEYS (GENESIS) ---
     "Genesis 12:1-3": {
       kjv: "Now the Lord had said unto Abram, Get thee out of thy country, and from thy kindred, and from thy father's house, unto a land that I will shew thee: And I will make of thee a great nation...",
