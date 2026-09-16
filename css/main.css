@@ -225,6 +225,7 @@ html, body {
 }
 
 .clear-search-btn {
+  display: none;
   position: absolute;
   right: 12px;
   background: none;
@@ -243,6 +244,7 @@ html, body {
 
 /* Search Dropdown Results */
 .search-results-dropdown {
+  display: none;
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
@@ -424,6 +426,20 @@ html, body {
   color: var(--text-gold);
 }
 
+.dropdown-item-highlight {
+  color: #C5A059;
+  font-weight: 700;
+}
+
+.btn-welcome-emoji {
+  font-size: 0.95rem;
+}
+
+.header-quick-jump-icon {
+  font-size: 0.85rem;
+  margin-right: 4px;
+}
+
 /* Quick Jump Select */
 .header-quick-jump-container {
   display: flex;
@@ -461,6 +477,10 @@ html, body {
 .btn-mode-toggle:hover {
   background: rgba(65, 49, 35, 0.9);
   border-color: var(--color-gold-light);
+}
+
+.btn-mode-toggle svg {
+  margin-left: 2px;
 }
 
 /* Mobile Menu Button */

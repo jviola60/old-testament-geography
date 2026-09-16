@@ -39,6 +39,7 @@
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   transition: all 0.2s ease;
 }
@@ -66,6 +67,16 @@
   border-radius: 50%;
   display: inline-block;
 }
+
+.filter-chip[data-filter="all"] .chip-dot { background: #C5A059; }
+.filter-chip[data-filter="tribes"] .chip-dot { background: #A32822; }
+.filter-chip[data-filter="divided-kingdoms"] .chip-dot { background: #2E7D32; }
+.filter-chip[data-filter="abraham"] .chip-dot { background: #C5A059; }
+.filter-chip[data-filter="exodus"] .chip-dot { background: #DC2626; }
+.filter-chip[data-filter="ark"] .chip-dot { background: #D97706; }
+.filter-chip[data-filter="cities"] .chip-dot { background: #1D4E89; }
+.filter-chip[data-filter="jerusalem"] .chip-dot { background: #84532B; }
+.filter-chip[data-filter="hydrography"] .chip-dot { background: #2563EB; }
 
 /* Map Theming: Parchment Mode Filter */
 .parchment-tiles {

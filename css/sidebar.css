@@ -124,6 +124,11 @@
   max-width: 170px;
 }
 
+.hebrew-action-row {
+  display: flex;
+  align-items: center;
+}
+
 /* Tab Navigation Bar (Balanced 3x2 Grid for 6 distinct tabs) */
 .sidebar-tabs {
   display: grid;

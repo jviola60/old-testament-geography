@@ -76,8 +76,8 @@
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
         <input type="text" id="globalSearchInput" placeholder="Search city, mountain, Hebrew term, or scripture..." autocomplete="off" aria-label="Search the Old Testament Atlas">
-        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
-        <div id="searchResultsDropdown" class="search-results-dropdown" style="display: none;"></div>
+        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search">&times;</button>
+        <div id="searchResultsDropdown" class="search-results-dropdown"></div>
       </div>
     </div>
 
@@ -85,7 +85,7 @@
     <div class="header-right">
       <!-- Welcome Guide Button -->
       <button id="welcomeGuideBtn" class="btn btn-outline" title="Welcome to Old Testament Geography & User Guide">
-        <span style="font-size:0.95rem;">📜</span>
+        <span class="btn-welcome-emoji">📜</span>
         <span class="btn-text">Welcome</span>
       </button>
 
@@ -96,7 +96,7 @@
           <span class="btn-text">Regions</span>
         </button>
         <div id="regionDropdown" class="dropdown-menu">
-          <button data-region="divided-kingdoms" class="dropdown-item" style="color:#C5A059; font-weight:700;">⚔️ Divided Kingdoms: Israel & Judah</button>
+          <button data-region="divided-kingdoms" class="dropdown-item dropdown-item-highlight">⚔️ Divided Kingdoms: Israel & Judah</button>
           <button data-region="northern-kingdom" class="dropdown-item">👑 Northern Kingdom of Israel (Samaria)</button>
           <button data-region="southern-kingdom" class="dropdown-item">🏛️ Southern Kingdom of Judah (Jerusalem)</button>
           <button data-region="holy-land" class="dropdown-item">📍 Promised Land & 12 Tribes</button>
@@ -117,7 +117,7 @@
 
       <!-- Location Quick Jump Select -->
       <div class="header-quick-jump-container" title="Jump directly to any of the 112+ Old Testament Cities or Sites">
-        <span style="font-size:0.85rem; margin-right:4px;">📍</span>
+        <span class="header-quick-jump-icon">📍</span>
         <select id="quickJumpSelect" class="header-quick-jump-select" aria-label="Jump to Any Biblical Location">
           <option value="" disabled selected>Jump to Biblical Location (112+ Sites)...</option>
         </select>
@@ -128,7 +128,7 @@
         <button id="mapStyleToggle" class="btn btn-mode-toggle" title="Switch Map Base Style">
           <span class="mode-icon parchment-icon" id="mapStyleIcon">📜</span>
           <span class="mode-text" id="mapStyleText">Ancient Relief</span>
-          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 2px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div id="mapStyleDropdown" class="dropdown-menu">
           <button data-style="parchment" class="dropdown-item">📜 Ancient Shaded Relief (Biblical Terrain)</button>
@@ -147,39 +147,39 @@
   <!-- Filter Chips Bar -->
   <div class="filter-bar" id="filterBar">
     <button class="filter-chip active" data-filter="all">
-      <span class="chip-dot" style="background:#C5A059;"></span>
+      <span class="chip-dot"></span>
       <span>All Visible</span>
     </button>
     <button class="filter-chip active" data-filter="tribes">
-      <span class="chip-dot" style="background:#A32822;"></span>
+      <span class="chip-dot"></span>
       <span>12 Tribes Allotments</span>
     </button>
     <button class="filter-chip active" data-filter="divided-kingdoms">
-      <span class="chip-dot" style="background:#2E7D32;"></span>
+      <span class="chip-dot"></span>
       <span>👑 Divided Kingdoms (Israel & Judah)</span>
     </button>
     <button class="filter-chip active" data-filter="abraham">
-      <span class="chip-dot" style="background:#C5A059;"></span>
+      <span class="chip-dot"></span>
       <span>Abraham's Journey</span>
     </button>
     <button class="filter-chip active" data-filter="exodus">
-      <span class="chip-dot" style="background:#DC2626;"></span>
+      <span class="chip-dot"></span>
       <span>Exodus & Wilderness</span>
     </button>
     <button class="filter-chip active" data-filter="ark">
-      <span class="chip-dot" style="background:#D97706;"></span>
+      <span class="chip-dot"></span>
       <span>Ark of the Covenant</span>
     </button>
     <button class="filter-chip active" data-filter="cities">
-      <span class="chip-dot" style="background:#1D4E89;"></span>
+      <span class="chip-dot"></span>
       <span>Sanctuaries & Cities</span>
     </button>
     <button class="filter-chip active" data-filter="jerusalem">
-      <span class="chip-dot" style="background:#84532B;"></span>
+      <span class="chip-dot"></span>
       <span>First Temple Jerusalem</span>
     </button>
     <button class="filter-chip active" data-filter="hydrography">
-      <span class="chip-dot" style="background:#2563EB;"></span>
+      <span class="chip-dot"></span>
       <span>Rivers & Seas</span>
     </button>
   </div>
@@ -245,7 +245,7 @@
           <div class="hebrew-script" id="sidebarHebrewScript">יְרוּשָׁלַיִם</div>
           <div class="hebrew-translit" id="sidebarHebrewTranslit">Yerushalayim</div>
         </div>
-        <div style="display:flex; align-items:center;">
+        <div class="hebrew-action-row">
           <div class="hebrew-meaning" id="sidebarHebrewMeaning">City / Foundation of Peace</div>
           <button id="btnPronounceHebrew" class="btn-pronounce" title="Pronounce Hebrew">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
@@ -282,7 +282,7 @@
     <div class="modal-dialog welcome-dialog">
       <div class="modal-header">
         <div class="modal-title">
-          <span style="font-size:1.3rem;">📜</span>
+          <span class="welcome-title-icon">📜</span>
           <span>Welcome to Old Testament Geography</span>
         </div>
         <button class="modal-close-btn" id="welcomeModalCloseBtn" aria-label="Close welcome modal">&times;</button>
@@ -372,7 +372,7 @@
         <button class="modal-close-btn" id="toursModalCloseBtn" aria-label="Close guided tours modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
+        <p class="tours-modal-intro">
           Select a guided journey to step through sacred Old Testament and Pearl of Great Price geographical narratives:
         </p>
         <div class="tours-grid" id="toursGridContainer"></div>

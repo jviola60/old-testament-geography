@@ -8,6 +8,7 @@
   position: fixed;
   inset: 0;
   background: var(--bg-overlay);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   z-index: 2500;
   display: flex;
@@ -81,6 +82,12 @@
 .modal-body {
   padding: 1.25rem;
   overflow-y: auto;
+}
+
+.tours-modal-intro {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
 }
 
 /* Tours List */
@@ -162,6 +169,7 @@
   align-items: center;
   gap: 14px;
   max-width: 90%;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -245,6 +253,10 @@
   max-width: 760px;
   max-height: 90vh;
   border: 2px solid var(--color-gold);
+}
+
+.welcome-title-icon {
+  font-size: 1.3rem;
 }
 
 .welcome-body {
@@ -394,6 +406,7 @@
   font-size: 0.78rem;
   color: var(--text-secondary);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
 }
 
