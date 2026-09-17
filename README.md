@@ -13,13 +13,16 @@ Modeled directly after the [New Testament Geography Interactive Atlas](https://j
 ## 🌟 Key Features
 
 ### 1. Authentic Biblical Hebrew Engine
+
 - **Full Vocalization (Niqqud)**: Every biblical city, mountain, altar, and sanctuary is presented with authentic Hebrew script (e.g., יְרוּשָׁלַיִם, חֶבְרוֹן, בֵּית־אֵל, שְׁכֶם, הַר סִינַי).
 - **Linguistic Precision**: Romanized phonetic transliteration, etymological root analysis, and spiritual meanings.
 - **Strong's Concordance**: Numbered reference tags (e.g., `H3389`, `H2275`, `H425`).
 - **Audio Pronunciation**: Web Speech API audio engine pronouncing authentic Hebrew place names aloud (`he-IL`).
 
 ### 2. Multi-Version Scripture Comparison
+
 Switch instantly between five distinct translations with direct study links to [ChurchofJesusChrist.org](https://www.churchofjesuschrist.org/study/scriptures):
+
 1. **KJV (Bible)**: King James Version (The Church of Jesus Christ of Latter-day Saints edition).
 2. **NIV (Modern)**: Clear, accessible modern English translation.
 3. **Hebrew (עִבְרִית)**: Masoretic Text with vowel pointing, right-to-left layout, and transliteration.
@@ -27,7 +30,9 @@ Switch instantly between five distinct translations with direct study links to [
 5. **Doctrinal Insight**: Theological context connecting covenant altars to the eternal Plan of Salvation.
 
 ### 3. Five-Tab Deep Biblical Research Dossiers
+
 Selecting any location opens a rich 5-tab dossier drawer:
+
 - **1. Overview**: Physical geography, terrain, biblical narrative, and integrated Church Bible videos.
 - **2. Covenants & Teachings**: Prophet/teacher, covenant revealed, eternal purpose, and how the people received it.
 - **3. Scriptures**: Multi-version translation viewer with direct links to Church scripture study tools.
@@ -35,6 +40,7 @@ Selecting any location opens a rich 5-tab dossier drawer:
 - **5. Archaeology & History**: Excavations, ancient stelae, seals, bullae, and Paleo-Hebrew inscriptions.
 
 ### 4. Interactive Thematic Overlays
+
 - **Twelve Tribes Allotments**: Border polygons and patriarchal blessings from Jacob (Genesis 49) and Moses (Deuteronomy 33).
 - **Abraham's Journey of Faith**: Ur of the Chaldees → Haran → Shechem → Bethel → Hebron → Egypt → Mount Moriah.
 - **The Exodus & Wilderness Wanderings**: Rameses → Red Sea → Marah → Mount Sinai → Kadesh-barnea → Plains of Moab.
@@ -43,6 +49,7 @@ Selecting any location opens a rich 5-tab dossier drawer:
 - **First Temple Jerusalem Inset**: Solomon's Temple, City of David, Gihon Spring, and Hezekiah's Tunnel.
 
 ### 5. Historical Timeline Scrubber (~4000 BC – 400 BC)
+
 - Scrub continuously across biblical history or jump instantly between major epochs:
   - **4000 BC**: Creation & Patriarchs (Adam, Enoch, Noah)
   - **2000 BC**: Abrahamic Covenant & Patriarchs
@@ -55,11 +62,13 @@ Selecting any location opens a rich 5-tab dossier drawer:
 - Automated **Play / Pause** timeline animation mode.
 
 ### 6. Guided Scripture Tours
+
 - Curated step-by-step biblical journeys with interactive camera transitions and floating HUD controls.
 
 ---
 
 ## 🛠️ Technology Stack
+
 - **Core**: Vanilla HTML5, CSS3, ES6+ JavaScript.
 - **Mapping**: [Leaflet.js](https://leafletjs.com/) with high-performance raster tile rendering.
 - **Basemap**: Esri World Shaded Relief with warm antique parchment filter (100% free, permanent, no API keys required).
@@ -84,6 +93,7 @@ Navigate to `http://localhost:8092` in your browser.
 ---
 
 ## 📖 Scripture Sources & References
+
 - Holy Bible (King James Version, LDS Edition)
 - The Pearl of Great Price (Book of Moses, Book of Abraham)
 - [The Church of Jesus Christ of Latter-day Saints - Scriptures](https://www.churchofjesuschrist.org/study/scriptures)
