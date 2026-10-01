@@ -20,15 +20,28 @@
 
   const PLACE_DOSSIERS = {
     jerusalem: {
-      overview: "Jerusalem was anciently known as Salem ('Peace') in the days of Melchizedek and later fortified by the Jebusites as Jebus before King David conquered its subterranean water conduit to establish it as the royal capital and religious sanctuary of the United Kingdom of Israel. Situated 2,500 feet above sea level in the Judean hill country, the Holy City is naturally defended on three sides by precipitous gorges: the Kidron Valley to the east, the Valley of Hinnom (Gehenna) to the south and west, and the Central (Tyropoeon) Valley dividing its ancient ridges. To the north rises Mount Moriah, where Abraham offered Isaac and where King Solomon erected the magnificent First Temple to house the Ark of the Covenant.\n\nJerusalem stands as the spiritual center of the Old Testament. Here David danced before the Ark as it entered Zion; here Solomon dedicated the Temple with an outpouring of divine glory (1 Kings 8); here Isaiah beheld the Lord high and lifted up; here King Hezekiah carved an 1,750-foot tunnel through solid limestone to secure the Gihon Spring against the Assyrian siege; and here the prophets Jeremiah and Lehi wept over its impending destruction by Babylon. It is the city of covenant promise, captivity, restoration under Zerubbabel, Ezra, and Nehemiah, and ultimate Millennial gathering.",
+      overview: "Jerusalem was anciently known as Salem ('Peace') in the days of Melchizedek and later fortified by the Jebusites as Jebus before King David conquered its subterranean water conduit to establish it as the royal capital and religious sanctuary of the United Kingdom of Israel. Situated 2,500 feet above sea level in the Judean hill country, the Holy City is naturally defended on three sides by precipitous gorges: the Kidron Valley to the east, the Valley of Hinnom (Gehenna) to the south and west, and the Central (Tyropoeon) Valley dividing its ancient ridges. To the north rises Mount Moriah, where Abraham offered Isaac and where King Solomon erected the magnificent First Temple to house the Ark of the Covenant.\n\nJerusalem stands as the spiritual center of the Old Testament. Here David danced before the Ark as it entered Zion; here Solomon dedicated the Temple with an outpouring of divine glory (1 Kings 8); here Isaiah beheld the Lord high and lifted up; here King Hezekiah carved an 1,750-foot tunnel through solid limestone to secure the Gihon Spring against the Assyrian siege; and here the prophets Jeremiah and Lehi wept over its impending destruction by Babylon.\n\n⚔️ THE REIGN OF KING ZEDEKIAH & LEHI'S DEPARTURE (~600 BC):\nIn the commencement of the first year of the reign of King Zedekiah (~597–586 BC), appointed as a tributary monarch over Judah by Nebuchadnezzar of Babylon, Jerusalem reached a spiritual and political crisis. While false prophets assured the royal court that God would never permit Jerusalem to fall, true prophets—Jeremiah, Habakkuk, Zephaniah, Urijah, and Lehi—cried repentance, prophesying that unless the people turned from their iniquities, the great city Jerusalem would be destroyed and its inhabitants carried away captive to Babylon (1 Nephi 1:4; 2 Kings 24:17–20).\n\nLehi, a devout and wealthy merchant of the tribe of Manasseh living in Jerusalem, prayed with all his heart on behalf of his people. He was granted an awe-inspiring vision of a Pillar of Fire dwelling upon a rock, followed by an open heaven wherein he beheld God upon His throne, surrounded by concourses of angels, and the Messiah descending with twelve others whose brightness exceeded the stars. Lehi was handed a celestial book foretelling the coming of the Redeemer and the doom of Jerusalem (1 Nephi 1:5–19). When Lehi boldly testified of these things, the inhabitants of Jerusalem sought to slay him. The Lord commanded Lehi in a dream to take his family—his wife Sariah and sons Laman, Lemuel, Sam, and Nephi—and depart into the wilderness, leaving behind their stone house, gold, silver, and precious riches.\n\nSoon thereafter, the Lord commanded Lehi's sons to return to Jerusalem to obtain the sacred Plates of Brass from Laban, an influential military leader, elder, and custodian of the records who commanded fifty soldiers and lived in an affluent estate in the Upper City. When Laban twice refused, stole the brothers' gold and silver, and sent his guards to execute them, Nephi was led by the Spirit by night into Jerusalem. Finding Laban drunken with wine in the streets near his house, Nephi was constrained by the Spirit: 'It is better that one man should perish than that a nation should dwindle and perish in unbelief.' Nephi slew Laban with his own sword of precious steel, put on Laban's armor, commanded the servant Zoram, and secured the Plates of Brass containing the Five Books of Moses, the prophecies of Isaiah, Jeremiah, and the genealogy of Joseph.",
       teachings: {
         teacher: "Melchizedek, King David, King Solomon, the Prophet Isaiah, Jeremiah, and Lehi",
         audience: "The tribes of Israel, royal courts of the House of David, priests and Levites, and worldwide visiting pilgrims",
         whatWasTaught: "Holiness to the Lord (Kodesh La-Adonai); the sanctity of temple worship; righteousness over empty ritual; the coming of the Suffering Servant and Messiah; the gathering of Israel in the last days from all nations to the mountain of the Lord's house; and the warnings of judgment for breaking covenant with Jehovah.",
         whyTaught: "To preserve Israel as a kingdom of priests, establish a central sanctuary for sacrificial similitudes pointing toward the Redeemer, and warn the covenant people against the spiritual adultery of idolatry.",
-        context: "The royal temple-city of the Davidic dynasty and center of the Levitical sacrificial system.",
-        howAccepted: "Righteous kings (David, Hezekiah, Josiah) led national covenants of repentance and celebrated massive Passovers. However, apostate kings (Ahaz, Manasseh) introduced child sacrifice and pagan idols into the sacred precinct, rejecting prophetic warnings until the Babylonian destruction in 586 BC.",
-        passages: ["Genesis 14:18-20","2 Samuel 7:12-16","1 Kings 8:22-53","Isaiah 2:2-4","Isaiah 53:1-12","Jeremiah 7:1-15"]
+        context: "The royal temple-city of the Davidic dynasty and center of the Levitical sacrificial system during the United Monarchy, Divided Kingdoms, and the reign of King Zedekiah.",
+        howAccepted: "Righteous kings (David, Hezekiah, Josiah) led national covenants of repentance and celebrated massive Passovers. However, apostate rulers (Ahaz, Manasseh, Zedekiah) rejected prophetic warnings, resulting in the Babylonian destruction in 586 BC.",
+        passages: ["Genesis 14:18-20","2 Samuel 7:12-16","1 Kings 8:22-53","Isaiah 2:2-4","Isaiah 53:1-12","Jeremiah 7:1-15","1 Nephi 1:4","1 Nephi 3:7","1 Nephi 4:6-14"]
+      },
+      messianicProphecy: {
+        title: "All Temples, Sacrifices & Prophecies in Jerusalem Point to Jesus Christ",
+        prophecy: "Isaiah 53:3–5; Isaiah 7:14; Isaiah 9:6; Psalm 22:16–18; Zechariah 9:9; 1 Nephi 10:4",
+        typology: "• The Daily Morning & Evening Burnt Offerings (Tamid): An unblemished male lamb was slain twice daily on the great altar, pointing to the Lamb of God who taketh away the sins of the world.\n\n• The Holy of Holies & The Mercy Seat (Kapporet): The High Priest entered once a year on the Day of Atonement (Yom Kippur) with the blood of the sacrifice, typifying the infinite and eternal Atonement of Jesus Christ entering heaven with His own blood.\n\n• Melchizedek King of Salem: Brought forth bread and wine unto Abraham (Genesis 14:18), prefiguring the Holy Sacrament instituted by Christ the Great High Priest after the Order of Melchizedek.\n\n• Lehi's Prophecy in Jerusalem: Foretold that exactly six hundred years from the time he departed Jerusalem, the Lord God would raise up a prophet among the Jews—even a Messiah, the Savior and Redeemer of the world (1 Nephi 10:4).\n\n• Isaiah's Suffering Servant: Foretold upon the heights of Zion: 'He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed' (Isaiah 53:5).",
+        fulfillment: "Fulfilled when Jesus Christ entered Jerusalem as the King of Zion (Zechariah 9:9), instituted the Sacrament of bread and wine, suffered in the Garden of Gethsemane across the Kidron Valley, and offered His infinite atoning sacrifice outside the city walls at Golgotha."
+      },
+      lifeBackThen: {
+        housing: "Late First Temple Jerusalem featured compact multi-story stone houses built along narrow limestone alleys. Following King Hezekiah's expansion after the fall of Samaria (722 BC), the city expanded westward onto the Western Hill (the Mishneh), enclosed by the 23-foot-thick 'Broad Wall'. Families lived in 'four-room houses' with stone pillar courtyards for cooking, animal pens on the ground floor, living quarters above, and flat whitewashed plaster roofs used for drying figs and flax, sleeping during summer heat, and prayer.",
+        foodAndDiet: "Inhabitants lived upon the 'Seven Species' (Deut 8:8): wheat and barley bread baked daily in clay tabun ovens; fresh and dried grapes, raisins, and wine; dried summer figs; pomegranates; olive oil for cooking and clay lamps (nerot); and date honey. Goats and sheep supplied fresh milk, yogurt, and firm salty cheeses. Meat was consumed primarily during holy feast days and peace offerings at the Temple.",
+        cityGatesAndJustice: "The city gates (such as the Valley Gate, Fountain Gate, and Water Gate) were the bustling hubs of civic life and commerce. Elders and judges sat on stone benches beneath the gate archway to settle disputes, witness land transfers, and formalize marriage contracts. Merchants weighed silver bars and pieces on handheld balances against inscribed stone weights (shekels, pim, beka) before minted coinage existed. Official contracts were sealed by pressing personal stone or hematite seals into wet clay lumps (bullae).",
+        clothingAndTrades: "Men and women wore unbleached wool or linen tunics (kethonet) tied with woven girdles, covered outdoors by a heavier woolen cloak (me'il) that doubled as bedding for the poor. In accordance with Numbers 15:38, men wore fringes (tzitzit) with a cord of blue (tekhelet) on the corners of their garments to remember all the commandments of the Lord. Craftsmen clustered by trade: potters worked near the clay deposits outside the gates, weavers spun goat hair, and blacksmiths forged iron tools and weapons.",
+        sacredFeasts: "Three times a year—at Passover (Pesach), Pentecost (Shavuot), and Tabernacles (Sukkot)—tens of thousands of pilgrims ascended from across Israel to Jerusalem. The streets echoed with Psalms of Ascents (Psalms 120–134) as families erected temporary palm booths (sukkot) on flat rooftops and in courtyards, celebrated with harvest offerings, and rejoiced before the presence of the Lord."
       },
       scriptures: [
         v("Genesis 14:18", "And Melchizedek king of Salem brought forth bread and wine: and he was the priest of the most high God.", ot("gen", "14", "18")),
@@ -36,10 +49,14 @@
         v("1 Kings 8:10-11", "And it came to pass, when the priests were come out of the holy place, that the cloud filled the house of the Lord, So that the priests could not stand to minister because of the cloud: for the glory of the Lord had filled the house of the Lord.", ot("1-kgs", "8", "10")),
         v("Psalm 122:6", "Pray for the peace of Jerusalem: they shall prosper that love thee.", ot("ps", "122", "6")),
         v("Isaiah 2:3", "And many people shall go and say, Come ye, and let us go up to the mountain of the Lord, to the house of the God of Jacob; and he will teach us of his ways, and we will walk in his paths: for out of Zion shall go forth the law, and the word of the Lord from Jerusalem.", ot("isa", "2", "3")),
-        v("1 Nephi 1:4", "For it came to pass in the commencement of the first year of the reign of Zedekiah, king of Judah... there came many prophets, prophesying unto the people that they must repent, or the great city Jerusalem must be destroyed.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng#4")
+        v("Isaiah 53:3-5", "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.", ot("isa", "53", "3")),
+        v("1 Nephi 1:4", "For it came to pass in the commencement of the first year of the reign of Zedekiah, king of Judah... there came many prophets, prophesying unto the people that they must repent, or the great city Jerusalem must be destroyed.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng#4"),
+        v("1 Nephi 3:7", "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded...", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng#7"),
+        v("1 Nephi 4:6-14", "And I was led by the Spirit, not knowing beforehand the things which I should do. Nevertheless I went forth... and I found Laban... And the Spirit said unto me again: Slay him... for it is better that one man should perish than that a nation should dwindle and perish in unbelief.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/4?lang=eng#6"),
+        v("2 Kings 24:17", "And the king of Babylon made Mattaniah his father's brother king in his stead, and changed his name to Zedekiah.", ot("2-kgs", "24", "17"))
       ],
-      peopleAndCovenant: "• Melchizedek: Great high priest and King of Salem to whom Abraham paid tithes.\n\n• King David: Conquered the Jebusite fortress, established Jerusalem as Israel's united capital, bought the threshing floor of Araunah, and prepared materials for the Temple.\n\n• King Solomon: Built the magnificent First Temple on Mount Moriah, establishing Israel at the zenith of international wisdom and prosperity.\n\n• The Prophet Isaiah: Preached in the royal courts, foretelling the Virgin Birth (Isa 7:14), the Great Light in Galilee (Isa 9), and the Suffering Servant (Isa 53).\n\n• King Hezekiah & Prophet Isaiah: Led miraculous defense against Sennacherib's Assyrian army and carved the water tunnel from the Gihon Spring.\n\n• Jeremiah & Lehi: Wept over Jerusalem's iniquity; Lehi led his family into the wilderness around 600 BC before the Babylonian exile.\n\n• Ezra & Nehemiah: Inspired leaders who guided returning Jewish exiles to rebuild the Second Temple and restore Jerusalem's fortified stone walls.",
-      archaeologyAndHistory: "• Ketef Hinnom Silver Scrolls (~600 BC): Discovered in a burial tomb overlooking Jerusalem; contain the oldest known surviving biblical text in Paleo-Hebrew: the Priestly Blessing of Numbers 6:24–26.\n\n• Hezekiah's Tunnel & Siloam Inscription (~701 BC): An 1,750-foot water channel carved through bedrock connecting the Gihon Spring to the Pool of Siloam; commemorative inscription records miners meeting in the dark.\n\n• City of David Excavations: The Stepped Stone Structure, Large Stone Structure (David's palace), Warren's Shaft, and seals/bullae bearing names of biblical officials (e.g., Gemariah, Jehucal, Gedaliah).\n\n• 586 BC: Fall of Jerusalem to Nebuchadnezzar of Babylon; burning of Solomon's Temple.\n\n• 538 BC: Edict of Cyrus the Great permitting Jews to return; Second Temple dedicated 516 BC; walls rebuilt by Nehemiah in 445 BC.",
+      peopleAndCovenant: "• Melchizedek: Great high priest and King of Salem to whom Abraham paid tithes; served bread and wine.\n\n• King David: Conquered the Jebusite fortress, established Jerusalem as Israel's united capital, bought the threshing floor of Araunah, and prepared materials for the Temple.\n\n• King Solomon: Built the magnificent First Temple on Mount Moriah, establishing Israel at the zenith of international wisdom and prosperity.\n\n• The Prophet Isaiah: Preached in the royal courts, foretelling the Virgin Birth (Isa 7:14), the Prince of Peace (Isa 9:6), and the Suffering Servant (Isa 53).\n\n• King Hezekiah & Prophet Isaiah: Led miraculous defense against Sennacherib's Assyrian army and carved the water tunnel from the Gihon Spring.\n\n• King Zedekiah: The last king of Judah (597–586 BC), appointed by Nebuchadnezzar. Rebelled against Babylon, ignored the warnings of Jeremiah and Lehi, and saw Jerusalem destroyed.\n\n• The Prophet Lehi & Sariah: Devout family living in Jerusalem (~600 BC). Lehi received visions of the Pillar of Fire and the coming Messiah; warned the wicked city and was commanded by the Lord to flee into the desert.\n\n• Nephi, Sam, Laman & Lemuel: Sons of Lehi who returned to Jerusalem on a perilous divine mission to retrieve the sacred Plates of Brass from Laban.\n\n• Laban: An influential military leader, elder, and custodian of genealogical records in Jerusalem (~600 BC). Commanded fifty soldiers, possessed ancestral brass plates, robbed Lehi's sons of their gold, and was slain by Nephi under divine command.\n\n• Jeremiah: Wept over Jerusalem's impending destruction, was cast into a miry dungeon under King Zedekiah, and foretold the seventy-year exile.\n\n• Ezra & Nehemiah: Inspired leaders who guided returning Jewish exiles to rebuild the Second Temple and restore Jerusalem's fortified stone walls.",
+      archaeologyAndHistory: "• Ketef Hinnom Silver Scrolls (~600 BC): Discovered in a late First Temple burial cave overlooking the Hinnom Valley; contain the oldest known surviving biblical text in Paleo-Hebrew: the Priestly Blessing of Numbers 6:24–26.\n\n• The Broad Wall (~701 BC): A 23-foot-wide stone defense wall unearthed in Jerusalem's Jewish Quarter built by Hezekiah, enclosing the Western Hill (Mishneh) where Lehi's family lived.\n\n• Clay Bullae with Biblical Names (~600 BC): Excavations in the City of David have uncovered official clay seals bearing the exact Paleo-Hebrew names of biblical officials in Jeremiah's day: Gemariah son of Shaphan, Jehucal son of Shelemiah, and Gedaliah son of Pashhur.\n\n• Hezekiah's Tunnel & Siloam Inscription (~701 BC): An 1,750-foot water channel carved through bedrock connecting the Gihon Spring to the Pool of Siloam; commemorative inscription records miners meeting in the dark.\n\n• 586 BC: Fall of Jerusalem to Nebuchadnezzar of Babylon; burning of Solomon's Temple, blinding and capture of King Zedekiah.\n\n• 538 BC: Edict of Cyrus the Great permitting Jews to return; Second Temple dedicated 516 BC; walls rebuilt by Nehemiah in 445 BC.",
       hebrewInfo: {
         root: "ירש / שלם (Yarah / Shalom)",
         strongs: "H3389",
@@ -511,6 +528,206 @@
         translit: "Harei Ararat",
         significance: "Literally 'Mountains of Ararat' (plural in the Hebrew text), denoting the highlands of ancient Urartu where new life began after the Flood."
       }
+    },
+
+    "valley-of-lemuel": {
+      overview: "The Valley of Lemuel (geographically identified with the dramatic granite canyon of Wadi Tayyib al-Ism on the eastern coast of the Gulf of Aqaba) was the first major encampment of Lehi and his family after fleeing Jerusalem around 600 BC in the commencement of the reign of King Zedekiah.\n\nTraversing the rugged Judean wilderness and descending to the borders near the Red Sea, Lehi traveled three days into the desert before pitching his tent in this valley, situated beside a river of continually flowing water that emptied into the Red Sea (Gulf of Aqaba). Here the righteous patriarch built an altar of stones and offered burnt offerings and sacrifice unto Jehovah, thanking God for preserving his household from the impending destruction of Jerusalem. Standing beside the flowing stream and the sheer granite cliffs, Lehi admonished his elder sons: 'O that thou mightest be like unto this river, continually running into the fountain of all righteousness!' and unto Lemuel: 'O that thou mightest be like unto this valley, firm and steadfast, and immovable in keeping the commandments of the Lord!' (1 Nephi 2:9–10).\n\nFrom this base camp, Lehi's sons were twice sent back to Jerusalem: first to obtain the sacred Plates of Brass from Laban, and second to invite Ishmael and his family to join the colony. Here also Lehi walked out of his tent door one morning and discovered upon the ground a curious brass sphere of curious workmanship—the Liahona—whose dual spindles pointed the way they should travel in the wilderness.",
+      teachings: {
+        teacher: "The Prophet Lehi and Nephi",
+        audience: "Sariah, Laman, Lemuel, Sam, and later the family of Ishmael and Zoram",
+        whatWasTaught: "Firmness and steadfastness in covenant keeping; reliance upon the Lord in trials; gratitude through altar sacrifice; and obedience to divine directors (the Liahona).",
+        whyTaught: "To overcome the murmuring of Laman and Lemuel, unify the extended family, and prepare them for the arduous trans-Arabian journey.",
+        context: "A towering red-granite canyon oasis bordered by palm trees and perennial spring water on the Red Sea coast.",
+        howAccepted: "Nephi and Sam believed with all their hearts; Laman and Lemuel murmured continually, lamenting the riches left behind in Jerusalem, yet obeyed out of fear of divine chastening.",
+        passages: ["1 Nephi 2:4-16","1 Nephi 3:1-7","1 Nephi 8:1-38","1 Nephi 16:10-12"]
+      },
+      messianicProphecy: {
+        title: "Lehi's Vision of the Tree of Life & The Messiah in the Valley of Lemuel",
+        prophecy: "1 Nephi 8; 1 Nephi 10:4–11; 1 Nephi 11:13–33",
+        typology: "• The River of Water: Pointed to the fountain of living waters, which is the love of God shed abroad in the hearts of men (1 Nephi 11:25).\n\n• The Tree of Life: Represented the love of God and the condescension of Jesus Christ into mortality to redeem mankind.\n\n• Prophecy of the Messiah: Lehi explicitly prophesied in this valley that six hundred years from his departure from Jerusalem, God would raise up a Messiah among the Jews—the Lamb of God, who should be baptized by John in Bethabara beyond Jordan and take away the sins of the world (1 Nephi 10:4–10).\n\n• The Iron Rod: The word of God leading straight to Christ, protecting the travelers against the mists of darkness.",
+        fulfillment: "Fulfilled in the mortal ministry, baptism, teachings, suffering, and resurrection of Jesus Christ in the New Testament."
+      },
+      lifeBackThen: {
+        housing: "Lehi and his family lived in goatskin or woven camel-hair tents ('And my father dwelt in a tent', 1 Nephi 2:15). In ancient nomadic fashion, tents were pitched near freshwater springs, with separate quarters for men and women, centered around outdoor stone cooking hearths.",
+        foodAndDiet: "Transitioning from affluent Jerusalem townhouse living to desert wilderness survival, the family ate wild game (gazelle, ibex, quail) hunted with composite bows and slings, dried dates from desert palms, unleavened camp bread baked over hot coals, and water carried in goatskin bags.",
+        cityGatesAndJustice: "In the wilderness camp, governance operated strictly under patriarchal authority. Lehi sat as patriarch and priest, gathering his sons to hear his visions, settle disputes between brothers, and offer sacrifice upon stone altars.",
+        clothingAndTrades: "Garments were simplified for desert survival: woolen tunics, leather sandals, and heavy cloaks to guard against searing midday heat and freezing desert nights. Nephi maintained metallurgical skills, smelting ore and carving wooden bows.",
+        sacredFeasts: "Lehi offered burnt offerings and sacrifices on altars of unhewn stone (Exodus 20:25) to celebrate deliverance, observing the sacred Sabbath and giving thanks to Jehovah."
+      },
+      scriptures: [
+        v("1 Nephi 2:6-7", "And he came down by the borders near the shore of the Red Sea; and he traveled in the wilderness in the borders which are nearer the Red Sea... and he built an altar of stones, and made an offering unto the Lord, and gave thanks unto the Lord our God.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2?lang=eng#6"),
+        v("1 Nephi 2:9-10", "And when my father saw that the waters of the river emptied into the fountain of the Red Sea, he spake unto Laman, saying: O that thou mightest be like unto this river, continually running into the fountain of all righteousness! And he also spake unto Lemuel: O that thou mightest be like unto this valley, firm and steadfast, and immovable...", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2?lang=eng#9"),
+        v("1 Nephi 16:10", "And it came to pass that as my father arose in the morning, and went forth to the tent door, to his great astonishment he beheld upon the ground a round ball of curious workmanship; and it was of fine brass.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?lang=eng#10")
+      ],
+      peopleAndCovenant: "• Lehi & Sariah: Devout prophetic parents who obeyed the divine mandate to leave all their wealth in Jerusalem.\n\n• Nephi: Faithful son who sought the Lord, received confirmation of his father's words, and obtained the Brass Plates.\n\n• Sam: Believing brother who hearkened unto Nephi's testimony.\n\n• Laman & Lemuel: Murmuring elder sons whose hearts remained anchored to the material comforts of Jerusalem.\n\n• Zoram: Servant of Laban who covenanted with Nephi and joined the colony in the wilderness.",
+      archaeologyAndHistory: "• Wadi Tayyib al-Ism (Valley of Lemuel): Located 73 miles south of Aqaba on the Saudi Arabian Red Sea coast; matches every textual criterion in 1 Nephi: a sheer canyon valley with towering granite cliffs, perennial freshwater springs flowing continually into the Red Sea, and ancient date palms.\n\n• Altar of Unhewn Stones: Ancient Bedouin and Semitic tradition of building sacrificial cairns from field stones without metal tools, matching Mosaic law (Exodus 20:25).\n\n• Incense Route Connectivity: Positioned near the ancient frankincense and caravan route running parallel to the Red Sea.",
+      hebrewInfo: {
+        root: "למואל (L'mu'el - dedicated to God)",
+        strongs: "H3927",
+        vocalized: "בִּקְעַת לְמוּאֵל",
+        translit: "Bik'at L'mu'el",
+        significance: "Lemuel is a biblical name appearing in Proverbs 31:1, meaning 'belonging unto God'."
+      }
+    },
+
+    "nahom": {
+      overview: "Nahom (geographically and archaeologically identified with the Nihm tribal region and Wadi Jawf in northern Yemen) was a pivotal waystation on the ancient Incense Route traversed by Lehi and his colony around 590 BC.\n\nFollowing the miraculous guidance of the Liahona, Lehi's company journeyed for many days in a south-southeastern direction through the Arabian wilderness. At Nahom, the faithful patriarch Ishmael passed away of old age and hardship and was buried in the place called Nahom. The burial caused intense grief among Ishmael's daughters, who wept and mourned exceedingly for their father in the desert, murmuring against Lehi and Nephi and desiring to return to Jerusalem (1 Nephi 16:34–36).\n\nNahom stands as one of the most remarkable archaeological confirmations of the Book of Mormon text. In 1997, German archaeologists excavating the Bar'an temple at ancient Marib (capital of the Queen of Sheba's kingdom) unearthed three stone limestone altars dated to the 7th–6th centuries BC (the exact era of Lehi). The altars bear identical South Arabian inscriptions donating them by 'Bicathar, son of Sawad, son of Naw'um, the Nihmite'—using the root NHM (Nihm/Nahom) to designate this exact geographical region. The text of 1 Nephi does not say Lehi named this place (unlike the Valley of Lemuel or Shazer), but records that Ishmael was buried in the place which 'was called' Nahom, proving it was an already existing local toponym.",
+      teachings: {
+        teacher: "The Lord through the Liahona and Nephi",
+        audience: "The mourning daughters of Ishmael, Laman, Lemuel, and the sons of Ishmael",
+        whatWasTaught: "Endurance through sorrow; trusting the promises of God in bereavement; resisting rebellion when physical suffering intensifies.",
+        whyTaught: "To preserve the colony from self-destruction during deep grief and prevent them from returning to the doomed city of Jerusalem.",
+        context: "An ancient desert burial ground along the Yemeni trade corridor.",
+        howAccepted: "Laman and the sons of Ishmael plotted to slay Lehi and Nephi; the voice of the Lord spoke out of the cloud and chastened them severely, leading them to repent.",
+        passages: ["1 Nephi 16:34-39"]
+      },
+      messianicProphecy: {
+        title: "The Comfort of the Redeemer in the Valley of Death",
+        prophecy: "1 Nephi 16:34–39; Isaiah 25:8; Psalm 23:4",
+        typology: "• The Root Meaning of Nahom: The Semitic root N-H-M denotes 'to mourn, groan, or comfort' (e.g. Nahum). In their deepest sorrow, God comforted the faithful through prophetic words.\n\n• The Resurrection Anticipated: Though Ishmael was buried in the desert far from his homeland, the covenant promises assured that the Redeemer would swallow up death in victory.",
+        fulfillment: "Fulfilled in Jesus Christ, who is the Resurrection and the Life (John 11:25), wiping away all tears from mourning eyes."
+      },
+      lifeBackThen: {
+        housing: "Temporary travel encampments with low goat-hair pavilions anchored with wooden pegs, sheltered beneath acacia trees and rocky overhangs from scorching desert sun.",
+        foodAndDiet: "Raw meat seasoned with herbs, desert honey, wild berries, and scarce water drawn from ancient deep desert cisterns and wells maintained along caravan routes.",
+        cityGatesAndJustice: "Burial customs involved solemn lamentations, rending of garments, wrapping the deceased in linen cloths, and interring the body in stone cairns or rock-hewn tombs marked with inscribed stelae.",
+        clothingAndTrades: "Weathered wool garments repaired with sinew, leather sandals worn down by hundreds of miles of foot travel across stony deserts and volcanic basalt plains (harrat).",
+        sacredFeasts: "Even amid intense sorrow, the family maintained daily prayer, consulting the Liahona whose writing changed according to their faith and diligence."
+      },
+      scriptures: [
+        v("1 Nephi 16:34", "And it came to pass that Ishmael died, and was buried in the place which was called Nahom.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?lang=eng#34"),
+        v("1 Nephi 16:35", "And it came to pass that the daughters of Ishmael did mourn exceedingly, because of the loss of their father, and because of their afflictions in the wilderness...", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?lang=eng#35")
+      ],
+      peopleAndCovenant: "• Ishmael: Faithful patriarch from Jerusalem who gave his daughters in marriage to Lehi's sons and died in covenant faith.\n\n• Daughters of Ishmael: Wept bitterly for their father, yet persevered to become mothers of nations in the Promised Land.\n\n• Nephi: Bore prophetic testimony and was delivered from death when his brothers plotted against him.",
+      archaeologyAndHistory: "• The NHM Inscribed Altars (Yemen): Three limestone altars dated to 700–600 BC discovered at the Bar'an temple in Marib, Yemen, inscribed with 'NHM' (Nihmite/Nahom).\n\n• The Nihm Tribal Territory: Located 25 miles northeast of Sana'a, Yemen, this region has retained the name Nihm for over 2,500 years.\n\n• The Eastward Turn: From Nahom, 1 Nephi 17:1 states they 'did travel nearly eastward from that time forth', perfectly matching the frankincense trail turning east across southern Oman to the coast.",
+      hebrewInfo: {
+        root: "נחם (Nacham - comfort / sorrow)",
+        strongs: "H5151",
+        vocalized: "נַחֹם",
+        translit: "Nachom",
+        significance: "Conveys both mourning/groaning and divine comfort/consolation."
+      }
+    },
+
+    "bountiful-arabia": {
+      overview: "Bountiful in the Old World (geographically identified with the lush tropical enclave of Khor Rori / Wadi Sayq on the Dhofar coast of southern Oman) was the paradisiacal coastal sanctuary where Lehi's colony arrived after eight grueling years in the Arabian desert (~582 BC).\n\nEmerging from the desolate sands of the Rub' al Khali (Empty Quarter), the travelers were overwhelmed with joy to behold a coastline teeming with much fruit, wild honey, freshwater lagoons, towering cliffs, and large timber trees. They named the land Bountiful because of its much fruit. Here the great waters (the Arabian Sea / Indian Ocean) stretched endlessly before them, which they called Irreantum, meaning 'many waters' (1 Nephi 17:5).\n\nAt Bountiful, the voice of the Lord came unto Nephi, commanding: 'Arise, and get thee into the mountain.' Upon the mountain summit, the Lord instructed Nephi: 'Thou shalt construct a ship, after the manner which I shall show thee, that I may carry thy people across these waters.' Though mocked by Laman and Lemuel who argued that Nephi lacked the skill of a shipbuilder, Nephi was filled with the power of God, shocked his brothers with divine power when they sought to throw him into the sea, melted ore from the hills to fashion iron tools, and built an exquisite, ocean-worthy vessel 'not after the manner of men, but after the manner which the Lord had shown' (1 Nephi 18:1–4). Here also Jacob and Joseph were born unto Lehi and Sariah in the wilderness.",
+      teachings: {
+        teacher: "The Lord Jehovah and the Prophet Nephi",
+        audience: "The entire colony of Lehi, Sariah, Nephi, Sam, Laman, Lemuel, and Ishmael's family",
+        whatWasTaught: "Divine revelation in craftsmanship; faith overcoming human limitation; how the Lord led Moses through the Red Sea and can lead them across the ocean.",
+        whyTaught: "To build the vessel of salvation and prepare the covenant seed to cross the great deep to the Promised Land.",
+        context: "A verdant tropical coastal cove nestled against the Arabian Sea.",
+        howAccepted: "After being shocked by divine power, Laman and Lemuel fell down to worship Nephi; the entire family united to help construct the ship and gather provisions.",
+        passages: ["1 Nephi 17:1-55","1 Nephi 18:1-8"]
+      },
+      messianicProphecy: {
+        title: "The Ship of Deliverance Typifying the Ark of Salvation (Jesus Christ)",
+        prophecy: "1 Nephi 17:5–18; 1 Nephi 18:1–4; 2 Nephi 9:21–23",
+        typology: "• Construction 'Not After the Manner of Men': The ship was built solely according to divine instruction, even as the Plan of Salvation and the Atonement were authored solely by God, not human philosophy.\n\n• Crossing the Great Waters (Irreantum): Typifies the soul's journey through mortal tribulations safely into the celestial promised land, steered by the Liahona (Word of Christ).\n\n• The Living Rock & Smelted Ore: Nephi fashioned tools from raw ore, typifying Christ the Rock from whom all strength and means of salvation are derived.",
+        fulfillment: "Fulfilled in Jesus Christ, who guides believers through the storms of life into eternal rest."
+      },
+      lifeBackThen: {
+        housing: "Encampments set along freshwater lagoons beside coastal beaches, sheltered by palm fronds and wild fruit trees beneath towering seaside cliffs.",
+        foodAndDiet: "Rich bounty of wild date honey, figs, pomegranates, coastal fish, sea fowl, fresh spring water, and wild meats after years of desert starvation.",
+        cityGatesAndJustice: "The mountain served as the sacred sanctuary where Nephi went to pray and commune with Jehovah face to face.",
+        clothingAndTrades: "Nephi operated an active metallurgical forge, making bellows from goatskins, striking flint for fire, and smelting iron ore from the coastal hills to fashion axes, hammers, and adzes for shipbuilding.",
+        sacredFeasts: "Unbounded joy, thanksgiving sacrifices, and prayers of gratitude after enduring eight years of desert wanderings."
+      },
+      scriptures: [
+        v("1 Nephi 17:5", "And we did come to the land which we called Bountiful, because of its much fruit and also wild honey; and all these things were prepared of the Lord that we might not perish.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17?lang=eng#5"),
+        v("1 Nephi 17:8", "And it came to pass that the Lord spake unto me, saying: Thou shalt construct a ship, after the manner which I shall show thee, that I may carry thy people across these waters.", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17?lang=eng#8"),
+        v("1 Nephi 18:4", "And it came to pass that after I had finished the ship, according to the word of the Lord, my brethren beheld that it was good, and that the workmanship thereof was exceedingly fine...", "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/18?lang=eng#4")
+      ],
+      peopleAndCovenant: "• Nephi: Master builder, prophet, and leader directed by the Lord to construct the transoceanic ship.\n\n• Lehi & Sariah: Rejoiced in their advanced age; Sariah gave birth to Jacob and Joseph in Bountiful.\n\n• Jacob & Joseph: Younger sons born in the wilderness who received the holy priesthood from Nephi.\n\n• The Entire Colony: Boarded the vessel laden with fruit, meat, honey, seeds, and the Brass Plates.",
+      archaeologyAndHistory: "• Khor Rori & Wadi Sayq (Dhofar, Oman): The only coastal location in the entire 1,400-mile Arabian Peninsula matching every feature of Bountiful: large timber trees, iron ore deposits, fresh water, wild honey, fruit, cliffs dropping into deep ocean water.\n\n• Ancient Frankincense Port of Sumhuram (Khor Rori): Historical shipping port confirming that maritime trade and shipbuilding existed in this exact region from ancient times.\n\n• Monsoon Microclimate (Khareef): The southwestern summer monsoons create a lush green tropical oasis in Dhofar, unique in all of Arabia.",
+      hebrewInfo: {
+        root: "שפע (Shefa - abundance / overflow)",
+        strongs: "H7654",
+        vocalized: "אֶרֶץ הַשֶּׁפַע",
+        translit: "Eretz HaShefa",
+        significance: "Expresses extraordinary agricultural abundance and divine providence."
+      }
+    },
+
+    bethlehem: {
+      overview: "Bethlehem (Beit-Lechem, 'House of Bread'), situated five miles south of Jerusalem in the fertile Judean hill country 2,540 feet above sea level, is immortalized across sacred history as the ancestral city of Ruth and Boaz, the royal birthplace of King David, and the prophesied birthplace of the Messiah.\n\nAnciently known as Ephrath ('Fruitful'), Rachel died here in childbirth and was buried along the roadside (Genesis 35:19). Generations later, the impoverished Moabitess widow Ruth gleaned in the barley and wheat fields of Bethlehem. There the righteous landowner Boaz acted as her kinsman-redeemer (Go'el), marrying Ruth to raise up the lineage that produced Jesse and King David. Here David tended his father's sheep in the rocky pastures, composed heartfelt psalms, and was anointed king of Israel by the prophet Samuel (1 Samuel 16:1–13).\n\nCenturies later, the prophet Micah delivered his immortal Messianic oracle: 'But thou, Beth-lehem Ephratah, though thou be little among the thousands of Judah, yet out of thee shall he come forth unto me that is to be ruler in Israel; whose goings forth have been from of old, from everlasting' (Micah 5:2).",
+      teachings: {
+        teacher: "The Prophet Samuel, Boaz, and the Prophet Micah",
+        audience: "Jesse and his sons, the elders of Bethlehem, and the House of David",
+        whatWasTaught: "The Lord seeth not as man seeth; for man looketh on the outward appearance, but the Lord looketh on the heart (1 Sam 16:7); the duty of the kinsman-redeemer; and the promised coming of the Eternal Ruler.",
+        whyTaught: "To anoint the righteous shepherd-king David and prepare Israel for the birth of the Great Redeemer.",
+        context: "Terraced vineyards, olive groves, and barley fields nestled in the Judean hills.",
+        howAccepted: "David was anointed amidst his brethren; Boaz redeemed Ruth at the city gate before ten elders; Micah's prophecy became the cornerstone of Messianic expectation.",
+        passages: ["Genesis 35:19","Ruth 2:1-12; 4:9-17","1 Samuel 16:1-13","Micah 5:2"]
+      },
+      messianicProphecy: {
+        title: "The Prophecy of the Bread of Life Born in the House of Bread",
+        prophecy: "Micah 5:2; Ruth 4:14–17; Matthew 2:1–6; Luke 2:4–11",
+        typology: "• Beit-Lechem ('House of Bread'): The profound prophetic name: Jesus Christ, the Living Bread who came down from heaven (John 6:51), was born in the 'House of Bread'.\n\n• Boaz the Kinsman-Redeemer (Go'el): Under Mosaic law, the Go'el had the duty to redeem lost family inheritance and marry the widow. Boaz typified Jesus Christ, our ultimate Kinsman-Redeemer who bought us back with His own blood.\n\n• The Shepherd-King David: David was raised from tending sheep in Bethlehem to shepherd Israel, foreshadowing Christ the Good Shepherd who layeth down His life for the sheep.",
+        fulfillment: "Fulfilled when Mary and Joseph traveled from Nazareth to Bethlehem to be taxed, and Mary brought forth her firstborn Son, wrapping Him in swaddling clothes and laying Him in a manger (Luke 2)."
+      },
+      lifeBackThen: {
+        housing: "Stone-built farmsteads with lower animal grottos carved into soft limestone hillsides (the typical stable/manger setting) and upper living quarters for the family.",
+        foodAndDiet: "Wheat and barley bread, parched corn (roasted grain), fresh goat cheese, clusters of raisins, fresh figs, and wine from terraced vineyards.",
+        cityGatesAndJustice: "The city gate was where Boaz summoned the nearer kinsman before ten elders, taking off his shoe as the legal token of covenant redemption (Ruth 4:7–8).",
+        clothingAndTrades: "Shepherds carried wooden staffs, leather slings, and waterskins, wearing rough wool mantles to guard against mountain predators (lions, bears) by night.",
+        sacredFeasts: "Celebration of the barley and wheat harvest festivals (Pentecost/Shavuot) with thanksgiving offerings and leaving corners of fields for the poor and stranger."
+      },
+      scriptures: [
+        v("Micah 5:2", "But thou, Beth-lehem Ephratah, though thou be little among the thousands of Judah, yet out of thee shall he come forth unto me that is to be ruler in Israel; whose goings forth have been from of old, from everlasting.", ot("micah", "5", "2")),
+        v("Ruth 4:14", "And the women said unto Naomi, Blessed be the Lord, which hath not left thee this day without a kinsman, that his name may be famous in Israel.", ot("ruth", "4", "14")),
+        v("1 Samuel 16:7", "But the Lord said unto Samuel, Look not on his countenance, or on the height of his stature; because I have refused him: for the Lord seeth not as man seeth; for man looketh on the outward appearance, but the Lord looketh on the heart.", ot("1-sam", "16", "7"))
+      ],
+      peopleAndCovenant: "• Ruth & Boaz: Exemplars of covenant loyalty (chesed) whose marriage formed the royal Messianic lineage.\n\n• Jesse & King David: The Bethlehemite shepherd anointed by Samuel to be king of Israel.\n\n• Rachel: Beloved matriarch buried at the entrance of Bethlehem.",
+      archaeologyAndHistory: "• Church of the Nativity (4th century): Commissioned by Emperor Constantine above the ancient cave venerated since the 2nd century as Christ's birthplace.\n\n• Bethlehem Bulla (7th century BC): Ancient Paleo-Hebrew clay seal impression discovered in Jerusalem inscribed: 'In the 7th year, from Bethlehem to the King', proving Bethlehem's active administrative status in the Kingdom of Judah.\n\n• Shepherds' Fields (Beit Sahour): Fertile pastures east of Bethlehem where sheep intended for temple sacrifice were reared.",
+      hebrewInfo: {
+        root: "בית / לחם (Beit / Lechem - House of Bread)",
+        strongs: "H1035",
+        vocalized: "בֵּית לֶחֶם",
+        translit: "Beit Lechem",
+        significance: "Prophetically points to Jesus Christ the Living Bread of Life."
+      }
+    },
+
+    "mount-sinai": {
+      overview: "Mount Sinai (Mount Horeb / Jebel Musa), towering 7,497 feet above the rugged granite wilderness of the southern Sinai peninsula, is the supreme covenant sanctuary of the Old Testament where Jehovah revealed the Law, the Ten Commandments, and the pattern of the Tabernacle to Moses.\n\nHere Moses first encountered the presence of God at the Burning Bush, being told: 'Put off thy shoes from off thy feet, for the place whereon thou standest is holy ground' (Exodus 3:5). Three months after departing Egyptian slavery, the Children of Israel encamped before Mount Sinai. Amid smoke, earthquakes, flashes of lightning, and the deafening blast of the trumpet of God, Jehovah descended upon the mount in fire (Exodus 19). Moses ascended into the thick darkness where God was, fasting forty days and forty nights to receive the Two Tablets of Stone inscribed by the finger of God.\n\nUpon Mount Sinai, God revealed the entire blueprint of the Tabernacle—the Ark of the Covenant, the Mercy Seat, the Golden Menorah, the Altar of Incense, and the Levitical priesthood robes—commanding: 'And let them make me a sanctuary; that I may dwell among them' (Exodus 25:8). Centuries later, the beleaguered prophet Elijah fled to this very mountain (Horeb), where the Lord revealed Himself not in the wind, earthquake, or fire, but in a 'still small voice' (1 Kings 19:12).",
+      teachings: {
+        teacher: "The Lord Jehovah to Moses and the Children of Israel",
+        audience: "Over six hundred thousand men of Israel with women, children, and the mixed multitude",
+        whatWasTaught: "The Ten Commandments (Decalogue); holiness unto the Lord; the moral, civil, and ceremonial Law; the covenant: 'ye shall be unto me a kingdom of priests, and an holy nation' (Exodus 19:6).",
+        whyTaught: "To sanctify a redeemed people, establish the Mosaic Covenant, and provide a schoolmaster to bring Israel unto Christ (Galatians 3:24).",
+        context: "The smoking, quaking granite summit of Mount Sinai surrounded by the vast desert plain of Er-Rahah.",
+        howAccepted: "All the people answered together: 'All that the Lord hath spoken we will do' (Exodus 19:8). Yet while Moses delayed on the mountain, they made and worshipped the Golden Calf, broken by Moses and forgiven through his intercession.",
+        passages: ["Exodus 3:1-12","Exodus 19:1-25","Exodus 20:1-17","Exodus 24:1-18","Exodus 25:8-22","1 Kings 19:8-14"]
+      },
+      messianicProphecy: {
+        title: "The Law as a Schoolmaster Pointing to the Great High Priest & Propitiation",
+        prophecy: "Exodus 25:17–22; Leviticus 16:15; Galatians 3:24; Hebrews 9:11–14",
+        typology: "• The Mercy Seat (Kapporet): The solid gold lid covering the Ark of the Covenant where the high priest sprinkled atoning blood, typifying Christ our propitiation (hilasterion) who satisfies justice with mercy.\n\n• The High Priest's Breastplate (Choshen): Bore twelve precious gems inscribed with the names of the twelve tribes over his heart, prefiguring Christ who bears all His covenant children upon His heart before the Father.\n\n• The Blood of the Covenant (Exodus 24:8): Moses sprinkled half the blood on the altar and half on the people, declaring: 'Behold the blood of the covenant'—explicitly cited by Jesus at the Last Supper: 'This is my blood of the new testament' (Matthew 26:28).\n\n• Moses as Mediator: Fasted forty days and interceded for the sinful people, crying: 'Yet now, if thou wilt forgive their sin--; and if not, blot me, I pray thee, out of thy book' (Exodus 32:32), typifying Christ the ultimate Intercessor.",
+        fulfillment: "Fulfilled when Jesus Christ offered Himself as the ultimate unblemished sacrifice, rending the temple veil and establishing the New Covenant."
+      },
+      lifeBackThen: {
+        housing: "The vast Israelite encampment organized precisely by tribe around the central Tabernacle in the Plain of Er-Rahah, dwelling in linen and leather tents.",
+        foodAndDiet: "Manna from heaven falling daily with the morning dew (tasting like wafers made with honey), quails brought by the wind, and living water gushing from the smitten rock.",
+        cityGatesAndJustice: "Moses sat from morning until evening judging the people until Jethro advised him to ordain rulers of thousands, hundreds, fifties, and tens to handle smaller matters (Exodus 18).",
+        clothingAndTrades: "Israel's clothes and sandals did not wear out during the forty years (Deuteronomy 29:5). Master artisans Bezalel and Aholiab were filled with the Spirit of God in wisdom to carve wood, weave fine linen, and work gold, silver, and brass for the Tabernacle.",
+        sacredFeasts: "The daily morning and evening sacrifices, the weekly Sabbath consecrated with a double portion of manna, and the Day of Atonement (Yom Kippur)."
+      },
+      scriptures: [
+        v("Exodus 19:5-6", "Now therefore, if ye will obey my voice indeed, and keep my covenant, then ye shall be a peculiar treasure unto me above all people... And ye shall be unto me a kingdom of priests, and an holy nation.", ot("ex", "19", "5")),
+        v("Exodus 20:1-3", "And God spake all these words, saying, I am the Lord thy God, which have brought thee out of the land of Egypt, out of the house of bondage. Thou shalt have no other gods before me.", ot("ex", "20", "1")),
+        v("Exodus 25:8", "And let them make me a sanctuary; that I may dwell among them.", ot("ex", "25", "8")),
+        v("1 Kings 19:11-12", "And, behold, the Lord passed by, and a great and strong wind rent the mountains... but the Lord was not in the wind: and after the wind an earthquake... and after the fire a still small voice.", ot("1-kgs", "19", "11"))
+      ],
+      peopleAndCovenant: "• Moses: Prophet and lawgiver who spoke with God face to face as a man speaketh unto his friend (Exodus 33:11).\n\n• Aaron: Anointed the first High Priest of the Aaronic Priesthood.\n\n• Jethro (Reuel): High Priest of Midian who counselled Moses on judicial organization.\n\n• Bezalel & Aholiab: Divinely inspired master craftsmen of the Tabernacle.\n\n• Elijah: Prophet who journeyed forty days to Horeb to hear the still small voice.",
+      archaeologyAndHistory: "• Monastery of Saint Catherine (6th century AD): Founded by Emperor Justinian at the foot of Mount Sinai; holds the world's oldest continually operating library and ancient biblical manuscripts (including Codex Sinaiticus).\n\n• Plain of Er-Rahah: An immense natural amphitheater of two square miles at the base of Jebel Musa capable of accommodating hundreds of thousands of people encamped before the mountain.\n\n• Inscribed Proto-Sinaitic Inscriptions (Serabit el-Khadim): Ancient alphabetic inscriptions from the 15th century BC found in the Sinai mines, confirming early Northwest Semitic alphabetic writing during Moses' era.",
+      hebrewInfo: {
+        root: "סיני / חרב (Sinai / Chorev - thorny / desolate)",
+        strongs: "H5514",
+        vocalized: "הַר סִינַי (חֹרֵב)",
+        translit: "Har Sinai (Chorev)",
+        significance: "The Mountain of God where heaven touched earth and delivered the covenant law."
+      }
     }
   };
 
@@ -625,6 +842,19 @@
         passages: allPassages
       },
       scriptures: parseAllScriptures(city.scriptureHighlight, city.name, city.significance),
+      messianicProphecy: {
+        title: `Typology & Prophecies of Jesus Christ the Coming Messiah at ${city.name}`,
+        prophecy: city.scriptureHighlight || "Genesis to Malachi",
+        typology: `The sacred events, covenant altars, and prophetic witnesses at ${city.name} testify of Jesus Christ. As recorded in the Book of Mormon, 'all things which have been given of God from the beginning of the world, unto man, are the typifying of him' (2 Nephi 11:4). Every morning and evening sacrifice under the law of Moses pointed forward to the infinite and eternal sacrifice of the Son of God.`,
+        fulfillment: `Fulfilled in Jesus Christ, the promised Messiah and Redeemer of Israel, who came to fulfill the law, redeem His people from bondage, and bring everlasting righteousness.`
+      },
+      lifeBackThen: {
+        housing: `In ${city.region}, families dwelt in four-room stone and mudbrick dwellings centered around courtyard hearths, with flat plaster rooftops used for cooling in the summer evening, drying figs and flax, and family prayer.`,
+        foodAndDiet: `Daily sustenance centered on the biblical Seven Species: stone-ground wheat and barley bread baked in clay tabun ovens, olives and olive oil, grapes and raisins, dried figs, pomegranates, and date honey, supplemented by goat milk and curds.`,
+        cityGatesAndJustice: `Civic justice and commerce were conducted by elders seated in the multi-chambered stone city gate, where disputes were heard, contracts were sealed with clay bullae impressions, and silver shekels were weighed in balances.`,
+        clothingAndTrades: `Inhabitants wore wool and linen tunics (kethonet) with blue-corded fringes (tzitzit) according to the law of Moses, practicing weaving, pottery, sheep-shearing, and terraced farming.`,
+        sacredFeasts: `Families rested on the seventh-day Sabbath (Shabbat) and journeyed along the ridge routes to celebrate the three pilgrimage festivals: Passover (Pesach), the Feast of Weeks (Shavuot), and the Feast of Tabernacles (Sukkot).`
+      },
       peopleAndCovenant: `• Patriarchs & Prophets: Righteous leaders, kings, and matriarchs associated with ${city.name} who walked in covenant faith with God.\n\n• The People of Israel: Inhabitants who witnessed the power and providence of Jehovah in ${city.region}.`,
       archaeologyAndHistory: `• Archaeological Excavations: Discoveries in ${city.region} reveal Middle Bronze and Iron Age Israelite occupation, fortification walls, and pottery confirming the biblical timeline.\n\n• Historical Chronology: Active biblical landmark from ~${Math.abs(city.startYear)} BC through ~${Math.abs(city.endYear)} BC.`,
       hebrewInfo: {

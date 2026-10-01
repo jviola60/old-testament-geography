@@ -423,3 +423,319 @@
   font-weight: 700;
   letter-spacing: 0.03em;
 }
+
+/* ==========================================================================
+   COMPANION SCRIPTURAL ATLASES BAR (Matching Sister Sites)
+   ========================================================================== */
+.companion-atlases-bar {
+  background: #1B130E;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+  padding: 4px 1.25rem;
+  font-size: 0.76rem;
+  z-index: 1001;
+  position: relative;
+}
+
+.companion-atlases-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.companion-bar-label {
+  color: #D6C2A5;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.companion-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.companion-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #EBDDC6;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  transition: all 0.2s ease;
+}
+
+.companion-link:hover {
+  background: rgba(197, 160, 89, 0.25);
+  color: #FFF;
+  border-color: var(--color-gold);
+}
+
+.companion-link.active {
+  background: linear-gradient(135deg, rgba(197, 160, 89, 0.3) 0%, rgba(163, 40, 34, 0.3) 100%);
+  color: #FFF;
+  border-color: var(--color-gold);
+}
+
+.companion-badge {
+  font-size: 0.62rem;
+  padding: 1px 5px;
+  background: var(--color-gold);
+  color: #1B130E;
+  border-radius: 3px;
+  font-weight: 800;
+}
+
+.companion-ext {
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   BIBLICAL DISTANCES & TRAVEL CALCULATOR MODAL
+   ========================================================================== */
+.travel-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-select-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.calc-select {
+  padding: 8px 10px;
+  background: #FFF;
+  border: 1.5px solid var(--border-gold);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.calc-results-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(247, 243, 233, 0.95) 100%);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.calc-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-parchment);
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.calc-dist-number {
+  font-family: var(--font-serif-title);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-crimson);
+}
+
+.calc-dist-km {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.calc-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.calc-mode-item {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border-parchment);
+  border-radius: 6px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.calc-mode-icon {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.calc-mode-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.calc-mode-days {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--color-lapis);
+}
+
+.calc-route-context {
+  background: rgba(29, 78, 137, 0.06);
+  border-left: 3px solid var(--color-lapis);
+  padding: 8px 10px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   LIFE IN THE OLD TESTAMENT WORLD (ANCIENT CULTURE) MODAL
+   ========================================================================== */
+.culture-nav-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 4px;
+  border-bottom: 2px solid var(--border-gold);
+  margin-bottom: 1rem;
+  padding-bottom: 4px;
+}
+
+.culture-tab-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border-parchment);
+  border-radius: 6px 6px 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.culture-tab-btn.active {
+  background: var(--color-crimson);
+  color: #FFF;
+  border-color: var(--color-crimson);
+}
+
+.culture-content-pane {
+  display: none;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+.culture-content-pane.active {
+  display: block;
+}
+
+.culture-pane-hero {
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 1rem;
+}
+
+.culture-pane-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-crimson-deep);
+  margin-bottom: 6px;
+}
+
+.culture-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.culture-item-box {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border-parchment);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.culture-item-name {
+  font-family: var(--font-serif-title);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--color-bronze);
+  margin-bottom: 3px;
+}
+
+/* Modal intro lead text */
+.modal-intro-lead {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Welcome modal companion atlas links */
+.welcome-atlases-lead {
+  margin: 4px 0 8px 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.welcome-atlases-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.welcome-atlas-btn {
+  text-decoration: none;
+}
+
+/* Travel calculator typography & layout */
+.calc-route-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.calc-route-name {
+  font-family: var(--font-serif-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-bronze);
+}
+
+.calc-dist-col {
+  text-align: right;
+}
+
+.calc-dist-unit {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.calc-mode-rate {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+

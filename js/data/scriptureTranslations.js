@@ -525,6 +525,78 @@ const SCRIPTURE_TRANSLATIONS = {
       jst: "Joshua casts sacred lots at the Tabernacle in Shiloh, dividing the Promised Land to the tribes according to divine will.",
       insight: "Covenant inheritance: every family and tribe in Israel received an allotted inheritance under God's watchful eye.",
       churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/josh/18?lang=eng#10"
+    },
+
+    // --- REIGN OF KING ZEDEKIAH & LEHI'S EXODUS (~600 BC) ---
+    "1 Nephi 1:4": {
+      kjv: "For it came to pass in the commencement of the first year of the reign of Zedekiah, king of Judah... there came many prophets, prophesying unto the people that they must repent, or the great city Jerusalem must be destroyed.",
+      niv: "For it came to pass at the beginning of the first year of the reign of Zedekiah, king of Judah... there came many prophets, prophesying to the people that they must repent, or the great city of Jerusalem would be destroyed.",
+      hebrew: "וַיְהִי בִּתְחִלַּת הַשָּׁנָה הָרִאשׁוֹנָה לְמַלְכוּת צִדְקִיָּהוּ מֶלֶךְ יְהוּדָה... בָּאוּ נְבִיאִים רַבִּים וַיִּנָּבְאוּ אֶל־הָעָם כִּי עֲלֵיהֶם לָשׁוּב בִּתְשׁוּבָה פֶּן־תֵּחָרֵב הָעִיר הַגְּדוֹלָה יְרוּשָׁלַיִם׃",
+      translit: "Va-y'hi bi-t'chillat ha-shanah ha-rishonah l'malkhut Tzidkiyahu melekh Yehudah... ba'u n'vi'im rabbim va-yinnav'u el-ha-am ki aleihem lashuv bi-t'shuvah pen-techarev ha-ir ha-g'dolah Yerushalayim.",
+      jst: "The Book of Mormon begins in historical synchronism with the Old Testament: in 597 BC Nebuchadnezzar appointed Mattaniah, renaming him Zedekiah (2 Kings 24:17). Contemporaries Jeremiah, Habakkuk, Zephaniah, Urijah, and Lehi raised their voices together.",
+      insight: "The commencement of King Zedekiah's reign marks the final prophetic warning before the Babylonian captivity. Lehi prayed with all his heart on behalf of his people and saw the Pillar of Fire and the coming Messiah.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1?lang=eng#4"
+    },
+
+    "1 Nephi 3:7": {
+      kjv: "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.",
+      niv: "And it came to pass that I, Nephi, said to my father: 'I will go and do what the Lord has commanded, for I know that the Lord gives no commandments to human beings without preparing a way for them to accomplish what he commands them.'",
+      hebrew: "וַיְהִי כַּאֲשֶׁר אָמַרְתִּי אֲנִי נֶפִי אֶל־אָבִי: אֵלֵךְ וְאֶעֱשֶׂה אֶת־אֲשֶׁר צִוָּה יְהוָה, כִּי יָדַעְתִּי כִּי לֹא־יִתֵּן יְהוָה מִצְווֹת לִבְנֵי אָדָם בִּלְתִּי אִם־הֵכִין לָהֶם דֶּרֶךְ לְקַיֵּם אֶת־אֲשֶׁר צִוָּם׃",
+      translit: "Va-y'hi ka-asher amarti ani Nefi el-avi: Elekh v'e'eseh et-asher tzivvah Adonai, ki yadati ki lo-yitten Adonai mitzvot livnei adam bilti im-hekhin lahem derekh l'kayyem et-asher tzivvam.",
+      jst: "Nephi's heroic declaration of faith when commanded to return to Jerusalem to obtain the Plates of Brass from the powerful Laban.",
+      insight: "Faith in action: Divine commandments are accompanied by divine enablement. God prepared the way for Nephi to retrieve the scriptures despite Laban's military power.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?lang=eng#7"
+    },
+
+    "1 Nephi 4:6-14": {
+      kjv: "And I was led by the Spirit, not knowing beforehand the things which I should do. Nevertheless I went forth... And I beheld a man, and he had fallen to the earth before me, for he was drunken with wine. And when I came to him I found that it was Laban... And the Spirit said unto me again: Slay him, for the Lord hath delivered him into thy hands... for it is better that one man should perish than that a nation should dwindle and perish in unbelief.",
+      niv: "And I was led by the Spirit, not knowing beforehand what I should do. Nevertheless I went forward... and saw a man who had fallen to the ground before me, drunk with wine. When I approached him I found that it was Laban... And the Spirit said to me again: 'Kill him, for the Lord has delivered him into your hands... for it is better for one man to perish than for a nation to dwindle and perish in unbelief.'",
+      hebrew: "וָאוּבַל עַל־יְדֵי הָרוּחַ בְּלִי לָדַעַת מֵרֹאשׁ אֵת אֲשֶׁר אֶעֱשֶׂה. וְאַף עַל פִּי כֵן יָצָאתִי... וָאֵרֶא אִישׁ שֹׁכֵב עַל הָאָרֶץ לְפָנַי כִּי הָיָה שִׁכּוֹר מִיַּיִן, וּכְבוֹאִי אֵלָיו מְצָאתִיו וְהִנֵּה הוּא לָבָן... וַיֹּאמֶר אֵלַי הָרוּחַ שֵׁנִית: הַכֵּהוּ, כִּי נְתָנוֹ יְהוָה בְּיָדְךָ... כִּי טוֹב אֲשֶׁר יֹאבַד אִישׁ אֶחָד מִשֶּׁיִּדְעַךְ וְיֹאבַד גּוֹי תָּמִים בְּחֹסֶר אֱמוּנָה׃",
+      translit: "Va'uval al-y'dei ha-Ru'ach b'li lada'at me-rosh et asher e'eseh. V'af al pi khen yatzati... va'ere ish shokhev al ha'aretz l'fanai ki hayah shikkor mi-yayin, u'kh'vo'i elav m'tzativ v'hinneh hu Lavan... va-yomer elai ha-Ru'ach shenit: Hakkehu, ki n'tano Adonai b'yad'kha... ki tov asher yovad ish echad mi-she-yid'akh v'yovad goy tamim b'choser emunah.",
+      jst: "Nephi acts under divine direction to preserve the written records of the holy scriptures (the Plates of Brass containing the Five Books of Moses and Isaiah) for future generations across millennia.",
+      insight: "Laban was a high-ranking military commander and custodian of the records in Jerusalem. The preservation of the written Word of God was essential so that Lehi's posterity would not lose the knowledge of their Redeemer.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/4?lang=eng#6"
+    },
+
+    "2 Kings 24:17-20": {
+      kjv: "And the king of Babylon made Mattaniah his father's brother king in his stead, and changed his name to Zedekiah. Zedekiah was twenty and one years old when he began to reign, and he reigned eleven years in Jerusalem... And he did that which was evil in the sight of the Lord, according to all that Jehoiakim had done.",
+      niv: "The king of Babylon made Mattaniah, Jehoiachin's uncle, king in his place and changed his name to Zedekiah. Zedekiah was twenty-one years old when he became king, and he reigned in Jerusalem eleven years... He did evil in the eyes of the Lord, just as Jehoiakim had done.",
+      hebrew: "וַיַּמְלֵךְ מֶלֶךְ־בָּבֶל אֶת־מַתַּנְיָה דֹדוֹ תַּחְתָּיו וַיַּסֵּב אֶת־שְׁמוֹ צִדְקִיָּהוּ׃ בֶּן־עֶשְׂרִים וְאַחַת שָׁנָה צִדְקִיָּהוּ בְמָלְכוֹ וְאַחַת עֶשְׂרֵה שָׁנָה מָלַךְ בִּירוּשָׁלָיִם... וַיַּעַשׂ הָרַע בְּעֵינֵי יְהוָה כְּכֹל אֲשֶׁר־עָשָׂה יְהוֹיָקִים׃",
+      translit: "Va-yamlekh melekh-Bavel et-Mattanyah dodo tachtav va-yassev et-sh'mo Tzidkiyahu. Ben-esrim v'achat shanah Tzidkiyahu v'malkho v'achat esreh shanah malakh bi-Yerushalayim... Va-ya'as ha-ra b'einei Adonai k'khol asher-asah Yehoyakim.",
+      jst: "Corroborates the Old Testament historical backdrop of 1 Nephi 1:4. Zedekiah was installed in 597 BC and rebelled against Babylon, bringing catastrophic siege upon Jerusalem.",
+      insight: "King Zedekiah reigned in Jerusalem during the prophetic ministries of Jeremiah and Lehi. His rejection of prophetic counsel led directly to the destruction of the First Temple in 586 BC.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/24?lang=eng#17"
+    },
+
+    // --- MESSIANIC PROPHECIES (POINTING TO JESUS CHRIST) ---
+    "Isaiah 53:3-5": {
+      kjv: "He is despised and rejected of men; a man of sorrows, and acquainted with grief... Surely he hath borne our griefs, and carried our sorrows... But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
+      niv: "He was despised and rejected by mankind, a man of suffering, and familiar with pain... Surely he took up our pain and bore our suffering... But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed.",
+      hebrew: "נִבְזֶה וַחֲדַל אִישִׁים אִישׁ מַכְאֹבוֹת וִידוּעַ חֹלִי... אָכֵן חֳלָיֵנוּ הוּא נָשָׂא וּמַכְאֹבֵינוּ סְבָלָם... וְהוּא מְחֹלָל מִפְּשָׁעֵנוּ מְדֻכָּא מֵעֲו‍ֹנֹתֵינוּ מוּסַר שְׁלוֹמֵנוּ עָלָיו וּבַחֲבֻרָתוֹ נִרְפָּא־לָנוּ׃",
+      translit: "Nivzeh va-chadal ishim ish makh'ovot vi-du'a choli... Akhen cholayeinu hu nasa u'makh'oveinu s'valam... V'hu m'cholal mi-p'sha'einu m'dukka me-avonoteinu musar sh'lomeinu alav u-vachavurato nirpa-lanu.",
+      jst: "Isaiah 53 is the supreme Messianic prophecy of the Old Testament. Abinadi quoted this entire chapter to King Noah's court in Mosiah 14, testifying that God Himself would come down among the children of men and redeem His people.",
+      insight: "Every altar, morning and evening sacrifice, and Day of Atonement in Jerusalem pointed forward to this singular substitutionary atonement of Jesus Christ.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53?lang=eng#3"
+    },
+
+    "Micah 5:2": {
+      kjv: "But thou, Beth-lehem Ephratah, though thou be little among the thousands of Judah, yet out of thee shall he come forth unto me that is to be ruler in Israel; whose goings forth have been from of old, from everlasting.",
+      niv: "But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, whose origins are from of old, from ancient times.",
+      hebrew: "וְאַתָּה בֵּית־לֶחֶם אֶפְרָתָה צָעִיר לִהְיוֹת בְּאַלְפֵי יְהוּדָה מִמְּךָ לִי יֵצֵא לִהְיוֹת מוֹשֵׁל בְּיִשְׂרָאֵל וּמוֹצָאֹתָיו מִקֶּדֶם מִימֵי עוֹלָם׃",
+      translit: "V'attah Beit-Lechem Efratah tza'ir lihyot b'alfei Yehudah mimm'kha li yetzei lihyot moshel b'Yisrael u'motza'otav mi-kedem mi-y'mei olam.",
+      jst: "Prophecy delivered during the Divided Kingdom (~735 BC) cited by the chief priests and scribes to King Herod when the Wise Men came seeking the newborn King of the Jews (Matthew 2:6).",
+      insight: "Bethlehem (Beit-Lechem, 'House of Bread'): The humble birthplace of King David and the precise geographical birthplace of the Messiah, the true Bread of Life who came down from heaven.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/micah/5?lang=eng#2"
+    },
+
+    "Numbers 21:8-9": {
+      kjv: "And the Lord said unto Moses, Make thee a fiery serpent, and set it upon a pole: and it shall come to pass, that every one that is bitten, when he looketh upon it, shall live. And Moses made a serpent of brass, and put it upon a pole, and it came to pass, that if a serpent had bitten any man, when he beheld the serpent of brass, he lived.",
+      niv: "The Lord said to Moses, 'Make a snake and put it on a pole; anyone who is bitten can look at it and live.' So Moses made a bronze snake and put it on a pole. Then when anyone was bitten by a snake and looked at the bronze snake, they lived.",
+      hebrew: "וַיֹּאמֶר יְהוָה אֶל־מֹשֶׁה עֲשֵׂה לְךָ שָׂרָף וְשִׂים אֹתוֹ עַל־נֵס וְהָיָה כָּל־הַנָּשׁוּךְ וְרָאָה אֹתוֹ וָחָי׃ וַיַּעַשׂ מֹשֶׁה נְחַשׁ נְחֹשֶׁת וַיְשִׂמֵהוּ עַל־הַנֵּס וְהָיָה אִם־נָשַׁךְ הַנָּחָשׁ אֶת־אִישׁ וְהִבִּיט אֶל־נְחַשׁ הַנְּחֹשֶׁת וָחָי׃",
+      translit: "Va-yomer Adonai el-Mosheh aseh l'kha saraf v'sim oto al-nes v'hayah kol-ha-nashukh v'ra'ah oto va-chai. Va-ya'as Mosheh n'chash n'choshet va-y'simehu al-ha-nes v'hayah im-nashakh ha-nachash et-ish v'hibbit el-n'chash ha-n'choshet va-chai.",
+      jst: "Jesus explicitly cited this event to Nicodemus in John 3:14: 'And as Moses lifted up the serpent in the wilderness, even so must the Son of man be lifted up.' Alma 33:19–22 teaches that the brazen serpent was a type of Christ.",
+      insight: "Looking unto Christ with faith brings spiritual healing and eternal life, just as looking upon the brazen serpent brought physical life in the wilderness.",
+      churchLink: "https://www.churchofjesuschrist.org/study/scriptures/ot/num/21?lang=eng#8"
     }
   },
 

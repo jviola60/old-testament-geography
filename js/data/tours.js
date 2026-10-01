@@ -162,6 +162,172 @@ const TOURS_DATA = [
         narrative: "Solomon and the priests bear the Ark into the innermost sanctuary of the newly built Temple on Mount Moriah. The glory of the Lord fills the house as a cloud."
       }
     ]
+  },
+  {
+    id: "tour-zedekiah-lehi",
+    title: "King Zedekiah's Jerusalem & Lehi's Departure (~600 BC)",
+    subtitle: "The Warning Prophets, Laban's Treasury & Flight into the Wilderness",
+    hebrew: "מַלְכוּת צִדְקִיָּהוּ וִיצִיאַת לֶחִי מִירוּשָׁלַיִם",
+    stopsCount: 6,
+    description: "Step into Jerusalem during the turbulent first year of King Zedekiah (~600 BC). Witness the prophetic warnings of Jeremiah and Lehi, Lehi's vision of the Pillar of Fire and the coming Messiah, the trek into the desert borders, and Nephi obtaining the Brass Plates from Laban.",
+    stops: [
+      {
+        siteId: "jerusalem",
+        name: "1. Jerusalem: The Reign of King Zedekiah",
+        coords: [31.7767, 35.2345],
+        zoom: 13,
+        scripture: "1 Nephi 1:4; 2 Kings 24:17-20; Jeremiah 37",
+        narrative: "In the first year of King Zedekiah, many prophets warn Jerusalem of impending destruction. Lehi prays for his people and beholds a pillar of fire dwelling upon a rock, receiving a heavenly book foretelling the coming Messiah and Jerusalem's doom."
+      },
+      {
+        siteId: "jerusalem",
+        name: "2. Upper City: The Fortress & Treasury of Laban",
+        coords: [31.7755, 35.2315],
+        zoom: 15,
+        scripture: "1 Nephi 3:1-31; 1 Nephi 4:1-38",
+        narrative: "Laban, an influential military commander of fifty soldiers, refuses to relinquish the sacred Brass Plates, steals Lehi's gold and silver, and seeks to execute his sons. Led by the Spirit, Nephi slays Laban, secures the sacred records, and invites Zoram to join their colony."
+      },
+      {
+        siteId: "red-sea",
+        name: "3. Red Sea Borders: Three Days into the Wilderness",
+        coords: [29.5000, 34.9500],
+        zoom: 9,
+        scripture: "1 Nephi 2:4-5",
+        narrative: "Leaving behind gold, silver, and precious possessions in Jerusalem, Lehi departs with his family—Sariah, Laman, Lemuel, Sam, and Nephi—traveling south through the Judean wilderness toward the Gulf of Aqaba."
+      },
+      {
+        siteId: "valley-of-lemuel",
+        name: "4. Valley of Lemuel: Altar of Stones & The Liahona",
+        coords: [28.5667, 34.8000],
+        zoom: 11,
+        scripture: "1 Nephi 2:6-14; 1 Nephi 16:10",
+        narrative: "Pitched tents in a valley near a continually flowing river emptying into the Red Sea. Lehi builds an altar of stones, offering sacrifice and thanksgiving. Outside his tent, he discovers the Liahona, a brass director of curious workmanship."
+      },
+      {
+        siteId: "nahom",
+        name: "5. Nahom: The Ancient Burial of Ishmael",
+        coords: [15.8600, 44.7500],
+        zoom: 9,
+        scripture: "1 Nephi 16:34-39",
+        narrative: "Traveling south-southeast through the harsh desert, Ishmael dies and is buried at Nahom (archaeologically verified by ancient NHM altar inscriptions in Yemen). The daughters of Ishmael mourn exceedingly before turning eastward."
+      },
+      {
+        siteId: "bountiful-arabia",
+        name: "6. Bountiful: Building the Ocean-Going Ship",
+        coords: [17.0300, 54.4300],
+        zoom: 10,
+        scripture: "1 Nephi 17:5-18; 1 Nephi 18:1-4",
+        narrative: "Arriving at the verdant Arabian coast filled with fruit and wild honey, Nephi is commanded by the Lord: 'Thou shalt construct a ship, after the manner which I shall show thee.' Directed by divine revelation, Nephi builds the vessel that carries them to the Promised Land."
+      }
+    ]
+  },
+  {
+    id: "tour-messianic-prophecy",
+    title: "Messianic Typology: All Things Testify of Christ",
+    subtitle: "Sacred Altars, Covenants & Types Pointing to the Coming Redeemer",
+    hebrew: "נְבוּאוֹת הַמָּשִׁיחַ: כָּל הַדְּבָרִים מְעִידִים עַל הַמָּשִׁיחַ",
+    stopsCount: 6,
+    description: "Journey across the holy geography of the Old Testament to discover how every covenant altar, high priest, sacrifice, and prophetic vision testified of Jesus Christ, the promised Messiah and Redeemer of the world.",
+    stops: [
+      {
+        siteId: "mount-moriah",
+        name: "1. Mount Moriah: Abraham & Isaac (Similitude of the Father & Son)",
+        coords: [31.7780, 35.2354],
+        zoom: 13,
+        scripture: "Genesis 22:1-14; Jacob 4:5; John 3:16",
+        narrative: "Abraham offering his beloved son Isaac was an explicit similitude of Heavenly Father offering His Only Begotten Son. Upon this very ridge, God provided the Lamb for sacrifice, declaring: 'In the mount of the Lord it shall be seen.'"
+      },
+      {
+        siteId: "mount-sinai",
+        name: "2. Mount Sinai: The Tabernacle & The Mercy Seat",
+        coords: [28.5394, 33.9753],
+        zoom: 10,
+        scripture: "Exodus 25:17-22; Leviticus 16; Hebrews 9:11-14",
+        narrative: "The Tabernacle stood as an architectural prophecy of Christ. The blood of the unblemished sacrificial lamb sprinkled upon the Mercy Seat (Kapporet) prefigured the infinite Atonement and propitiation wrought by Jesus Christ."
+      },
+      {
+        siteId: "kadesh-barnea",
+        name: "3. Kadesh-barnea: The Brazen Serpent Lifted Up",
+        coords: [30.6450, 34.4250],
+        zoom: 10,
+        scripture: "Numbers 21:8-9; John 3:14-15; Alma 33:19-22",
+        narrative: "When fiery serpents bit the camp, Moses fashioned a serpent of brass and raised it on a pole. Even as all who looked lived, so all who look upon Christ with faith may have everlasting life."
+      },
+      {
+        siteId: "bethlehem",
+        name: "4. Bethlehem: Out of Thee Shall He Come Forth",
+        coords: [31.7054, 35.2024],
+        zoom: 12,
+        scripture: "Micah 5:2; Ruth 4:14; Matthew 2:1-6",
+        narrative: "The prophet Micah foretold: 'But thou, Bethlehem Ephratah... out of thee shall he come forth unto me that is to be ruler in Israel; whose goings forth have been from of old, from everlasting.' Here Boaz acted as the kinsman-redeemer (Go'el), typifying Christ."
+      },
+      {
+        siteId: "mount-carmel",
+        name: "5. Mount Carmel: Elijah & The Restoration of Priesthood",
+        coords: [32.7380, 35.0340],
+        zoom: 11,
+        scripture: "1 Kings 18:36-39; Malachi 4:5-6; D&C 110:13-16",
+        narrative: "Elijah defended the true worship of Jehovah over Baal, calling down heavenly fire upon the altar. Malachi prophesied Elijah's return before the great and dreadful day of the Lord to seal families to Christ."
+      },
+      {
+        siteId: "jerusalem",
+        name: "6. Jerusalem: The Suffering Servant & The King of Zion",
+        coords: [31.7767, 35.2345],
+        zoom: 13,
+        scripture: "Isaiah 53:3-5; Zechariah 9:9; Psalm 22",
+        narrative: "Isaiah foretold the Messiah as the Suffering Servant: 'He was wounded for our transgressions, he was bruised for our iniquities... and with his stripes we are healed.' Zechariah prophesied the King coming lowly, riding upon an ass into Jerusalem."
+      }
+    ]
+  },
+  {
+    id: "tour-ancient-life",
+    title: "Life in Ancient Israel: Homes, Agriculture & Sacred Feasts",
+    subtitle: "Understanding Daily Existence, Work & Faith in the Biblical World",
+    hebrew: "חַיֵּי הַיּוֹם־יוֹם בְּאֶרֶץ יִשְׂרָאֵל הַמִּקְרָאִית",
+    stopsCount: 5,
+    description: "Step into the sandals of an ancient Israelite. Experience the four-room stone home, grain grinding, the olive harvest, city gate justice, and the grand pilgrimage feasts to Jerusalem.",
+    stops: [
+      {
+        siteId: "hebron",
+        name: "1. The Hill Country: Terraces, Vineyards & Olive Groves",
+        coords: [31.5247, 35.1107],
+        zoom: 11,
+        scripture: "Deuteronomy 8:7-8; Isaiah 5:1-2",
+        narrative: "Families carved stone terraces into limestone hills to cultivate the 'Seven Species'—wheat, barley, vines, figs, pomegranates, olives, and date honey. Olive oil fueled household clay lamps and sanctified temple priests."
+      },
+      {
+        siteId: "shechem",
+        name: "2. The Four-Room House & Domestic Hearth",
+        coords: [32.2133, 35.2817],
+        zoom: 12,
+        scripture: "Proverbs 24:3-4; Joshua 24:15",
+        narrative: "Archaeological excavations reveal the classic Israelite four-room house: a central courtyard for cooking in the clay tabun oven, side rooms for livestock and storage jars, and flat roofs for sleeping beneath cool desert breezes."
+      },
+      {
+        siteId: "dan",
+        name: "3. The City Gate: Elders, Commerce & Justice",
+        coords: [33.2486, 35.6522],
+        zoom: 12,
+        scripture: "Ruth 4:1-2; Proverbs 31:23; Amos 5:15",
+        narrative: "The multi-chambered city gate was the heart of civic life. Here city elders sat on stone benches, legal disputes were adjudicated, contracts were witnessed, and merchants weighed silver shekels in balances."
+      },
+      {
+        siteId: "megiddo",
+        name: "4. The Water Systems: Surviving Ancient Sieges",
+        coords: [32.5856, 35.1847],
+        zoom: 12,
+        scripture: "2 Chronicles 32:3-4; 2 Kings 20:20",
+        narrative: "Water was survival. Ancient engineers dug immense vertical shafts and tunnels through bedrock (like Megiddo, Hazor, and Hezekiah's Tunnel in Jerusalem) to reach subterranean springs secretly during warfare."
+      },
+      {
+        siteId: "jerusalem",
+        name: "5. The Pilgrimage Feasts: Gathering to Mount Zion",
+        coords: [31.7767, 35.2345],
+        zoom: 13,
+        scripture: "Exodus 23:14-17; Psalm 122:1-4",
+        narrative: "Three times a year—for Passover (Pesach), Weeks (Shavuot), and Tabernacles (Sukkot)—families from Dan to Beersheba traveled along the ridge routes singing Songs of Ascents to celebrate the goodness of God at the Temple."
+      }
+    ]
   }
 ];
 

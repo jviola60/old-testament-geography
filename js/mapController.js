@@ -20,6 +20,7 @@ class MapController {
       arkJourney: L.layerGroup(),
       elijahJourney: L.layerGroup(),
       jerusalemSites: L.layerGroup(),
+      lehiJourney: L.layerGroup(),
       activeHighlights: L.layerGroup()
     };
 
@@ -40,7 +41,9 @@ class MapController {
       ark: true,
       cities: true,
       jerusalem: true,
-      hydrography: true
+      hydrography: true,
+      lehi: true,
+      prophecies: true
     };
 
     this.currentYear = -1000; // ~1000 BC (Reign of King David)
@@ -295,6 +298,7 @@ class MapController {
     this.layers.exodusRoute.clearLayers();
     this.layers.arkJourney.clearLayers();
     this.layers.elijahJourney.clearLayers();
+    this.layers.lehiJourney.clearLayers();
 
     JOURNEYS_DATA.forEach(journey => {
       const coords = journey.waypoints.map(w => w.coords);
@@ -303,6 +307,7 @@ class MapController {
       if (journey.id === "exodus-route") targetGroup = this.layers.exodusRoute;
       else if (journey.id === "ark-covenant-journey") targetGroup = this.layers.arkJourney;
       else if (journey.id === "elijah-ministry") targetGroup = this.layers.elijahJourney;
+      else if (journey.id === "lehi-journey") targetGroup = this.layers.lehiJourney;
 
       // Draw route line
       const polyline = L.polyline(coords, {
@@ -502,7 +507,8 @@ class MapController {
       ark: this.layers.arkJourney,
       cities: this.layers.cities,
       jerusalem: this.layers.jerusalemSites,
-      hydrography: this.layers.hydrography
+      hydrography: this.layers.hydrography,
+      lehi: this.layers.lehiJourney
     };
 
     if (layerKey === "all") {
@@ -517,12 +523,29 @@ class MapController {
       return;
     }
 
-    const targetLayer = layerMapping[layerKey];
+        const targetLayer = layerMapping[layerKey];
     if (targetLayer) {
       if (isVisible) {
         if (!this.map.hasLayer(targetLayer)) this.map.addLayer(targetLayer);
+        if (layerKey === "lehi") {
+          // Pan to show Lehi and Sariah's flight from Jerusalem into the wilderness
+          this.flyTo([25.0, 42.0], 5);
+        }
       } else {
         if (this.map.hasLayer(targetLayer)) this.map.removeLayer(targetLayer);
+      }
+    }
+
+    if (layerKey === "prophecies") {
+      if (isVisible) {
+        // Highlight core Messianic sanctuary sites
+        const messianicSites = ["jerusalem", "bethlehem", "mount-moriah", "mount-sinai", "hebron", "shiloh"];
+        messianicSites.forEach(id => {
+          const c = (typeof CITIES_DATA !== "undefined") ? CITIES_DATA.find(x => x.id === id) : null;
+          if (c) this.highlightSite("messianic-" + id, [c.lat, c.lng]);
+        });
+      } else {
+        this.layers.activeHighlights.clearLayers();
       }
     }
   }

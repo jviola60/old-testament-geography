@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Old Testament Geography - Interactive Biblical Atlas (~4000 BC – 400 BC)</title>
   <meta name="description" content="An interactive cartographic atlas of the Old Testament world spanning ~4000 BC to 400 BC. Explore Patriarchal journeys, the Exodus, 12 Tribal allotments, the Ark of the Covenant, and First Temple Jerusalem with authentic Biblical Hebrew and Pearl of Great Price scriptures from ChurchofJesusChrist.org.">
   <meta name="keywords" content="Old Testament Geography, Bible Atlas, Book of Abraham, Book of Moses, 12 Tribes of Israel, Exodus Route, Mount Sinai, First Temple Jerusalem, Biblical Hebrew, Church of Jesus Christ">
@@ -25,14 +26,60 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/map.css">
-  <link rel="stylesheet" href="css/sidebar.css">
-  <link rel="stylesheet" href="css/timeline.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/main.css?v=2.0">
+  <link rel="stylesheet" href="css/map.css?v=2.0">
+  <link rel="stylesheet" href="css/sidebar.css?v=2.0">
+  <link rel="stylesheet" href="css/timeline.css?v=2.0">
+  <link rel="stylesheet" href="css/components.css?v=2.0">
+  <link rel="stylesheet" href="css/mobile.css?v=2.0">
+  <!-- Mobile Viewport & Phone Shell Detection (Map-First) -->
+  <script>
+    (function () {
+      var phone = window.matchMedia("(max-width: 768px)").matches || /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent);
+      document.documentElement.classList.toggle("layout-mobile", phone);
+      if (phone) {
+        var vv = window.visualViewport;
+        var h = Math.round((vv && vv.height) || window.innerHeight);
+        if (h) document.documentElement.style.setProperty("--app-vh", h + "px");
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.toggle("layout-mobile", phone);
+        if (phone) {
+          var sidebar = document.getElementById("detailSidebar");
+          if (sidebar) {
+            sidebar.classList.add("peek");
+            sidebar.classList.remove("closed");
+          }
+        }
+      });
+    })();
+  </script>
 </head>
 <body class="parchment-theme">
+  <!-- Companion Scriptural Atlases Bar (Matching Sister Sites) -->
+  <div class="companion-atlases-bar" id="companionAtlasesBar" aria-label="Companion Scriptural Atlases">
+    <div class="companion-atlases-inner">
+      <span class="companion-bar-label">Companion Scriptural Atlases:</span>
+      <div class="companion-links">
+        <a href="#" class="companion-link active" title="Current: Old Testament Atlas (~4000 BC – 400 BC)">
+          <span class="companion-icon">📜</span>
+          <span class="companion-title">Old Testament Atlas</span>
+          <span class="companion-badge">Active</span>
+        </a>
+        <a href="https://jviola60.github.io/new-testament-geography/" target="_blank" rel="noopener" class="companion-link" title="Open New Testament Geography Atlas (~6 BC – 100 AD)">
+          <span class="companion-icon">✝️</span>
+          <span class="companion-title">New Testament Atlas</span>
+          <span class="companion-ext">↗</span>
+        </a>
+        <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener" class="companion-link" title="Open Book of Mormon Geography Atlas & Codex (~2200 BC – AD 421)">
+          <span class="companion-icon">🪙</span>
+          <span class="companion-title">Book of Mormon Atlas</span>
+          <span class="companion-ext">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Top Navigation Bar -->
   <header class="app-header" id="appHeader">
     <div class="header-left">
@@ -89,6 +136,18 @@
         <span class="btn-text">Welcome</span>
       </button>
 
+      <!-- Biblical Distances & Travel Calculator Button -->
+      <button id="travelCalcBtn" class="btn btn-outline" title="Biblical Distances & Travel Calculator">
+        <span class="btn-welcome-emoji">📏</span>
+        <span class="btn-text">Distances</span>
+      </button>
+
+      <!-- Life in Ancient World Button -->
+      <button id="lifeBackThenBtn" class="btn btn-outline" title="Life in the Old Testament World (Ancient Culture & Daily Life)">
+        <span class="btn-welcome-emoji">🏺</span>
+        <span class="btn-text">Life Back Then</span>
+      </button>
+
       <!-- Quick Region Focus Dropdown -->
       <div class="dropdown-container">
         <button id="regionSelectBtn" class="btn btn-outline" title="Zoom to biblical region">
@@ -115,11 +174,11 @@
         <span>Guided Tours</span>
       </button>
 
-      <!-- Location Quick Jump Select -->
-      <div class="header-quick-jump-container" title="Jump directly to any of the 112+ Old Testament Cities or Sites">
+      <!-- Location Quick Jump Select (142+ Sites) -->
+      <div class="header-quick-jump-container" title="Jump directly to any of the 142+ Old Testament Cities, Lands or Sites">
         <span class="header-quick-jump-icon">📍</span>
         <select id="quickJumpSelect" class="header-quick-jump-select" aria-label="Jump to Any Biblical Location">
-          <option value="" disabled selected>Jump to Biblical Location (112+ Sites)...</option>
+          <option value="" disabled selected>Jump to Biblical Location (142+ Sites)...</option>
         </select>
       </div>
 
@@ -140,6 +199,15 @@
       <!-- Sidebar Toggle -->
       <button id="sidebarToggleBtn" class="btn btn-icon" title="Toggle Information Panel" aria-label="Toggle drawer">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+      </button>
+    </div>
+    <!-- Mobile Header Quick Actions -->
+    <div class="mobile-header-actions" id="mobileHeaderActions">
+      <button id="mobileSearchToggleBtn" class="mobile-icon-btn" title="Search biblical places & scriptures" aria-label="Search">
+        🔍
+      </button>
+      <button id="mobileCodexToggleBtn" class="mobile-icon-btn" title="Open Scriptural Codex & Dossier" aria-label="Codex">
+        📜
       </button>
     </div>
   </header>
@@ -165,6 +233,10 @@
     <button class="filter-chip active" data-filter="exodus">
       <span class="chip-dot"></span>
       <span>Exodus & Wilderness</span>
+    </button>
+    <button class="filter-chip active" data-filter="lehi">
+      <span class="chip-dot"></span>
+      <span>Lehi's Trail (~600 BC)</span>
     </button>
     <button class="filter-chip active" data-filter="ark">
       <span class="chip-dot"></span>
@@ -207,6 +279,7 @@
         <button class="epoch-jump-btn" data-year="-1400">Judges</button>
         <button class="epoch-jump-btn active" data-year="-1000">United Monarchy</button>
         <button class="epoch-jump-btn" data-year="-722">Divided Kingdoms</button>
+        <button class="epoch-jump-btn" data-year="-600">Zedekiah & Lehi (600 BC)</button>
         <button class="epoch-jump-btn" data-year="-586">Babylonian Exile</button>
         <button class="epoch-jump-btn" data-year="-445">Restoration</button>
       </div>
@@ -223,12 +296,13 @@
       <span class="marker-tick" title="Abraham (~2000 BC)">2000 BC (Abraham)</span>
       <span class="marker-tick" title="The Exodus (~1446 BC)">1446 BC (Exodus)</span>
       <span class="marker-tick" title="Reign of King David (~1000 BC)">1000 BC (David)</span>
+      <span class="marker-tick" title="Reign of King Zedekiah (~600 BC)">600 BC (Zedekiah & Lehi)</span>
       <span class="marker-tick" title="Fall of Jerusalem (~586 BC)">586 BC (Exile)</span>
       <span class="marker-tick" title="Ministry of Malachi (~400 BC)">400 BC (Malachi)</span>
     </div>
   </footer>
 
-  <!-- Slide-Out 5-Tab Detail Sidebar -->
+  <!-- Slide-Out 7-Tab Detail Sidebar -->
   <aside class="detail-sidebar closed" id="detailSidebar" aria-label="Biblical Place Dossier Drawer">
     <div class="mobile-drag-handle"></div>
     <div class="sidebar-header">
@@ -256,14 +330,15 @@
       </div>
     </div>
 
-    <!-- 6 Tab Navigation (Matching New Testament Geography) -->
+    <!-- 7 Tab Navigation (Matching New Testament & Book of Mormon Geography Depth) -->
     <nav class="sidebar-tabs" aria-label="Dossier Tabs">
       <button class="sidebar-tab-btn active" data-tab="overview" id="tabBtn-overview">1. Overview</button>
-      <button class="sidebar-tab-btn" data-tab="teachings" id="tabBtn-teachings">2. Covenants</button>
+      <button class="sidebar-tab-btn" data-tab="teachings" id="tabBtn-teachings">2. Covenants & Messiah</button>
       <button class="sidebar-tab-btn" data-tab="scriptures" id="tabBtn-scriptures">3. Scriptures</button>
-      <button class="sidebar-tab-btn" data-tab="videos" id="tabBtn-videos">4. Bible Videos</button>
-      <button class="sidebar-tab-btn" data-tab="people" id="tabBtn-people">5. Patriarchs</button>
-      <button class="sidebar-tab-btn" data-tab="history" id="tabBtn-history">6. Archaeology</button>
+      <button class="sidebar-tab-btn" data-tab="life" id="tabBtn-life">4. Life Back Then</button>
+      <button class="sidebar-tab-btn" data-tab="videos" id="tabBtn-videos">5. Bible Videos</button>
+      <button class="sidebar-tab-btn" data-tab="people" id="tabBtn-people">6. Patriarchs</button>
+      <button class="sidebar-tab-btn" data-tab="history" id="tabBtn-history">7. Archaeology</button>
     </nav>
 
     <!-- Scrollable Tab Content Body -->
@@ -271,6 +346,7 @@
       <div class="tab-pane active" id="tab-overview"></div>
       <div class="tab-pane" id="tab-teachings"></div>
       <div class="tab-pane" id="tab-scriptures"></div>
+      <div class="tab-pane" id="tab-life"></div>
       <div class="tab-pane" id="tab-videos"></div>
       <div class="tab-pane" id="tab-people"></div>
       <div class="tab-pane" id="tab-history"></div>
@@ -292,7 +368,7 @@
           <div class="welcome-hero-badge">Interactive Biblical Atlas & Sacred Scripture Codex</div>
           <h2 class="welcome-hero-title">~4000 BC – 400 BC • From Eden & Ararat to the Restoration</h2>
           <p class="welcome-hero-lead">
-            Welcome to the interactive geography of the Old Testament and Pearl of Great Price. Step into the ancient world of the Patriarchs, the Exodus, the Promised Land of the Twelve Tribes, the Divided Kingdoms of Israel and Judah, and the holy ministries of the Prophets.
+            Welcome to the interactive geography of the Old Testament and Pearl of Great Price. Step into the ancient world of the Patriarchs, the Exodus, the Promised Land of the Twelve Tribes, the Divided Kingdoms of Israel and Judah, the <strong>Reign of King Zedekiah (~600 BC)</strong> with Lehi and Laban, and the ancient covenants and prophecies pointing forward to <strong>Jesus Christ the coming Messiah</strong>.
           </p>
         </div>
 
@@ -300,9 +376,29 @@
           <div class="welcome-feature-card">
             <div class="welcome-feature-icon">👑</div>
             <div class="welcome-feature-content">
-              <div class="welcome-feature-title">Divided Kingdoms & 112+ Locations</div>
+              <div class="welcome-feature-title">Divided Kingdoms & 142+ Locations</div>
               <p class="welcome-feature-desc">
-                Clearly visualize the <strong>Northern Kingdom of Israel (Samaria)</strong> and <strong>Southern Kingdom of Judah (Jerusalem)</strong>, with 112+ comprehensively documented biblical cities, sanctuaries, mountains, and battlegrounds.
+                Comprehensively explore the <strong>Northern Kingdom of Israel (Samaria)</strong>, <strong>Southern Kingdom of Judah (Jerusalem)</strong>, and surrounding empires (Egypt, Assyria, Babylon, Persia, Arabia) with 142+ documented biblical cities, lands, mountains, and wildernesses.
+              </p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">✝️</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">All Things Testify of Jesus Christ</div>
+              <p class="welcome-feature-desc">
+                Discover how every altar, sacrifice, sanctuary, and prophet from Genesis to Malachi testifies of Jesus Christ. Explore Messianic typologies, prophecies (Isaiah 53, Micah 5:2, Psalm 22), and their fulfillment.
+              </p>
+            </div>
+          </div>
+
+          <div class="welcome-feature-card">
+            <div class="welcome-feature-icon">🏺</div>
+            <div class="welcome-feature-content">
+              <div class="welcome-feature-title">Life in the Old Testament World</div>
+              <p class="welcome-feature-desc">
+                Immerse yourself in daily biblical life: Israelite four-room houses, the Mediterranean diet and Seven Species (Deut 8:8), city gate elder courts, Biblical clothing, water tunnels, warfare, and sacred annual feasts.
               </p>
             </div>
           </div>
@@ -310,42 +406,47 @@
           <div class="welcome-feature-card">
             <div class="welcome-feature-icon">📜</div>
             <div class="welcome-feature-content">
-              <div class="welcome-feature-title">Authentic Biblical Hebrew (עִבְרִית)</div>
+              <div class="welcome-feature-title">King Zedekiah, Lehi & Laban (~600 BC)</div>
               <p class="welcome-feature-desc">
-                Study every location with authentic vocalized Hebrew script (Niqqud), phonetic transliterations, root meanings, Strong’s Concordance numbers, and audio pronunciations.
+                Step into Jerusalem during the turbulent reign of King Zedekiah (2 Kings 24). Trace Lehi and Sariah’s prophetic warning, flight into the wilderness, and Nephi’s daring mission to retrieve the Brass Plates from Laban’s treasury.
               </p>
             </div>
           </div>
 
           <div class="welcome-feature-card">
-            <div class="welcome-feature-icon">📖</div>
+            <div class="welcome-feature-icon">עִבְרִית</div>
             <div class="welcome-feature-content">
-              <div class="welcome-feature-title">Multi-Version Scripture Engine</div>
+              <div class="welcome-feature-title">Authentic Hebrew (Niqqud), KJV & NIV</div>
               <p class="welcome-feature-desc">
-                Instantly switch between King James Version (KJV), New International Version (NIV), Biblical Hebrew, Joseph Smith Translation / Pearl of Great Price (JST/PGP), and doctrinal insights.
+                Every place and scripture features vocalized Masoretic Hebrew with Niqqud, Strong’s concordance links, phonetic transliteration, and side-by-side King James Version (KJV) and New International Version (NIV) translations.
               </p>
             </div>
           </div>
 
           <div class="welcome-feature-card">
-            <div class="welcome-feature-icon">🎬</div>
+            <div class="welcome-feature-icon">🗺️</div>
             <div class="welcome-feature-content">
-              <div class="welcome-feature-title">Dedicated Church Bible Videos</div>
+              <div class="welcome-feature-title">Biblical Travel Times & Distance Engine</div>
               <p class="welcome-feature-desc">
-                A dedicated multimedia tab featuring official Church Bible videos, dramatizations, and Pearl of Great Price presentations linked directly to ChurchofJesusChrist.org.
+                Calculate ancient road distances and estimated travel times across mountains and wadis by foot, pack donkey, camel caravan, or royal chariot with historical trade route context.
               </p>
             </div>
           </div>
         </div>
 
         <div class="welcome-quick-tips">
-          <div class="welcome-tips-title">💡 How to Explore:</div>
-          <ul class="welcome-tips-list">
-            <li><strong>Click any marker</strong> or territory on the map to open the complete 6-tab Dossier.</li>
-            <li>Use the <strong>"Jump to Biblical Location..."</strong> dropdown or search bar to find any of the 112+ places.</li>
-            <li>Toggle between <strong>Ancient Relief</strong>, <strong>Satellite Earth</strong>, and <strong>Modern Roads</strong> in the top bar.</li>
-            <li>Explore the <strong>Divided Kingdoms</strong> filter chip to isolate Israel and Judah.</li>
-          </ul>
+          <div class="welcome-tips-title">💡 Companion Scriptural Atlases:</div>
+          <p class="welcome-atlases-lead">
+            Explore all three interlinked standard work geographical codices:
+          </p>
+          <div class="welcome-atlases-buttons">
+            <a href="https://jviola60.github.io/new-testament-geography/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm welcome-atlas-btn">
+              ✝️ New Testament Geography (~6 BC – 100 AD) &nearr;
+            </a>
+            <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm welcome-atlas-btn">
+              🪙 Book of Mormon Geography (~2200 BC – AD 421) &nearr;
+            </a>
+          </div>
         </div>
 
         <div class="welcome-footer-actions">
@@ -379,29 +480,442 @@
       </div>
     </div>
   </div>
+  <!-- Biblical Distances & Travel Calculator Modal -->
+  <div class="modal-backdrop" id="travelCalcModalBackdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📏</span>
+          <span>Biblical Travel Calculator & Caravan Distances</span>
+        </div>
+        <button class="modal-close-btn" id="travelCalcCloseBtn" aria-label="Close distance calculator modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro-lead">
+          Calculate ancient geographical and estimated walking/caravan distances between biblical locations across the terrain of Israel, the Levant, Egypt, Sinai, and Arabia.
+        </p>
+
+        <div class="travel-calc-grid">
+          <div class="calc-select-group">
+            <label class="calc-select-label" for="calcFromSelect">Origin (Starting Location):</label>
+            <select class="calc-select" id="calcFromSelect"></select>
+          </div>
+          <div class="calc-select-group">
+            <label class="calc-select-label" for="calcToSelect">Destination (Arrival Location):</label>
+            <select class="calc-select" id="calcToSelect"></select>
+          </div>
+        </div>
+
+        <div class="calc-results-card" id="calcResultsCard">
+          <div class="calc-results-header">
+            <div>
+              <div class="calc-route-label">Calculated Biblical Route</div>
+              <div id="calcRouteName" class="calc-route-name">Jerusalem &rarr; Bethlehem</div>
+            </div>
+            <div class="calc-dist-col">
+              <span class="calc-dist-number" id="calcDistMiles">5.5</span> <span class="calc-dist-unit">miles</span>
+              <div class="calc-dist-km" id="calcDistKm">(8.9 km road estimate)</div>
+            </div>
+          </div>
+
+          <div class="calc-modes-grid">
+            <div class="calc-mode-item">
+              <div class="calc-mode-icon">🚶</div>
+              <div class="calc-mode-title">On Foot</div>
+              <div class="calc-mode-days" id="calcDaysFoot">~2 hrs</div>
+              <div class="calc-mode-rate">~18-20 mi/day</div>
+            </div>
+            <div class="calc-mode-item">
+              <div class="calc-mode-icon">🫏</div>
+              <div class="calc-mode-title">Pack Donkey</div>
+              <div class="calc-mode-days" id="calcDaysDonkey">~2.5 hrs</div>
+              <div class="calc-mode-rate">~15-18 mi/day</div>
+            </div>
+            <div class="calc-mode-item">
+              <div class="calc-mode-icon">🐪</div>
+              <div class="calc-mode-title">Camel Caravan</div>
+              <div class="calc-mode-days" id="calcDaysCamel">~2 hrs</div>
+              <div class="calc-mode-rate">~20-25 mi/day</div>
+            </div>
+            <div class="calc-mode-item">
+              <div class="calc-mode-icon">🐎</div>
+              <div class="calc-mode-title">Royal Chariot</div>
+              <div class="calc-mode-days" id="calcDaysChariot">~1 hr</div>
+              <div class="calc-mode-rate">~30-35 mi/day</div>
+            </div>
+          </div>
+
+          <div class="calc-route-context" id="calcRouteContext">
+            The Kings’ Highway and Way of the Patriarchs connected these ridges across the Judean Hill country.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Life in the Old Testament World (Ancient Israel Daily Life) Modal -->
+  <div class="modal-backdrop" id="lifeBackThenModalBackdrop">
+    <div class="modal-dialog welcome-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>🏺</span>
+          <span>Life in the Old Testament World: Culture, Customs & Society</span>
+        </div>
+        <button class="modal-close-btn" id="lifeBackThenCloseBtn" aria-label="Close daily life modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro-lead">
+          Step behind the biblical text to understand how ordinary Israelites, prophets, shepherds, and kings actually lived, ate, built, and worshiped in the ancient Near East.
+        </p>
+
+        <div class="culture-nav-tabs" role="tablist">
+          <button class="culture-tab-btn active" role="tab" aria-selected="true" data-culture-tab="housing">🏡 Homes & Four-Room Houses</button>
+          <button class="culture-tab-btn" role="tab" aria-selected="false" data-culture-tab="food">🍇 Food, Diet & 7 Species</button>
+          <button class="culture-tab-btn" role="tab" aria-selected="false" data-culture-tab="gate">⚖️ City Gates, Law & Elders</button>
+          <button class="culture-tab-btn" role="tab" aria-selected="false" data-culture-tab="clothing">🧶 Clothing, Weaving & Crafts</button>
+          <button class="culture-tab-btn" role="tab" aria-selected="false" data-culture-tab="water">💧 Water, Cisterns & Warfare</button>
+          <button class="culture-tab-btn" role="tab" aria-selected="false" data-culture-tab="feasts">🎺 Sacred Feasts & Calendar</button>
+        </div>
+
+        <div class="culture-content-pane active" id="culturePane-housing">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">The Israelite Four-Room House (Iron Age Architecture)</div>
+            <p>During the periods of the Judges and Monarchy (Iron Age I–II), Israelite families lived in distinctive four-room pillared stone houses designed for pastoral-agrarian life, family cohesion, and ritual purity.</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">Ground Floor Courtyard & Stables</div>
+              <div>The central unroofed or pillared courtyard held food preparation areas, stone ovens (tannur), grinding querns, and animal stalls for valuable pack donkeys and dairy goats at night to keep them warm and protected.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Upper Floor Family Living Quarters</div>
+              <div>The family slept in second-story rooms made with wooden beams and mud-plaster ceilings, reached by an outdoor stone stairway. In warm summer months, the flat rooftop served as the primary gathering and sleeping area (1 Samuel 9:25–26).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">The Flat Rooftop in Scripture</div>
+              <div>Biblical law mandated a parapet (battlement) around rooftops for safety (Deut 22:8). Roofs were used for drying figs, flax, and grains, prayer and meditation (Acts 10:9), and building temporary booths during Sukkot.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-content-pane" id="culturePane-food">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">The Biblical Diet & The Seven Sacred Species</div>
+            <p><em>"A land of wheat, and barley, and vines, and fig trees, and pomegranates; a land of oil olive, and honey."</em> — Deuteronomy 8:8</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">Daily Bread (Wheat & Barley)</div>
+              <div>Bread was the primary staple of life; an ancient Israelite consumed roughly 1–2 pounds of stone-ground coarse bread daily. Barley was hardy and harvested first at Passover; wheat was harvested at Shavuot (Pentecost).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Olive Oil: Light, Cooking, Medicine & Anointing</div>
+              <div>Olive trees provided the essential dietary fat, fuel for clay lamps, soothing ointment for skin and wounds, and sacred oil for anointing priests and kings (symbolizing the Holy Spirit and Christ the Anointed One).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Vineyards, Figs & Date Honey</div>
+              <div>Grape juice and wine were safely fermented or boiled into syrup (dibis). Dried fig cakes (debelah) and dates provided high-energy rations for travel, military campaigns, and medicinal poultices (2 Kings 20:7).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-content-pane" id="culturePane-gate">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">The Ancient City Gate: Civic Center, Court of Law & Market</div>
+            <p>In ancient Israel and Judah, the city gate was the heart of community life, justice, contract sealing, and military defense (Ruth 4:1–11, Proverbs 31:23).</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">The Seat of the Elders (Zekenim)</div>
+              <div>Respected village elders sat on stone benches in the chambered gatehouse to arbitrate disputes, ratify land deeds, witness marriage covenants, and execute justice according to Mosaic law.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">The Marketplace & Public Proclamation</div>
+              <div>Merchants set up stalls inside and outside the gateway plaza. Prophets like Jeremiah, Amos, and Isaiah delivered their most urgent warnings at the public gates where all travelers and citizens entered.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Chambered Gate Defense</div>
+              <div>Royal Judean gates (such as Megiddo, Hazor, Gezer, and Lachish) were built with four or six massive chambers, allowing defenders to trap and neutralize battering rams and invaders.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-content-pane" id="culturePane-clothing">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">Biblical Attire, Weaving & Craft Guilds</div>
+            <p>Clothing reflected modesty, climatic necessity, tribal identity, and covenant reminders such as tzitzit tassels and blue cords.</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">Tunic (Ketonet) & Outer Cloak (Simlah)</div>
+              <div>Every person wore an inner linen or wool tunic bound with a girdle (belt). The heavy woolen outer cloak served as clothing by day and blanket by night; Mosaic law strictly forbade keeping a poor man’s cloak overnight as a pledge (Exodus 22:26–27).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Tassels of Remembrance (Tzitzit)</div>
+              <div>Israelites were commanded to sew tassels on the corners of their garments with a cord of blue (techelet) to constantly recall the Lord’s commandments (Numbers 15:37–40).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Pottery, Metallurgy & Village Crafts</div>
+              <div>Potters spun clay water jars, cooking pots, and oil lamps on foot-driven double wheels. Village blacksmiths forged iron plowshares and pruning hooks, fulfilling prophecies of peace in Isaiah 2:4.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-content-pane" id="culturePane-water">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">Water Security, Cisterns & Siege Warfare</div>
+            <p>Survival in the semi-arid Levant depended upon capturing the winter rains. Without water, no walled city could withstand a prolonged imperial siege.</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">Plastered Bell Cisterns</div>
+              <div>The invention of waterproof hydraulic lime plaster in the Late Bronze / Iron Age allowed Israelites to hollow cisterns out of bedrock under every home to store winter runoff through long summer droughts.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Monumental Water Tunnels</div>
+              <div>Cities like Jerusalem (Hezekiah’s 1,750-foot Siloam Tunnel), Megiddo, Hazor, and Gibeon engineered subterranean shafts through bedrock to access outside springs safely during siege warfare.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Siege Ramps & Battering Rams</div>
+              <div>Assyrian and Babylonian besiegers built massive earthen ramps (as seen at Lachish) and wheeled siege towers to breach stone ramparts. Inside, famine and dehydration tested the faith and resilience of the people.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-content-pane" id="culturePane-feasts">
+          <div class="culture-pane-hero">
+            <div class="culture-pane-title">The Sacred Calendar & Pilgrimage Feasts</div>
+            <p>Three times a year, all Israelite men made pilgrimage to the central sanctuary (Shiloh, then Jerusalem) to rejoice before the Lord (Exodus 23:14–17).</p>
+          </div>
+          <div class="culture-items-list">
+            <div class="culture-item-box">
+              <div class="culture-item-name">Pesach (Passover) & Unleavened Bread (Nissan / Spring)</div>
+              <div>Commemorates the redemption from Egyptian bondage with unblemished sacrificial lambs, bitter herbs, and matzah—the foundational type and shadow of Jesus Christ the true Paschal Lamb.</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Shavuot (Feast of Weeks / Pentecost / Sivan)</div>
+              <div>Celebrates the firstfruits of the wheat harvest and the divine giving of the Law at Mount Sinai, fulfilled when the Holy Spirit was poured out at Pentecost (Acts 2).</div>
+            </div>
+            <div class="culture-item-box">
+              <div class="culture-item-name">Yom Kippur (Day of Atonement) & Sukkot (Tabernacles / Tishrei)</div>
+              <div>The High Priest entered the Holy of Holies to make blood atonement for Israel; followed by the joyful harvest feast of Tabernacles, dwelling in booths to remember the wilderness protection and anticipating Christ tabernacling among us.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Thumb-Friendly Bottom Navigation Bar (52px, Phone View) -->
+  <nav class="mobile-bottom-bar" id="mobileBottomBar" aria-label="Mobile Navigation">
+    <button class="mobile-bottom-btn" id="mobBottomSearchBtn" type="button" aria-label="Search">
+      <span class="mobile-bottom-icon">🔍</span>
+      <span>Search</span>
+    </button>
+    <button class="mobile-bottom-btn" id="mobBottomJumpBtn" type="button" aria-label="Jump to Location">
+      <span class="mobile-bottom-icon">📍</span>
+      <span>Places</span>
+    </button>
+    <button class="mobile-bottom-btn" id="mobBottomToursBtn" type="button" aria-label="Guided Tours">
+      <span class="mobile-bottom-icon">🧭</span>
+      <span>Tours</span>
+    </button>
+    <button class="mobile-bottom-btn" id="mobBottomFiltersBtn" type="button" aria-label="Map Filters">
+      <span class="mobile-bottom-icon">⚙️</span>
+      <span>Filters</span>
+    </button>
+    <button class="mobile-bottom-btn" id="mobBottomCodexBtn" type="button" aria-label="Scripture Dossier">
+      <span class="mobile-bottom-icon">📜</span>
+      <span>Dossier</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Backdrop -->
+  <div class="mobile-sheet-backdrop" id="mobileSheetBackdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Slide-Out Navigation Drawer -->
+  <aside class="mobile-nav-sheet" id="mobileNavSheet" aria-label="Mobile Menu Navigation">
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-brand-group">
+        <span class="mobile-nav-brand-icon">📜</span>
+        <h3 class="mobile-nav-title">Old Testament Atlas</h3>
+      </div>
+      <button id="closeMobileNavBtn" class="mobile-nav-close" aria-label="Close Navigation">&times;</button>
+    </div>
+
+    <!-- Section 1: Scriptural Atlases Trilogy Navigation -->
+    <div class="mobile-nav-section">
+      <div class="mobile-nav-heading">Scriptural Atlases Trilogy</div>
+      <div class="mobile-atlas-link active" title="Currently viewing Old Testament Geography">
+        <span>📜 Old Testament Atlas (~4000 BC – 400 BC)</span>
+        <span class="companion-badge">Current</span>
+      </div>
+      <a href="https://jviola60.github.io/new-testament-geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
+        <span>✝️ New Testament Atlas (~6 BC – 100 AD)</span>
+        <span class="companion-ext">↗</span>
+      </a>
+      <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
+        <span>📖 Book of Mormon Atlas (~2200 BC – AD 421)</span>
+        <span class="companion-ext">↗</span>
+      </a>
+    </div>
+
+    <!-- Section 2: Atlas Access & Quick Actions -->
+    <div class="mobile-nav-section">
+      <div class="mobile-nav-heading">Atlas Access &amp; Navigation</div>
+      <button class="mobile-menu-item" id="mobNavSearchBtn">
+        <span>🔍</span> <span>Search Biblical Places &amp; Scriptures</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavJumpBtn">
+        <span>📍</span> <span>Jump to Location (142+ Sites)</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavToursBtn">
+        <span>🧭</span> <span>Curated Scripture Tours</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavCodexBtn">
+        <span>📜</span> <span>Open Scriptural Codex &amp; Dossier</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavRecenterBtn">
+        <span>🎯</span> <span>Reset / Recenter to Promised Land</span>
+      </button>
+    </div>
+
+    <!-- Section 3: Study Tools & Modals -->
+    <div class="mobile-nav-section">
+      <div class="mobile-nav-heading">Study Tools &amp; Historical Context</div>
+      <button class="mobile-menu-item" id="mobNavTravelCalcBtn">
+        <span>📏</span> <span>Biblical Distances &amp; Travel Calculator</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavLifeBtn">
+        <span>🏺</span> <span>Life in the Old Testament World</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavVideosBtn">
+        <span>🎬</span> <span>Church Scripture &amp; Bible Videos</span>
+      </button>
+      <button class="mobile-menu-item" id="mobNavWelcomeBtn">
+        <span>📖</span> <span>Welcome &amp; Getting Started Guide</span>
+      </button>
+    </div>
+
+    <!-- Section 4: Map Styles -->
+    <div class="mobile-nav-section">
+      <div class="mobile-nav-heading">Map Base Style</div>
+      <button class="mobile-menu-item" id="mobStyleParchment" data-style="parchment">
+        <span>📜</span> <span>Ancient Shaded Relief (Default)</span>
+      </button>
+      <button class="mobile-menu-item" id="mobStyleSatellite" data-style="satellite">
+        <span>🛰️</span> <span>Satellite Earth Terrain</span>
+      </button>
+      <button class="mobile-menu-item" id="mobStyleModern" data-style="modern">
+        <span>🗺️</span> <span>Modern Roads &amp; Infrastructure</span>
+      </button>
+    </div>
+
+    <!-- Section 5: Region Focus -->
+    <div class="mobile-nav-section">
+      <div class="mobile-nav-heading">Region Focus</div>
+      <button class="mobile-menu-item region-item" data-region="divided-kingdoms">
+        <span>⚔️</span> <span>Divided Kingdoms: Israel &amp; Judah</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="northern-kingdom">
+        <span>👑</span> <span>Northern Kingdom of Israel (Samaria)</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="southern-kingdom">
+        <span>🏛️</span> <span>Southern Kingdom of Judah (Jerusalem)</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="holy-land">
+        <span>📍</span> <span>Promised Land &amp; 12 Tribes</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="jerusalem">
+        <span>🏛️</span> <span>First Temple Jerusalem &amp; Moriah</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="galilee">
+        <span>🌊</span> <span>Sea of Chinnereth (Galilee) &amp; North</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="sinai-exodus">
+        <span>🏔️</span> <span>Mount Sinai &amp; Wilderness</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="egypt-goshen">
+        <span>🏺</span> <span>Land of Goshen &amp; Nile Delta</span>
+      </button>
+      <button class="mobile-menu-item region-item" data-region="mesopotamia">
+        <span>👑</span> <span>Mesopotamia (Ur &amp; Babylon)</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile Filter Bottom Sheet -->
+  <div class="mobile-filter-sheet" id="mobileFiltersSheet" aria-label="Map Filters Sheet">
+    <div class="mobile-sheet-header">
+      <div class="mobile-sheet-title">
+        <span>⚙️</span> <span>Map Layers &amp; Biblical Filters</span>
+      </div>
+      <button id="closeMobileFiltersBtn" class="modal-close-btn" aria-label="Close Filters">&times;</button>
+    </div>
+    <div class="mobile-sheet-body">
+      <div>
+        <div class="mobile-filter-section-title">Biblical Kingdoms &amp; Tribes</div>
+        <div class="mobile-chips-grid">
+          <button class="filter-chip active" data-filter="all">All Visible</button>
+          <button class="filter-chip active" data-filter="tribes">12 Tribes Allotment</button>
+          <button class="filter-chip active" data-filter="divided-kingdoms">Divided Kingdoms</button>
+          <button class="filter-chip active" data-filter="cities">Holy Cities &amp; Sanctuaries</button>
+          <button class="filter-chip active" data-filter="jerusalem">First Temple Jerusalem</button>
+        </div>
+      </div>
+      <div>
+        <div class="mobile-filter-section-title">Sacred Journeys &amp; Prophecies</div>
+        <div class="mobile-chips-grid">
+          <button class="filter-chip active" data-filter="abraham">Abraham's Route</button>
+          <button class="filter-chip active" data-filter="exodus">Moses &amp; Exodus</button>
+          <button class="filter-chip active" data-filter="ark">Ark of the Covenant</button>
+          <button class="filter-chip active" data-filter="lehi">Lehi (~600 BC)</button>
+          <button class="filter-chip active" data-filter="prophecies">Messianic Prophecies</button>
+          <button class="filter-chip active" data-filter="hydrography">Rivers &amp; Seas</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-sheet-footer">
+      <button id="mobFiltersDoneBtn" class="btn btn-primary" style="width:100%;">Done</button>
+    </div>
+  </div>
+
+  <!-- Mobile Location Quick Jump Picker Sheet -->
+  <div class="mobile-picker-sheet" id="mobilePickerSheet" aria-label="Biblical Places Quick Jump">
+    <div class="mobile-sheet-header">
+      <div class="mobile-sheet-title">
+        <span>📍</span> <span>Jump to Biblical Location (142+)</span>
+      </div>
+      <button id="closeMobilePickerBtn" class="modal-close-btn" aria-label="Close Places">&times;</button>
+    </div>
+    <div class="mobile-picker-search">
+      <input type="text" id="mobilePickerSearchInput" class="mobile-picker-input" placeholder="Search 142+ biblical cities, mountains, lands..." autocomplete="off">
+    </div>
+    <div class="mobile-picker-list" id="mobilePickerList"></div>
+  </div>
 
   <!-- Leaflet Library -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Datasets (Old Testament & Pearl of Great Price) -->
-  <script src="js/data/cities.js"></script>
-  <script src="js/data/regions.js"></script>
-  <script src="js/data/hydrography.js"></script>
-  <script src="js/data/journeys.js"></script>
-  <script src="js/data/placeDossiers.js"></script>
-  <script src="js/data/scriptureTranslations.js"></script>
-  <script src="js/data/timelineEvents.js"></script>
-  <script src="js/data/jerusalemSites.js"></script>
-  <script src="js/data/tours.js"></script>
-  <script src="js/data/churchMedia.js"></script>
+  <script src="js/data/cities.js?v=2.0"></script>
+  <script src="js/data/regions.js?v=2.0"></script>
+  <script src="js/data/hydrography.js?v=2.0"></script>
+  <script src="js/data/journeys.js?v=2.0"></script>
+  <script src="js/data/placeDossiers.js?v=2.0"></script>
+  <script src="js/data/scriptureTranslations.js?v=2.0"></script>
+  <script src="js/data/timelineEvents.js?v=2.0"></script>
+  <script src="js/data/jerusalemSites.js?v=2.0"></script>
+  <script src="js/data/tours.js?v=2.0"></script>
+  <script src="js/data/churchMedia.js?v=2.0"></script>
 
   <!-- Controllers -->
-  <script src="js/mapController.js"></script>
-  <script src="js/timelineController.js"></script>
-  <script src="js/uiController.js"></script>
-  <script src="js/mobileShell.js"></script>
+  <script src="js/mapController.js?v=2.0"></script>
+  <script src="js/timelineController.js?v=2.0"></script>
+  <script src="js/uiController.js?v=2.0"></script>
+  <script src="js/mobileShell.js?v=2.0"></script>
 
   <!-- Application Entry -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=2.0"></script>
 </body>
 </html>

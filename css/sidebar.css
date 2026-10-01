@@ -129,22 +129,24 @@
   align-items: center;
 }
 
-/* Tab Navigation Bar (Balanced 3x2 Grid for 6 distinct tabs) */
+/* Tab Navigation Bar (Adaptive 7-Tab Layout) */
 .sidebar-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   background: #EDE2CD;
   border-bottom: 1px solid var(--border-parchment-dark);
   gap: 1px;
 }
 
 .sidebar-tab-btn {
-  padding: 8px 4px;
+  flex: 1 1 calc(25% - 1px);
+  min-width: 80px;
+  padding: 7px 3px;
   background: #EAE0CB;
   border: none;
   border-bottom: 2px solid transparent;
   font-family: var(--font-sans);
-  font-size: 0.74rem;
+  font-size: 0.71rem;
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
@@ -638,3 +640,160 @@
   color: var(--color-crimson);
   border-color: var(--color-gold);
 }
+
+/* ==========================================================================
+   MESSIANIC PROPHECY & CHRIST TYPOLOGY STYLES (Requirement 4)
+   ========================================================================== */
+.messianic-card {
+  background: linear-gradient(135deg, rgba(197, 160, 89, 0.15) 0%, rgba(29, 78, 137, 0.08) 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin-top: 1.25rem;
+  box-shadow: 0 3px 12px rgba(197, 160, 89, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.messianic-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-crimson) 100%);
+}
+
+.messianic-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.65rem;
+}
+
+.messianic-card-badge {
+  background: var(--color-crimson);
+  color: #FFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.messianic-card-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-crimson-deep);
+}
+
+.messianic-prophecy-ref {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-lapis);
+  margin-bottom: 0.5rem;
+}
+
+.messianic-typology-body {
+  font-family: var(--font-scripture);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  white-space: pre-line;
+  margin-bottom: 0.65rem;
+}
+
+.messianic-fulfillment-box {
+  background: rgba(255, 255, 255, 0.85);
+  border-left: 3px solid var(--color-gold-dark);
+  padding: 8px 10px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   LIFE BACK THEN / ANCIENT CULTURE STYLES (Requirement 3)
+   ========================================================================== */
+.life-tab-intro {
+  background: rgba(91, 107, 56, 0.08);
+  border: 1px solid rgba(91, 107, 56, 0.25);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  color: var(--color-olive-dark);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.life-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-parchment);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.life-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-gold);
+}
+
+.life-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.life-card-icon {
+  font-size: 1.15rem;
+}
+
+.life-card-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-bronze);
+}
+
+.life-card-body {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   ZEDEKIAH & LEHI ALERT BOX (Requirement 5)
+   ========================================================================== */
+.zedekiah-alert-box {
+  background: linear-gradient(135deg, rgba(163, 40, 34, 0.08) 0%, rgba(197, 160, 89, 0.12) 100%);
+  border: 1.5px solid var(--color-crimson);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 1rem 0;
+}
+
+.zedekiah-alert-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-crimson);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.zedekiah-alert-body {
+  font-size: 0.81rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+

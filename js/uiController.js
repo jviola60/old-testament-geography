@@ -23,6 +23,8 @@ class UIController {
     this.setupSidebarTabs();
     this.setupToursModal();
     this.setupWelcomeModal();
+    this.setupTravelCalculator();
+    this.setupAncientLifeModal();
     this.populateQuickJumpSelect();
   }
 
@@ -325,7 +327,23 @@ class UIController {
         `;
       }
 
+      let zedekiahBannerHtml = "";
+      if (siteId === "jerusalem") {
+        zedekiahBannerHtml = `
+          <div class="zedekiah-alert-box">
+            <div class="zedekiah-alert-title">
+              <span>👑</span>
+              <span>Reign of King Zedekiah, Lehi & Laban (~600 BC)</span>
+            </div>
+            <div class="zedekiah-alert-body">
+              In the 1st year of King Zedekiah (~597 BC), Lehi saw a Pillar of Fire and the coming Messiah. Commanded by God, Lehi fled Jerusalem with Sariah, Nephi, Sam, Laman, and Lemuel into the wilderness. Nephi returned on a perilous night mission to retrieve the sacred <strong>Plates of Brass</strong> from Laban’s estate in the Upper City (1 Nephi 1–4; 2 Kings 24:17–20).
+            </div>
+          </div>
+        `;
+      }
+
       overviewPane.innerHTML = `
+        ${zedekiahBannerHtml}
         <div class="dossier-lead">${overviewText.replace(/\n\n/g, "<br><br>")}</div>
         <div class="dossier-section">
           <div class="dossier-section-title">📍 Geographic & Scriptural Coordinates</div>
@@ -342,8 +360,26 @@ class UIController {
     // 3. Tab 2: Teachings & Covenants
     const teachingsPane = document.getElementById("tab-teachings");
     if (teachingsPane) {
-      if (dossier && dossier.teachings) {
+            if (dossier && dossier.teachings) {
         const t = dossier.teachings;
+        let messianicHtml = "";
+        if (dossier.messianicProphecy) {
+          const mp = dossier.messianicProphecy;
+          messianicHtml = `
+            <div class="messianic-card">
+              <div class="messianic-card-header">
+                <span class="messianic-badge">✝️ Messianic Typology & Prophecy</span>
+              </div>
+              <div class="messianic-card-title">${mp.title}</div>
+              <div class="messianic-prophecy-ref">📜 Prophecy: ${mp.prophecy}</div>
+              <div class="messianic-typology-body">${mp.typology}</div>
+              <div class="messianic-fulfillment-box">
+                <strong>Fulfilled in Jesus Christ:</strong> ${mp.fulfillment}
+              </div>
+            </div>
+          `;
+        }
+
         teachingsPane.innerHTML = `
           <div class="covenant-box">
             <div class="covenant-box-title">Prophet & Teacher</div>
@@ -361,6 +397,7 @@ class UIController {
             <div class="covenant-box-title">Response of the People</div>
             <div>${t.howAccepted}</div>
           </div>
+          ${messianicHtml}
         `;
       } else {
         teachingsPane.innerHTML = `
@@ -374,6 +411,9 @@ class UIController {
 
     // 4. Tab 3: Scriptures (Multi-Version Engine)
     this.renderScripturesTab(city, dossier);
+
+    // Tab 4: Life Back Then
+    this.renderLifeTab(city, dossier);
 
     // 5. Tab 4: Bible Videos (Dedicated Tab)
     this.renderVideosTab(city, dossier);
@@ -1083,6 +1123,214 @@ class UIController {
     }
 
     this.renderTourHUD();
+  }
+
+
+  // Render Tab 4: Life Back Then (Ancient Israel Daily Life, Housing, Diet, Culture)
+  renderLifeTab(city, dossier) {
+    const lifePane = document.getElementById("tab-life");
+    if (!lifePane) return;
+
+    const lb = (dossier && dossier.lifeBackThen) ? dossier.lifeBackThen : null;
+    if (lb) {
+      lifePane.innerHTML = `
+        <div class="life-tab-intro">
+          <strong>🏺 Ancient Culture & Daily Life at ${city.name}</strong><br>
+          How Israelites, prophets, families, and tradesmen lived, ate, worked, and worshiped in Old Testament times.
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">🏡</span>
+            <div class="life-card-title">Israelite Four-Room House & Dwellings</div>
+          </div>
+          <div class="life-card-body">${lb.housing}</div>
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">🍇</span>
+            <div class="life-card-title">The Biblical Diet & The Seven Species</div>
+          </div>
+          <div class="life-card-body">${lb.foodAndDiet}</div>
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">⚖️</span>
+            <div class="life-card-title">City Gates, Justice & The Elders</div>
+          </div>
+          <div class="life-card-body">${lb.cityGatesAndJustice}</div>
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">🧶</span>
+            <div class="life-card-title">Clothing, Weaving, Tools & Crafts</div>
+          </div>
+          <div class="life-card-body">${lb.clothingAndTrades}</div>
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">🎺</span>
+            <div class="life-card-title">Sacred Feasts & Pilgrimage Festivals</div>
+          </div>
+          <div class="life-card-body">${lb.sacredFeasts}</div>
+        </div>
+      `;
+    } else {
+      lifePane.innerHTML = `
+        <div class="life-tab-intro">
+          <strong>🏺 Ancient Culture & Daily Life at ${city.name}</strong>
+        </div>
+        <div class="life-card">
+          <div class="life-card-header">
+            <span class="life-card-icon">🏡</span>
+            <div class="life-card-title">Life in Biblical ${city.region}</div>
+          </div>
+          <div class="life-card-body">
+            Inhabitants of ${city.name} lived in stone and mudbrick dwellings, relying on cisterns for water and terraced agriculture for wheat, barley, olives, and grapes. Civic matters and legal contracts were settled before village elders at the city gate.
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  // Setup Biblical Distances & Travel Times Calculator Modal
+  setupTravelCalculator() {
+    const modal = document.getElementById("travelCalcModalBackdrop");
+    const openBtn = document.getElementById("travelCalcBtn");
+    const closeBtn = document.getElementById("travelCalcCloseBtn");
+    const fromSelect = document.getElementById("calcFromSelect");
+    const toSelect = document.getElementById("calcToSelect");
+
+    if (!modal || !fromSelect || !toSelect) return;
+
+    if (openBtn) {
+      openBtn.addEventListener("click", () => modal.classList.add("open"));
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => modal.classList.remove("open"));
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("open");
+    });
+
+    if (typeof CITIES_DATA !== "undefined") {
+      const sorted = [...CITIES_DATA].sort((a, b) => a.name.localeCompare(b.name));
+      sorted.forEach(c => {
+        const opt1 = document.createElement("option");
+        opt1.value = c.id;
+        opt1.textContent = `${c.name} (${c.region})`;
+        fromSelect.appendChild(opt1);
+
+        const opt2 = document.createElement("option");
+        opt2.value = c.id;
+        opt2.textContent = `${c.name} (${c.region})`;
+        toSelect.appendChild(opt2);
+      });
+
+      fromSelect.value = "jerusalem";
+      toSelect.value = "bethlehem";
+    }
+
+    const updateCalc = () => {
+      const fromId = fromSelect.value;
+      const toId = toSelect.value;
+      const c1 = CITIES_DATA.find(c => c.id === fromId);
+      const c2 = CITIES_DATA.find(c => c.id === toId);
+      if (!c1 || !c2) return;
+
+      const haversineMiles = (lat1, lon1, lat2, lon2) => {
+        const R = 3958.8;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      };
+
+      const straightMiles = haversineMiles(c1.lat, c1.lng, c2.lat, c2.lng);
+      const roadMiles = Math.max(1, Math.round(straightMiles * 1.3 * 10) / 10);
+      const roadKm = Math.round(roadMiles * 1.60934 * 10) / 10;
+
+      const routeNameElem = document.getElementById("calcRouteName");
+      const distMilesElem = document.getElementById("calcDistMiles");
+      const distKmElem = document.getElementById("calcDistKm");
+      const daysFootElem = document.getElementById("calcDaysFoot");
+      const daysDonkeyElem = document.getElementById("calcDaysDonkey");
+      const daysCamelElem = document.getElementById("calcDaysCamel");
+      const daysChariotElem = document.getElementById("calcDaysChariot");
+      const routeContextElem = document.getElementById("calcRouteContext");
+
+      if (routeNameElem) routeNameElem.textContent = `${c1.name} → ${c2.name}`;
+      if (distMilesElem) distMilesElem.textContent = roadMiles;
+      if (distKmElem) distKmElem.textContent = `(${roadKm} km road estimate)`;
+
+      const formatTime = (dist, dailyRate, speedMph) => {
+        if (dist < dailyRate * 0.75) {
+          const hours = Math.round((dist / speedMph) * 10) / 10;
+          return `~${hours} hrs`;
+        }
+        const days = Math.round((dist / dailyRate) * 10) / 10;
+        return `${days} ${days === 1 ? 'day' : 'days'}`;
+      };
+
+      if (daysFootElem) daysFootElem.textContent = formatTime(roadMiles, 19, 2.8);
+      if (daysDonkeyElem) daysDonkeyElem.textContent = formatTime(roadMiles, 16, 2.3);
+      if (daysCamelElem) daysCamelElem.textContent = formatTime(roadMiles, 22, 3.2);
+      if (daysChariotElem) daysChariotElem.textContent = formatTime(roadMiles, 32, 4.5);
+
+      if (routeContextElem) {
+        routeContextElem.innerHTML = `
+          <strong>Terrain & Trade Routes:</strong> Connecting <em>${c1.region}</em> and <em>${c2.region}</em> across biblical mountain ridges and valleys. Ancient travelers used the King's Highway, Way of the Patriarchs, or coastal Way of the Sea (Via Maris).
+        `;
+      }
+    };
+
+    fromSelect.addEventListener("change", updateCalc);
+    toSelect.addEventListener("change", updateCalc);
+    updateCalc();
+  }
+
+  // Setup Life in the Old Testament World (Culture & Daily Life) Modal
+  setupAncientLifeModal() {
+    const modal = document.getElementById("lifeBackThenModalBackdrop");
+    const openBtn = document.getElementById("lifeBackThenBtn");
+    const closeBtn = document.getElementById("lifeBackThenCloseBtn");
+
+    if (!modal) return;
+
+    if (openBtn) {
+      openBtn.addEventListener("click", () => modal.classList.add("open"));
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => modal.classList.remove("open"));
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("open");
+    });
+
+    const tabBtns = modal.querySelectorAll(".culture-tab-btn");
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetKey = btn.getAttribute("data-culture-tab");
+        tabBtns.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+
+        modal.querySelectorAll(".culture-content-pane").forEach(pane => {
+          pane.classList.remove("active");
+        });
+
+        const targetPane = document.getElementById(`culturePane-${targetKey}`);
+        if (targetPane) targetPane.classList.add("active");
+      });
+    });
   }
 
   endTour() {

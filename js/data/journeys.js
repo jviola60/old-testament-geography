@@ -108,6 +108,26 @@ const JOURNEYS_DATA = [
       { name: "Damascus", coords: [33.5138, 36.2765], note: "Anointed Hazael king over Syria; anointed Jehu and Elisha (1 Kings 19:15-16)" },
       { name: "Jordan River (Jericho)", coords: [31.8500, 35.5300], note: "Parted Jordan with his mantle; translated by chariot of fire (2 Kings 2:8-12)" }
     ]
+  },
+  {
+    id: "lehi-journey",
+    name: "Lehi & Sariah's Wilderness Trail (~600 BC)",
+    hebrew: "מַסַּע לֶחִי וּמִשְׁפַּחְתּוֹ בַּמִּדְבָּר",
+    color: "#2D6CB5",
+    dashArray: "5, 5",
+    weight: 3.5,
+    era: "Reign of King Zedekiah (~600 BC)",
+    scriptures: "1 Nephi 1-18",
+    description: "Departing Jerusalem in the first year of the reign of King Zedekiah, Lehi led his family past the Red Sea borders into the Valley of Lemuel. From there, Nephi secured the Brass Plates from Laban in Jerusalem, followed the Liahona through Shazer and Nahom, and constructed a ship at Bountiful to cross the great waters.",
+    waypoints: [
+      { name: "Jerusalem (Upper City / Estate of Laban)", coords: [31.7767, 35.2345], note: "First year of King Zedekiah; Lehi preaches repentance; family flees; Nephi returns to obtain the Brass Plates from Laban (1 Nephi 1–4)" },
+      { name: "Borders by the Red Sea (Gulf of Aqaba)", coords: [29.5000, 34.9500], note: "Traveled three days in the wilderness near the coast of the Red Sea (1 Nephi 2:5)" },
+      { name: "Valley of Lemuel (Wadi Tayyib al-Ism)", coords: [28.5667, 34.8000], note: "Pitched tents in valley with continually running river into Red Sea; built altar of stones; Liahona discovered (1 Nephi 2:6-14; 16:10)" },
+      { name: "Shazer", coords: [27.7500, 35.5000], note: "Four days south-southeast; fertile hunting grounds (1 Nephi 16:13-14)" },
+      { name: "Camp of the Broken Bow", coords: [25.5000, 37.2000], note: "Nephi breaks steel bow; makes wooden bow and obtains food directed by Liahona (1 Nephi 16:18-31)" },
+      { name: "Nahom (NHM Burial Site)", coords: [15.8600, 44.7500], note: "Anciently attested NHM altars; burial place of Ishmael where daughters mourned (1 Nephi 16:34)" },
+      { name: "Bountiful (Wadi Sayq / Khor Rori)", coords: [17.0300, 54.4300], note: "Fertile Arabian coast with fruit, honey, timber, and ore; Nephi builds ship commanded by the Lord (1 Nephi 17-18)" }
+    ]
   }
 ];
 

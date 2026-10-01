@@ -186,6 +186,17 @@ const TIMELINE_EVENTS = [
     scriptures: "2 Kings 19:14-37; Isaiah 36-37"
   },
   {
+    id: "reign-zedekiah-lehi",
+    year: -600,
+    title: "Reign of King Zedekiah: Lehi's Warning & The Plates of Brass from Laban",
+    hebrew: "מַלְכוּת צִדְקִיָּהוּ וִיצִיאַת לֶחִי מִירוּשָׁלַיִם",
+    epoch: "Divided Kingdom / Final Decades of Judah",
+    location: "Jerusalem & Red Sea Borders",
+    coords: [31.7767, 35.2345],
+    summary: "In the commencement of the reign of King Zedekiah over Judah, prophets including Jeremiah and Lehi warn that Jerusalem will be destroyed unless the people repent. The Lord commands Lehi to take his family (Sariah, Laman, Lemuel, Sam, Nephi) into the wilderness. Nephi and his brothers return to Jerusalem to obtain the sacred Plates of Brass from Laban, an influential military leader and custodian of the records who commanded fifty soldiers. Led by the Spirit, Nephi slays Laban, secures the records of the Law of Moses and prophecies of Isaiah, and leads Zoram to safety (1 Nephi 1-4; 2 Kings 24:17-20).",
+    scriptures: "1 Nephi 1-4; 2 Kings 24:17-20; 2 Chronicles 36:11-16; Jeremiah 37"
+  },
+  {
     year: -586,
     title: "Fall of Jerusalem & Babylonian Exile",
     hebrew: "חֻרְבַּן יְרוּשָׁלַיִם וְגָלוּת בָּבֶל",

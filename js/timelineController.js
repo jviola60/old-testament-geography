@@ -87,10 +87,15 @@ class TimelineController {
         name: "United Monarchy (Saul, David, Solomon)",
         summary: "Jerusalem as Capital, Golden Age, First Temple on Mount Moriah (1 & 2 Samuel; 1 Kings)"
       };
-    } else if (year <= -586) {
+    } else if (year <= -610) {
       return {
         name: "Divided Kingdoms (Israel & Judah)",
         summary: "Elijah & Mount Carmel, Isaiah's Prophecies, Fall of Samaria (1 & 2 Kings)"
+      };
+    } else if (year <= -586) {
+      return {
+        name: "Reign of King Zedekiah • Lehi & Laban (~600 BC)",
+        summary: "King Zedekiah rules Judah; Lehi & Jeremiah warn Jerusalem; Lehi departs into the wilderness; Brass Plates obtained from Laban (1 Nephi 1–4; 2 Kings 24)"
       };
     } else if (year <= -538) {
       return {

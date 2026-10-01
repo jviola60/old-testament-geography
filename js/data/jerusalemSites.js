@@ -92,6 +92,39 @@ const JERUSALEM_SITES = [
     category: "topography",
     description: "Prominent limestone ridge east of Jerusalem overlooking the Temple Mount. Where David wept with his head covered during Absalom's rebellion; prophetic scene of Zechariah's apocalyptic prophecy.",
     scripture: "2 Samuel 15:30; Zechariah 14:4"
+  },
+  {
+    id: "zedekiah-palace",
+    name: "Palace of King Zedekiah",
+    hebrew: "אַרְמוֹן צִדְקִיָּהוּ הַמֶּלֶךְ",
+    transliteration: "Armon Tzidkiyahu HaMelekh",
+    lat: 31.7745,
+    lng: 35.2355,
+    category: "palace",
+    description: "The royal seat of King Zedekiah, the last king of Judah (reigned 597–586 BC), appointed by Nebuchadnezzar. Where Jeremiah was interrogated in the court of the prison, and where prophets warned of imminent Babylonian destruction unless the nation repented.",
+    scripture: "Jeremiah 37:17-21; 38:14-28; 2 Kings 24:17-20; 1 Nephi 1:4"
+  },
+  {
+    id: "laban-estate",
+    name: "Upper City & Estate of Laban",
+    hebrew: "בֵּית לָבָן בָּעִיר הָעֶלְיוֹנָה",
+    transliteration: "Beit Lavan Ba'Ir HaElyonah",
+    lat: 31.7755,
+    lng: 35.2315,
+    category: "fortress",
+    description: "The affluent estate of Laban, an influential military leader and custodian of sacred genealogical records in Jerusalem (~600 BC). Laban commanded fifty soldiers and possessed the sacred Plates of Brass containing the Law of Moses and prophecies of Isaiah. Here Nephi returned by night, was led by the Spirit, and obtained the brass plates for Lehi's colony.",
+    scripture: "1 Nephi 3:1-31; 1 Nephi 4:1-38"
+  },
+  {
+    id: "broad-wall",
+    name: "The Broad Wall (Western Hill / Mishneh)",
+    hebrew: "הַחוֹמָה הָרְחָבָה",
+    transliteration: "HaChomah HaRechavah",
+    lat: 31.7758,
+    lng: 35.2308,
+    category: "fortress",
+    description: "Massive 23-foot-thick defensive stone fortification built under King Hezekiah to enclose the expanding western residential quarter (Mishneh) where refugees from the Northern Kingdom and affluent merchants like Lehi's family resided in late First Temple Jerusalem.",
+    scripture: "Nehemiah 3:8; 12:38; Isaiah 22:9-10; 2 Kings 22:14"
   }
 ];
 
