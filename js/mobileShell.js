@@ -56,9 +56,10 @@ class MobileShell {
     document.body.classList.toggle("layout-mobile", this.isMobile);
 
     if (this.isMobile && this.sidebar) {
+      // By default keep closed so map is completely clean and visible
       if (!this.sidebar.classList.contains("open") && !this.sidebar.classList.contains("expanded")) {
-        this.sidebar.classList.add("peek");
-        this.sidebar.classList.remove("closed");
+        this.sidebar.classList.add("closed");
+        this.sidebar.classList.remove("peek");
       }
     }
   }
@@ -469,7 +470,7 @@ class MobileShell {
       });
     }
 
-    // Map styles in nav sheet
+    // Map Base Styles in Drawer (with checkmarks)
     ["Parchment", "Satellite", "Modern"].forEach(style => {
       const btn = document.getElementById(`mobStyle${style}`);
       if (btn) {
@@ -477,13 +478,76 @@ class MobileShell {
           const styleKey = btn.getAttribute("data-style");
           if (styleKey && window.app && window.app.map) {
             window.app.map.setMapTheme(styleKey);
+            // Update checkmarks in drawer
+            ["Parchment", "Satellite", "Modern"].forEach(s => {
+              const b = document.getElementById(`mobStyle${s}`);
+              const check = document.getElementById(`check${s}`);
+              if (b) b.classList.toggle("active", s === style);
+              if (check) check.style.display = (s === style) ? "inline-block" : "none";
+            });
           }
           this.closeNavSheet();
         });
       }
     });
 
-    // Region focus items in nav sheet
+    // Map Layers & Visibility in Drawer
+    const drawerFiltersSection = document.getElementById("mobileNavFiltersSection");
+    if (drawerFiltersSection) {
+      drawerFiltersSection.querySelectorAll(".filter-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          const filterKey = chip.getAttribute("data-filter");
+          const isActive = chip.classList.contains("active");
+
+          if (filterKey === "all") {
+            const newState = !isActive;
+            drawerFiltersSection.querySelectorAll(".filter-chip").forEach(c => c.classList.toggle("active", newState));
+            if (this.filtersSheet) this.filtersSheet.querySelectorAll(".filter-chip").forEach(c => c.classList.toggle("active", newState));
+            document.querySelectorAll(".filter-chips-bar .filter-chip").forEach(c => c.classList.toggle("active", newState));
+            if (window.app && window.app.map) window.app.map.toggleLayer("all", newState);
+            return;
+          }
+
+          chip.classList.toggle("active");
+          const activeNow = chip.classList.contains("active");
+          if (this.filtersSheet) {
+            const sheetChip = this.filtersSheet.querySelector(`.filter-chip[data-filter="${filterKey}"]`);
+            if (sheetChip) sheetChip.classList.toggle("active", activeNow);
+          }
+          const desktopChip = document.querySelector(`.filter-chips-bar .filter-chip[data-filter="${filterKey}"]`);
+          if (desktopChip) desktopChip.classList.toggle("active", activeNow);
+
+          if (window.app && window.app.map) {
+            window.app.map.toggleLayer(filterKey, activeNow);
+          }
+        });
+      });
+    }
+
+    const resetFiltersBtn = document.getElementById("mobNavResetFiltersBtn");
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener("click", () => {
+        if (drawerFiltersSection) drawerFiltersSection.querySelectorAll(".filter-chip").forEach(c => c.classList.add("active"));
+        if (this.filtersSheet) this.filtersSheet.querySelectorAll(".filter-chip").forEach(c => c.classList.add("active"));
+        document.querySelectorAll(".filter-chips-bar .filter-chip").forEach(c => c.classList.add("active"));
+        if (window.app && window.app.map) window.app.map.toggleLayer("all", true);
+      });
+    }
+
+    // Timeline & Biblical Eras Chips in Drawer
+    if (this.navSheet) {
+      this.navSheet.querySelectorAll(".mob-era-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          const year = parseInt(chip.getAttribute("data-year"), 10);
+          if (!isNaN(year) && window.app && window.app.timeline) {
+            window.app.timeline.setYear(year);
+          }
+          this.closeNavSheet();
+        });
+      });
+    }
+
+    // Quick Region Focus in Drawer
     if (this.navSheet) {
       this.navSheet.querySelectorAll(".region-item").forEach(item => {
         item.addEventListener("click", () => {

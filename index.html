@@ -26,12 +26,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=2.0">
-  <link rel="stylesheet" href="css/map.css?v=2.0">
-  <link rel="stylesheet" href="css/sidebar.css?v=2.0">
-  <link rel="stylesheet" href="css/timeline.css?v=2.0">
-  <link rel="stylesheet" href="css/components.css?v=2.0">
-  <link rel="stylesheet" href="css/mobile.css?v=2.0">
+  <link rel="stylesheet" href="css/main.css?v=3.0">
+  <link rel="stylesheet" href="css/map.css?v=3.0">
+  <link rel="stylesheet" href="css/sidebar.css?v=3.0">
+  <link rel="stylesheet" href="css/timeline.css?v=3.0">
+  <link rel="stylesheet" href="css/components.css?v=3.0">
+  <link rel="stylesheet" href="css/mobile.css?v=3.0">
   <!-- Mobile Viewport & Phone Shell Detection (Map-First) -->
   <script>
     (function () {
@@ -44,13 +44,6 @@
       }
       document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle("layout-mobile", phone);
-        if (phone) {
-          var sidebar = document.getElementById("detailSidebar");
-          if (sidebar) {
-            sidebar.classList.add("peek");
-            sidebar.classList.remove("closed");
-          }
-        }
       });
     })();
   </script>
@@ -734,7 +727,7 @@
   <div class="mobile-sheet-backdrop" id="mobileSheetBackdrop" aria-hidden="true"></div>
 
   <!-- Mobile Slide-Out Navigation Drawer -->
-  <aside class="mobile-nav-sheet" id="mobileNavSheet" aria-label="Mobile Menu Navigation">
+  <aside class="mobile-nav-sheet" id="mobileNavSheet" aria-label="Mobile Navigation Menu">
     <div class="mobile-nav-header">
       <div class="mobile-nav-brand-group">
         <span class="mobile-nav-brand-icon">📜</span>
@@ -743,104 +736,194 @@
       <button id="closeMobileNavBtn" class="mobile-nav-close" aria-label="Close Navigation">&times;</button>
     </div>
 
-    <!-- Section 1: Scriptural Atlases Trilogy Navigation -->
+    <!-- Section 1: Quick Search & Landmark Access -->
+    <div class="mobile-nav-section mobile-nav-search-section">
+      <div class="mobile-nav-heading">Search &amp; Landmark Access</div>
+      <button class="mobile-menu-item mobile-menu-item-highlight" id="mobNavSearchBtn">
+        <span>🔍</span>
+        <div>
+          <div class="menu-title-bold">Search Places &amp; Scriptures</div>
+          <div class="menu-subtitle-muted">Find any city, mountain, patriarch, scripture, or prophecy</div>
+        </div>
+      </button>
+      <button class="mobile-menu-item" id="mobNavJumpBtn">
+        <span>📍</span>
+        <div>
+          <div class="menu-title-bold">Jump to Biblical Location</div>
+          <div class="menu-subtitle-muted">Directly center and focus any of the 142+ biblical sites</div>
+        </div>
+      </button>
+      <button class="mobile-menu-item" id="mobNavCodexBtn">
+        <span>📜</span>
+        <div>
+          <div class="menu-title-bold">Scriptural Codex &amp; Dossier</div>
+          <div class="menu-subtitle-muted">Open archaeological, Hebrew &amp; covenant details</div>
+        </div>
+      </button>
+      <button class="mobile-menu-item" id="mobNavToursBtn">
+        <span>🧭</span>
+        <div>
+          <div class="menu-title-bold">Guided Scripture Tours</div>
+          <div class="menu-subtitle-muted">Step through Patriarchs, Exodus &amp; Divided Kingdoms</div>
+        </div>
+      </button>
+      <button class="mobile-menu-item" id="mobNavRecenterBtn">
+        <span>🎯</span>
+        <div>
+          <div class="menu-title-bold">Recenter &amp; Reset View</div>
+          <div class="menu-subtitle-muted">Return map to full Promised Land overview</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Section 2: Scriptural Atlases Trilogy Navigation -->
     <div class="mobile-nav-section">
       <div class="mobile-nav-heading">Scriptural Atlases Trilogy</div>
       <div class="mobile-atlas-link active" title="Currently viewing Old Testament Geography">
         <span>📜 Old Testament Atlas (~4000 BC – 400 BC)</span>
-        <span class="companion-badge">Current</span>
+        <span class="pill-current">Current</span>
       </div>
       <a href="https://jviola60.github.io/new-testament-geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
         <span>✝️ New Testament Atlas (~6 BC – 100 AD)</span>
-        <span class="companion-ext">↗</span>
+        <span class="ext-link-arrow">↗</span>
       </a>
       <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
         <span>📖 Book of Mormon Atlas (~2200 BC – AD 421)</span>
-        <span class="companion-ext">↗</span>
+        <span class="ext-link-arrow">↗</span>
       </a>
     </div>
 
-    <!-- Section 2: Atlas Access & Quick Actions -->
+    <!-- Section 3: Map Layers & Visibility (Chips in Drawer) -->
+    <div class="mobile-nav-section" id="mobileNavFiltersSection">
+      <div class="mobile-nav-heading">Map Layers &amp; Visibility</div>
+      <div class="mobile-nav-chips">
+        <button class="filter-chip active" data-filter="all">All Visible</button>
+        <button class="filter-chip active" data-filter="tribes">12 Tribes Allotment</button>
+        <button class="filter-chip active" data-filter="divided-kingdoms">Divided Kingdoms</button>
+        <button class="filter-chip active" data-filter="abraham">Abraham's Route</button>
+        <button class="filter-chip active" data-filter="exodus">Moses &amp; Exodus</button>
+        <button class="filter-chip active" data-filter="lehi">Lehi (~600 BC)</button>
+        <button class="filter-chip active" data-filter="ark">Ark of Covenant</button>
+        <button class="filter-chip active" data-filter="cities">Holy Cities</button>
+        <button class="filter-chip active" data-filter="jerusalem">Jerusalem</button>
+        <button class="filter-chip active" data-filter="hydrography">Rivers &amp; Seas</button>
+      </div>
+      <div class="mobile-nav-filter-actions">
+        <button class="btn btn-sm btn-outline df-btn" id="mobNavResetFiltersBtn">Reset Layers</button>
+      </div>
+    </div>
+
+    <!-- Section 4: Map Base Styles -->
     <div class="mobile-nav-section">
-      <div class="mobile-nav-heading">Atlas Access &amp; Navigation</div>
-      <button class="mobile-menu-item" id="mobNavSearchBtn">
-        <span>🔍</span> <span>Search Biblical Places &amp; Scriptures</span>
+      <div class="mobile-nav-heading">Map Base Styles</div>
+      <button class="mobile-menu-item mobile-base-item active" id="mobStyleParchment" data-style="parchment">
+        <span>📜</span>
+        <div class="mobile-base-text">
+          <div class="menu-title-bold">Ancient Shaded Relief — Default</div>
+          <div class="menu-subtitle-muted">Classical cartographic terrain &amp; biblical elevation</div>
+        </div>
+        <span class="base-check-mark" id="checkParchment">✓</span>
       </button>
-      <button class="mobile-menu-item" id="mobNavJumpBtn">
-        <span>📍</span> <span>Jump to Location (142+ Sites)</span>
+      <button class="mobile-menu-item mobile-base-item" id="mobStyleSatellite" data-style="satellite">
+        <span>🛰️</span>
+        <div class="mobile-base-text">
+          <div class="menu-title-bold">Satellite Earth Terrain</div>
+          <div class="menu-subtitle-muted">Real high-resolution satellite imagery</div>
+        </div>
+        <span class="base-check-mark" id="checkSatellite" style="display:none;">✓</span>
       </button>
-      <button class="mobile-menu-item" id="mobNavToursBtn">
-        <span>🧭</span> <span>Curated Scripture Tours</span>
-      </button>
-      <button class="mobile-menu-item" id="mobNavCodexBtn">
-        <span>📜</span> <span>Open Scriptural Codex &amp; Dossier</span>
-      </button>
-      <button class="mobile-menu-item" id="mobNavRecenterBtn">
-        <span>🎯</span> <span>Reset / Recenter to Promised Land</span>
+      <button class="mobile-menu-item mobile-base-item" id="mobStyleModern" data-style="modern">
+        <span>🗺️</span>
+        <div class="mobile-base-text">
+          <div class="menu-title-bold">Modern Roads &amp; Infrastructure</div>
+          <div class="menu-subtitle-muted">Contemporary highways, cities &amp; boundaries</div>
+        </div>
+        <span class="base-check-mark" id="checkModern" style="display:none;">✓</span>
       </button>
     </div>
 
-    <!-- Section 3: Study Tools & Modals -->
+    <!-- Section 5: Study Tools & Historical Context -->
     <div class="mobile-nav-section">
       <div class="mobile-nav-heading">Study Tools &amp; Historical Context</div>
       <button class="mobile-menu-item" id="mobNavTravelCalcBtn">
-        <span>📏</span> <span>Biblical Distances &amp; Travel Calculator</span>
+        <span>📏</span>
+        <div>
+          <div class="menu-title-bold">Biblical Distances &amp; Travel Calculator</div>
+          <div class="menu-subtitle-muted">Calculate walking, donkey, camel &amp; chariot travel</div>
+        </div>
       </button>
       <button class="mobile-menu-item" id="mobNavLifeBtn">
-        <span>🏺</span> <span>Life in the Old Testament World</span>
+        <span>🏺</span>
+        <div>
+          <div class="menu-title-bold">Life in the Old Testament World</div>
+          <div class="menu-subtitle-muted">Israelite houses, 7 species, city gates, water tunnels</div>
+        </div>
       </button>
       <button class="mobile-menu-item" id="mobNavVideosBtn">
-        <span>🎬</span> <span>Church Scripture &amp; Bible Videos</span>
+        <span>🎬</span>
+        <div>
+          <div class="menu-title-bold">Church Scripture &amp; Bible Videos</div>
+          <div class="menu-subtitle-muted">Videos from ChurchofJesusChrist.org</div>
+        </div>
       </button>
       <button class="mobile-menu-item" id="mobNavWelcomeBtn">
-        <span>📖</span> <span>Welcome &amp; Getting Started Guide</span>
+        <span>📖</span>
+        <div>
+          <div class="menu-title-bold">Welcome &amp; Getting Started Guide</div>
+          <div class="menu-subtitle-muted">Open interactive orientation and feature tour</div>
+        </div>
       </button>
     </div>
 
-    <!-- Section 4: Map Styles -->
+    <!-- Section 6: Timeline & Biblical Eras -->
     <div class="mobile-nav-section">
-      <div class="mobile-nav-heading">Map Base Style</div>
-      <button class="mobile-menu-item" id="mobStyleParchment" data-style="parchment">
-        <span>📜</span> <span>Ancient Shaded Relief (Default)</span>
-      </button>
-      <button class="mobile-menu-item" id="mobStyleSatellite" data-style="satellite">
-        <span>🛰️</span> <span>Satellite Earth Terrain</span>
-      </button>
-      <button class="mobile-menu-item" id="mobStyleModern" data-style="modern">
-        <span>🗺️</span> <span>Modern Roads &amp; Infrastructure</span>
-      </button>
+      <div class="mobile-nav-heading">Timeline &amp; Biblical Eras</div>
+      <div class="mobile-nav-chips">
+        <button class="filter-chip mob-era-chip" data-year="-4000">🌟 Creation (~4000 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-2000">🏕️ Abraham (~2000 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-1446">🌊 The Exodus (~1446 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-1400">⚖️ Judges of Israel (~1400 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-1000">👑 David &amp; Solomon (~1000 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-722">⚔️ Divided Kingdoms (~722 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-600">📜 Zedekiah &amp; Lehi (~600 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-586">🏛️ Babylonian Exile (~586 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-445">🎺 Restoration (~445 BC)</button>
+        <button class="filter-chip mob-era-chip" data-year="-400">📜 Malachi (~400 BC)</button>
+      </div>
     </div>
 
-    <!-- Section 5: Region Focus -->
+    <!-- Section 7: Quick Region Focus -->
     <div class="mobile-nav-section">
-      <div class="mobile-nav-heading">Region Focus</div>
-      <button class="mobile-menu-item region-item" data-region="divided-kingdoms">
-        <span>⚔️</span> <span>Divided Kingdoms: Israel &amp; Judah</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="northern-kingdom">
-        <span>👑</span> <span>Northern Kingdom of Israel (Samaria)</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="southern-kingdom">
-        <span>🏛️</span> <span>Southern Kingdom of Judah (Jerusalem)</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="holy-land">
-        <span>📍</span> <span>Promised Land &amp; 12 Tribes</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="jerusalem">
-        <span>🏛️</span> <span>First Temple Jerusalem &amp; Moriah</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="galilee">
-        <span>🌊</span> <span>Sea of Chinnereth (Galilee) &amp; North</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="sinai-exodus">
-        <span>🏔️</span> <span>Mount Sinai &amp; Wilderness</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="egypt-goshen">
-        <span>🏺</span> <span>Land of Goshen &amp; Nile Delta</span>
-      </button>
-      <button class="mobile-menu-item region-item" data-region="mesopotamia">
-        <span>👑</span> <span>Mesopotamia (Ur &amp; Babylon)</span>
-      </button>
+      <div class="mobile-nav-heading">Quick Region Focus</div>
+      <div class="mobile-region-group">
+        <button class="mobile-menu-item region-item" data-region="divided-kingdoms">
+          <span>⚔️</span> <span>Divided Kingdoms: Israel &amp; Judah</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="northern-kingdom">
+          <span>👑</span> <span>Northern Kingdom of Israel (Samaria)</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="southern-kingdom">
+          <span>🏛️</span> <span>Southern Kingdom of Judah (Jerusalem)</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="holy-land">
+          <span>📍</span> <span>Promised Land &amp; 12 Tribes</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="jerusalem">
+          <span>🏛️</span> <span>First Temple Jerusalem &amp; Moriah</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="galilee">
+          <span>🌊</span> <span>Sea of Chinnereth (Galilee) &amp; North</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="sinai-exodus">
+          <span>🏔️</span> <span>Mount Sinai &amp; Wilderness</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="egypt-goshen">
+          <span>🏺</span> <span>Land of Goshen &amp; Nile Delta</span>
+        </button>
+        <button class="mobile-menu-item region-item" data-region="mesopotamia">
+          <span>👑</span> <span>Mesopotamia (Ur &amp; Babylon)</span>
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -898,24 +981,24 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Datasets (Old Testament & Pearl of Great Price) -->
-  <script src="js/data/cities.js?v=2.0"></script>
-  <script src="js/data/regions.js?v=2.0"></script>
-  <script src="js/data/hydrography.js?v=2.0"></script>
-  <script src="js/data/journeys.js?v=2.0"></script>
-  <script src="js/data/placeDossiers.js?v=2.0"></script>
-  <script src="js/data/scriptureTranslations.js?v=2.0"></script>
-  <script src="js/data/timelineEvents.js?v=2.0"></script>
-  <script src="js/data/jerusalemSites.js?v=2.0"></script>
-  <script src="js/data/tours.js?v=2.0"></script>
-  <script src="js/data/churchMedia.js?v=2.0"></script>
+  <script src="js/data/cities.js?v=3.0"></script>
+  <script src="js/data/regions.js?v=3.0"></script>
+  <script src="js/data/hydrography.js?v=3.0"></script>
+  <script src="js/data/journeys.js?v=3.0"></script>
+  <script src="js/data/placeDossiers.js?v=3.0"></script>
+  <script src="js/data/scriptureTranslations.js?v=3.0"></script>
+  <script src="js/data/timelineEvents.js?v=3.0"></script>
+  <script src="js/data/jerusalemSites.js?v=3.0"></script>
+  <script src="js/data/tours.js?v=3.0"></script>
+  <script src="js/data/churchMedia.js?v=3.0"></script>
 
   <!-- Controllers -->
-  <script src="js/mapController.js?v=2.0"></script>
-  <script src="js/timelineController.js?v=2.0"></script>
-  <script src="js/uiController.js?v=2.0"></script>
-  <script src="js/mobileShell.js?v=2.0"></script>
+  <script src="js/mapController.js?v=3.0"></script>
+  <script src="js/timelineController.js?v=3.0"></script>
+  <script src="js/uiController.js?v=3.0"></script>
+  <script src="js/mobileShell.js?v=3.0"></script>
 
   <!-- Application Entry -->
-  <script src="js/app.js?v=2.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 </body>
 </html>
