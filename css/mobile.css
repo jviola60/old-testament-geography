@@ -178,6 +178,15 @@
   }
 
   /* 3. Main Map Viewport on Mobile: Full-bleed Map */
+  .app-main-container {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+    flex: none !important;
+  }
+
   #map {
     position: fixed !important;
     top: var(--header-height, 50px) !important;

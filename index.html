@@ -26,12 +26,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=3.2">
-  <link rel="stylesheet" href="css/map.css?v=3.2">
-  <link rel="stylesheet" href="css/sidebar.css?v=3.2">
-  <link rel="stylesheet" href="css/timeline.css?v=3.2">
-  <link rel="stylesheet" href="css/components.css?v=3.2">
-  <link rel="stylesheet" href="css/mobile.css?v=3.2">
+  <link rel="stylesheet" href="css/main.css?v=3.3">
+  <link rel="stylesheet" href="css/map.css?v=3.3">
+  <link rel="stylesheet" href="css/sidebar.css?v=3.3">
+  <link rel="stylesheet" href="css/timeline.css?v=3.3">
+  <link rel="stylesheet" href="css/components.css?v=3.3">
+  <link rel="stylesheet" href="css/mobile.css?v=3.3">
   <!-- Mobile Viewport & Phone Shell Detection (Map-First) -->
   <script>
     (function () {
@@ -249,8 +249,61 @@
     </button>
   </div>
 
-  <!-- Main Map Viewport -->
-  <main id="map" role="region" aria-label="Old Testament Interactive Map"></main>
+  <!-- Main Map & Contained Sidebar Viewport -->
+  <main class="app-main-container" id="mainContainer">
+    <div id="map" role="region" aria-label="Old Testament Interactive Map"></div>
+
+    <!-- Slide-Out 7-Tab Detail Sidebar -->
+    <aside class="detail-sidebar closed" id="detailSidebar" aria-label="Biblical Place Dossier Drawer">
+      <div class="mobile-drag-handle"></div>
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <div class="sidebar-title-group">
+            <div class="sidebar-title" id="sidebarTitle">Jerusalem</div>
+          </div>
+          <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Drawer" aria-label="Close details drawer">&times;</button>
+        </div>
+
+        <!-- Vocalized Hebrew Identity Card -->
+        <div class="hebrew-identity-card" id="sidebarHebrewCard">
+          <div class="hebrew-primary">
+            <div class="hebrew-script" id="sidebarHebrewScript">יְרוּשָׁלַיִם</div>
+            <div class="hebrew-translit" id="sidebarHebrewTranslit">Yerushalayim</div>
+          </div>
+          <div class="hebrew-action-row">
+            <div class="hebrew-meaning" id="sidebarHebrewMeaning">City / Foundation of Peace</div>
+            <button id="btnPronounceHebrew" class="btn-pronounce" title="Pronounce Hebrew">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 Tab Navigation (Matching New Testament & Book of Mormon Geography Depth) -->
+      <nav class="sidebar-tabs" aria-label="Dossier Tabs">
+        <button class="sidebar-tab-btn active" data-tab="overview" id="tabBtn-overview">1. Overview</button>
+        <button class="sidebar-tab-btn" data-tab="teachings" id="tabBtn-teachings">2. Covenants & Messiah</button>
+        <button class="sidebar-tab-btn" data-tab="scriptures" id="tabBtn-scriptures">3. Scriptures</button>
+        <button class="sidebar-tab-btn" data-tab="life" id="tabBtn-life">4. Life Back Then</button>
+        <button class="sidebar-tab-btn" data-tab="videos" id="tabBtn-videos">5. Bible Videos</button>
+        <button class="sidebar-tab-btn" data-tab="people" id="tabBtn-people">6. Patriarchs</button>
+        <button class="sidebar-tab-btn" data-tab="history" id="tabBtn-history">7. Archaeology</button>
+      </nav>
+
+      <!-- Scrollable Tab Content Body -->
+      <div class="sidebar-body">
+        <div class="tab-pane active" id="tab-overview"></div>
+        <div class="tab-pane" id="tab-teachings"></div>
+        <div class="tab-pane" id="tab-scriptures"></div>
+        <div class="tab-pane" id="tab-life"></div>
+        <div class="tab-pane" id="tab-videos"></div>
+        <div class="tab-pane" id="tab-people"></div>
+        <div class="tab-pane" id="tab-history"></div>
+      </div>
+    </aside>
+  </main>
 
   <!-- Bottom Timeline Scrubber -->
   <footer class="timeline-container" id="timelineBar">
@@ -294,57 +347,6 @@
       <span class="marker-tick" title="Ministry of Malachi (~400 BC)">400 BC (Malachi)</span>
     </div>
   </footer>
-
-  <!-- Slide-Out 7-Tab Detail Sidebar -->
-  <aside class="detail-sidebar closed" id="detailSidebar" aria-label="Biblical Place Dossier Drawer">
-    <div class="mobile-drag-handle"></div>
-    <div class="sidebar-header">
-      <div class="sidebar-header-top">
-        <div class="sidebar-title-group">
-          <div class="sidebar-title" id="sidebarTitle">Jerusalem</div>
-        </div>
-        <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Drawer" aria-label="Close details drawer">&times;</button>
-      </div>
-
-      <!-- Vocalized Hebrew Identity Card -->
-      <div class="hebrew-identity-card" id="sidebarHebrewCard">
-        <div class="hebrew-primary">
-          <div class="hebrew-script" id="sidebarHebrewScript">יְרוּשָׁלַיִם</div>
-          <div class="hebrew-translit" id="sidebarHebrewTranslit">Yerushalayim</div>
-        </div>
-        <div class="hebrew-action-row">
-          <div class="hebrew-meaning" id="sidebarHebrewMeaning">City / Foundation of Peace</div>
-          <button id="btnPronounceHebrew" class="btn-pronounce" title="Pronounce Hebrew">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7 Tab Navigation (Matching New Testament & Book of Mormon Geography Depth) -->
-    <nav class="sidebar-tabs" aria-label="Dossier Tabs">
-      <button class="sidebar-tab-btn active" data-tab="overview" id="tabBtn-overview">1. Overview</button>
-      <button class="sidebar-tab-btn" data-tab="teachings" id="tabBtn-teachings">2. Covenants & Messiah</button>
-      <button class="sidebar-tab-btn" data-tab="scriptures" id="tabBtn-scriptures">3. Scriptures</button>
-      <button class="sidebar-tab-btn" data-tab="life" id="tabBtn-life">4. Life Back Then</button>
-      <button class="sidebar-tab-btn" data-tab="videos" id="tabBtn-videos">5. Bible Videos</button>
-      <button class="sidebar-tab-btn" data-tab="people" id="tabBtn-people">6. Patriarchs</button>
-      <button class="sidebar-tab-btn" data-tab="history" id="tabBtn-history">7. Archaeology</button>
-    </nav>
-
-    <!-- Scrollable Tab Content Body -->
-    <div class="sidebar-body">
-      <div class="tab-pane active" id="tab-overview"></div>
-      <div class="tab-pane" id="tab-teachings"></div>
-      <div class="tab-pane" id="tab-scriptures"></div>
-      <div class="tab-pane" id="tab-life"></div>
-      <div class="tab-pane" id="tab-videos"></div>
-      <div class="tab-pane" id="tab-people"></div>
-      <div class="tab-pane" id="tab-history"></div>
-    </div>
-  </aside>
 
   <!-- Welcome to Old Testament Geography Modal -->
   <div class="modal-backdrop" id="welcomeModalBackdrop">
@@ -981,24 +983,24 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Datasets (Old Testament & Pearl of Great Price) -->
-  <script src="js/data/cities.js?v=3.2"></script>
-  <script src="js/data/regions.js?v=3.2"></script>
-  <script src="js/data/hydrography.js?v=3.2"></script>
-  <script src="js/data/journeys.js?v=3.2"></script>
-  <script src="js/data/placeDossiers.js?v=3.2"></script>
-  <script src="js/data/scriptureTranslations.js?v=3.2"></script>
-  <script src="js/data/timelineEvents.js?v=3.2"></script>
-  <script src="js/data/jerusalemSites.js?v=3.2"></script>
-  <script src="js/data/tours.js?v=3.2"></script>
-  <script src="js/data/churchMedia.js?v=3.2"></script>
+  <script src="js/data/cities.js?v=3.3"></script>
+  <script src="js/data/regions.js?v=3.3"></script>
+  <script src="js/data/hydrography.js?v=3.3"></script>
+  <script src="js/data/journeys.js?v=3.3"></script>
+  <script src="js/data/placeDossiers.js?v=3.3"></script>
+  <script src="js/data/scriptureTranslations.js?v=3.3"></script>
+  <script src="js/data/timelineEvents.js?v=3.3"></script>
+  <script src="js/data/jerusalemSites.js?v=3.3"></script>
+  <script src="js/data/tours.js?v=3.3"></script>
+  <script src="js/data/churchMedia.js?v=3.3"></script>
 
   <!-- Controllers -->
-  <script src="js/mapController.js?v=3.2"></script>
-  <script src="js/timelineController.js?v=3.2"></script>
-  <script src="js/uiController.js?v=3.2"></script>
-  <script src="js/mobileShell.js?v=3.2"></script>
+  <script src="js/mapController.js?v=3.3"></script>
+  <script src="js/timelineController.js?v=3.3"></script>
+  <script src="js/uiController.js?v=3.3"></script>
+  <script src="js/mobileShell.js?v=3.3"></script>
 
   <!-- Application Entry -->
-  <script src="js/app.js?v=3.2"></script>
+  <script src="js/app.js?v=3.3"></script>
 </body>
 </html>
