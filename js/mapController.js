@@ -89,6 +89,13 @@ class MapController {
       this.clearHighlight();
     });
 
+    // Invalidate map size on window resize
+    window.addEventListener("resize", () => {
+      if (this.map) {
+        this.map.invalidateSize();
+      }
+    });
+
     return this.map;
   }
 

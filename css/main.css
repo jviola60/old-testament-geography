@@ -76,7 +76,7 @@
   /* Dimensions */
   --header-height: 64px;
   --filterbar-height: 46px;
-  --timeline-height: 98px;
+  --timeline-height: 114px;
   --sidebar-width: 460px;
 }
 
@@ -99,11 +99,17 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 /* App Header */
 .app-header {
   position: relative;
   z-index: 1000;
   height: var(--header-height);
+  flex-shrink: 0;
   background: linear-gradient(180deg, #241A13 0%, #17110C 100%);
   color: #F8F5EE;
   display: flex;

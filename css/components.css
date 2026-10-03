@@ -434,6 +434,7 @@
   font-size: 0.76rem;
   z-index: 1001;
   position: relative;
+  flex-shrink: 0;
 }
 
 .companion-atlases-inner {
