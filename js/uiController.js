@@ -458,7 +458,11 @@ class UIController {
     }
 
     // Open drawer
-    this.sidebar.classList.remove("closed");
+    this.sidebar.classList.remove("closed", "peek");
+    this.sidebar.classList.add("open");
+    if (window.innerWidth <= 768) {
+      this.sidebar.classList.add("expanded");
+    }
   }
 
   // Render Dedicated Bible Videos Tab (Matching New Testament Geography)
@@ -727,7 +731,11 @@ class UIController {
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
     if (overviewPane) overviewPane.classList.add("active");
 
-    this.sidebar.classList.remove("closed");
+    this.sidebar.classList.remove("closed", "peek");
+    this.sidebar.classList.add("open");
+    if (window.innerWidth <= 768) {
+      this.sidebar.classList.add("expanded");
+    }
   }
 
   // Show Divided Kingdom Dossier (Northern Kingdom of Israel or Southern Kingdom of Judah)
@@ -875,7 +883,11 @@ class UIController {
     // Open sidebar and set to overview tab
     const overviewTabBtn = document.getElementById("tabBtn-overview");
     if (overviewTabBtn) overviewTabBtn.click();
-    this.sidebar.classList.remove("closed");
+    this.sidebar.classList.remove("closed", "peek");
+    this.sidebar.classList.add("open");
+    if (window.innerWidth <= 768) {
+      this.sidebar.classList.add("expanded");
+    }
   }
 
   renderCustomScriptureCards(pane, list) {
@@ -1004,7 +1016,21 @@ class UIController {
   }
 
   closeDossier() {
-    if (this.sidebar) this.sidebar.classList.add("closed");
+    if (this.sidebar) {
+      this.sidebar.classList.add("closed");
+      this.sidebar.classList.remove("open", "expanded", "peek");
+    }
+    if (window.app && window.app.map) {
+      window.app.map.clearHighlight();
+    }
+    if (window.app && window.app.mobileShell) {
+      window.app.mobileShell.closeAllSheets();
+    }
+  }
+
+  isDossierOpen() {
+    if (!this.sidebar) return false;
+    return !this.sidebar.classList.contains("closed");
   }
 
   // Guided Tours Modal & HUD

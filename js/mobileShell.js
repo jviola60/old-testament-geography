@@ -244,6 +244,12 @@ class MobileShell {
     this.sidebar.classList.add("peek");
   }
 
+  closeSidebar() {
+    if (!this.sidebar) return;
+    this.sidebar.classList.remove("expanded", "peek", "open");
+    this.sidebar.classList.add("closed");
+  }
+
   // 5. Mobile Location Quick Jump Picker Sheet
   setupMobilePicker() {
     const closeBtn = document.getElementById("closeMobilePickerBtn");

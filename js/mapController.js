@@ -81,6 +81,14 @@ class MapController {
     this.drawJerusalemSites();
     this.drawCities();
 
+    // Click on blank spot on the map to close flyout menu / sidebar
+    this.map.on("click", (e) => {
+      if (window.app && window.app.ui && window.app.ui.isDossierOpen()) {
+        window.app.ui.closeDossier();
+      }
+      this.clearHighlight();
+    });
+
     return this.map;
   }
 
@@ -206,7 +214,14 @@ class MapController {
         className: "ot-map-label"
       });
 
-      polygon.on("click", () => {
+      polygon.on("click", (e) => {
+        // If sidebar is currently open, clicking in territory closes it
+        if (window.app && window.app.ui && window.app.ui.isDossierOpen()) {
+          window.app.ui.closeDossier();
+          if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
+          return;
+        }
+        if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
         if (window.app && window.app.ui) {
           window.app.ui.showTribeDossier(tribe);
         }
@@ -244,7 +259,14 @@ class MapController {
         className: "ot-map-label"
       });
 
-      polygon.on("click", () => {
+      polygon.on("click", (e) => {
+        // If sidebar is currently open, clicking in territory closes it
+        if (window.app && window.app.ui && window.app.ui.isDossierOpen()) {
+          window.app.ui.closeDossier();
+          if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
+          return;
+        }
+        if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
         if (window.app && window.app.ui) {
           window.app.ui.showKingdomDossier(kingdom);
         }
@@ -266,6 +288,12 @@ class MapController {
       });
 
       const bannerMarker = L.marker(kingdom.center, { icon: labelIcon });
+      bannerMarker.on("click", (e) => {
+        if (e && e.originalEvent) L.DomEvent.stopPropagation(e);
+        if (window.app && window.app.ui) {
+          window.app.ui.showKingdomDossier(kingdom);
+        }
+      });
       bannerMarker.addTo(this.layers.dividedKingdoms);
     });
 
@@ -403,7 +431,10 @@ class MapController {
       });
 
       // Click to open 5-tab Sidebar Dossier
-      marker.on("click", () => {
+      marker.on("click", (e) => {
+        if (e && e.originalEvent) {
+          L.DomEvent.stopPropagation(e);
+        }
         this.highlightSite(city.id, [city.lat, city.lng]);
         if (window.app && window.app.ui) {
           window.app.ui.openDossier(city.id);
@@ -441,7 +472,10 @@ class MapController {
         </div>
       `, { className: "ot-map-label" });
 
-      marker.on("click", () => {
+      marker.on("click", (e) => {
+        if (e && e.originalEvent) {
+          L.DomEvent.stopPropagation(e);
+        }
         if (window.app && window.app.ui) {
           window.app.ui.openDossier("jerusalem");
         }
@@ -462,8 +496,15 @@ class MapController {
       iconAnchor: [22, 22]
     });
 
-    const highlightMarker = L.marker(coords, { icon: pulseIcon });
+    const highlightMarker = L.marker(coords, { icon: pulseIcon, interactive: false });
     highlightMarker.addTo(this.layers.activeHighlights);
+  }
+
+  // Clear site highlight
+  clearHighlight() {
+    if (this.layers && this.layers.activeHighlights) {
+      this.layers.activeHighlights.clearLayers();
+    }
   }
 
   // Fly to region / location
