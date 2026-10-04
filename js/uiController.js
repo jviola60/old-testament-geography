@@ -1154,6 +1154,25 @@ class UIController {
     };
 
     hud.style.display = "flex";
+    this.positionTourHUD();
+  }
+
+  // Place the HUD just below the header/filter-bar stack (its real height varies
+  // with the companion-atlas bar and wrapping), so it never hides under them.
+  positionTourHUD() {
+    const hud = document.getElementById("tourHud");
+    if (!hud) return;
+    const anchor = document.getElementById("filterBar") || document.querySelector(".app-header");
+    if (anchor) {
+      const bottom = anchor.getBoundingClientRect().bottom;
+      if (bottom > 0) hud.style.top = `${Math.round(bottom + 10)}px`;
+    }
+    if (!this._tourHudResizeBound) {
+      this._tourHudResizeBound = true;
+      window.addEventListener("resize", () => {
+        if (this.activeTour) this.positionTourHUD();
+      });
+    }
   }
 
   goToTourStop(index) {

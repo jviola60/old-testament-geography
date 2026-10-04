@@ -26,12 +26,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=3.5">
-  <link rel="stylesheet" href="css/map.css?v=3.5">
-  <link rel="stylesheet" href="css/sidebar.css?v=3.5">
-  <link rel="stylesheet" href="css/timeline.css?v=3.5">
-  <link rel="stylesheet" href="css/components.css?v=3.5">
-  <link rel="stylesheet" href="css/mobile.css?v=3.5">
+  <link rel="stylesheet" href="css/main.css?v=3.6">
+  <link rel="stylesheet" href="css/map.css?v=3.6">
+  <link rel="stylesheet" href="css/sidebar.css?v=3.6">
+  <link rel="stylesheet" href="css/timeline.css?v=3.6">
+  <link rel="stylesheet" href="css/components.css?v=3.6">
+  <link rel="stylesheet" href="css/mobile.css?v=3.6">
   <!-- Mobile Viewport & Phone Shell Detection (Map-First) -->
   <script>
     (function () {
@@ -67,6 +67,11 @@
         <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener" class="companion-link" title="Open Book of Mormon Geography Atlas & Codex (~2200 BC – AD 421)">
           <span class="companion-icon">🪙</span>
           <span class="companion-title">Book of Mormon Atlas</span>
+          <span class="companion-ext">↗</span>
+        </a>
+        <a href="https://jviola60.github.io/Doctrine-and-Covenants-Geography/" target="_blank" rel="noopener" class="companion-link" title="Open Doctrine and Covenants Geography - Interactive Historical Atlas (~1805 – 1890)">
+          <span class="companion-icon">🏛️</span>
+          <span class="companion-title">Doctrine &amp; Covenants Atlas</span>
           <span class="companion-ext">↗</span>
         </a>
       </div>
@@ -432,7 +437,7 @@
         <div class="welcome-quick-tips">
           <div class="welcome-tips-title">💡 Companion Scriptural Atlases:</div>
           <p class="welcome-atlases-lead">
-            Explore all three interlinked standard work geographical codices:
+            Explore all four interlinked standard work geographical codices:
           </p>
           <div class="welcome-atlases-buttons">
             <a href="https://jviola60.github.io/new-testament-geography/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm welcome-atlas-btn">
@@ -440,6 +445,9 @@
             </a>
             <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm welcome-atlas-btn">
               🪙 Book of Mormon Geography (~2200 BC – AD 421) &nearr;
+            </a>
+            <a href="https://jviola60.github.io/Doctrine-and-Covenants-Geography/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm welcome-atlas-btn">
+              🏛️ Doctrine &amp; Covenants Geography (~1805 – 1890) &nearr;
             </a>
           </div>
         </div>
@@ -778,9 +786,9 @@
       </button>
     </div>
 
-    <!-- Section 2: Scriptural Atlases Trilogy Navigation -->
+    <!-- Section 2: Scriptural Atlases Navigation -->
     <div class="mobile-nav-section">
-      <div class="mobile-nav-heading">Scriptural Atlases Trilogy</div>
+      <div class="mobile-nav-heading">Scriptural Atlases</div>
       <div class="mobile-atlas-link active" title="Currently viewing Old Testament Geography">
         <span>📜 Old Testament Atlas (~4000 BC – 400 BC)</span>
         <span class="pill-current">Current</span>
@@ -790,7 +798,11 @@
         <span class="ext-link-arrow">↗</span>
       </a>
       <a href="https://jviola60.github.io/book-of-mormon-geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
-        <span>📖 Book of Mormon Atlas (~2200 BC – AD 421)</span>
+        <span>🪙 Book of Mormon Atlas (~2200 BC – AD 421)</span>
+        <span class="ext-link-arrow">↗</span>
+      </a>
+      <a href="https://jviola60.github.io/Doctrine-and-Covenants-Geography/" target="_blank" rel="noopener noreferrer" class="mobile-atlas-link">
+        <span>🏛️ Doctrine &amp; Covenants Atlas (~1805 – 1890)</span>
         <span class="ext-link-arrow">↗</span>
       </a>
     </div>
@@ -983,24 +995,24 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Datasets (Old Testament & Pearl of Great Price) -->
-  <script src="js/data/cities.js?v=3.5"></script>
-  <script src="js/data/regions.js?v=3.5"></script>
-  <script src="js/data/hydrography.js?v=3.5"></script>
-  <script src="js/data/journeys.js?v=3.5"></script>
-  <script src="js/data/placeDossiers.js?v=3.5"></script>
-  <script src="js/data/scriptureTranslations.js?v=3.5"></script>
-  <script src="js/data/timelineEvents.js?v=3.5"></script>
-  <script src="js/data/jerusalemSites.js?v=3.5"></script>
-  <script src="js/data/tours.js?v=3.5"></script>
-  <script src="js/data/churchMedia.js?v=3.5"></script>
+  <script src="js/data/cities.js?v=3.6"></script>
+  <script src="js/data/regions.js?v=3.6"></script>
+  <script src="js/data/hydrography.js?v=3.6"></script>
+  <script src="js/data/journeys.js?v=3.6"></script>
+  <script src="js/data/placeDossiers.js?v=3.6"></script>
+  <script src="js/data/scriptureTranslations.js?v=3.6"></script>
+  <script src="js/data/timelineEvents.js?v=3.6"></script>
+  <script src="js/data/jerusalemSites.js?v=3.6"></script>
+  <script src="js/data/tours.js?v=3.6"></script>
+  <script src="js/data/churchMedia.js?v=3.6"></script>
 
   <!-- Controllers -->
-  <script src="js/mapController.js?v=3.5"></script>
-  <script src="js/timelineController.js?v=3.5"></script>
-  <script src="js/uiController.js?v=3.5"></script>
-  <script src="js/mobileShell.js?v=3.5"></script>
+  <script src="js/mapController.js?v=3.6"></script>
+  <script src="js/timelineController.js?v=3.6"></script>
+  <script src="js/uiController.js?v=3.6"></script>
+  <script src="js/mobileShell.js?v=3.6"></script>
 
   <!-- Application Entry -->
-  <script src="js/app.js?v=3.5"></script>
+  <script src="js/app.js?v=3.6"></script>
 </body>
 </html>
