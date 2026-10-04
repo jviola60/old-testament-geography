@@ -162,7 +162,7 @@
   border: 1px solid var(--color-gold);
   color: #F8F5EE;
   padding: 10px 18px;
-  border-radius: 30px;
+  border-radius: 16px;
   box-shadow: var(--shadow-lg);
   z-index: 850;
   display: flex;

@@ -1063,16 +1063,35 @@ class UIController {
   populateToursList(container) {
     if (!container || typeof TOURS_DATA === "undefined") return;
 
-    container.innerHTML = TOURS_DATA.map(tour => `
-      <div class="tour-card" data-id="${tour.id}">
-        <div class="tour-card-header">
-          <div class="tour-card-title">${tour.title}</div>
-          <span class="tour-card-stops">${tour.stopsCount} Sacred Stops</span>
+    const CATEGORY_NAMES = {
+      "patriarchs": "📜 Patriarchs & Origins",
+      "exodus": "🔥 Exodus & Wilderness",
+      "judges": "⚔️ Judges & Early Israel",
+      "monarchy": "👑 United & Divided Monarchy",
+      "prophets": "✨ Prophets of Fire & Mercy",
+      "sanctuary": "🏛️ Holy Sanctuaries & Ark",
+      "messianic": "✝️ Messianic Typology",
+      "exile": "📜 Lehi & The Exile",
+      "culture": "🏺 Biblical Daily Life"
+    };
+
+    container.innerHTML = TOURS_DATA.map(tour => {
+      const catBadge = CATEGORY_NAMES[tour.category] || "📜 Scripture Tour";
+      return `
+        <div class="tour-card" data-id="${tour.id}">
+          <div class="tour-card-header">
+            <div class="tour-card-title">${tour.title}</div>
+            <span class="tour-card-stops">${tour.stopsCount} Stops</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin:3px 0 2px;">
+            <span style="font-size:0.72rem; color:var(--color-gold); font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">${catBadge}</span>
+            <span style="font-family:'Frank Ruhl Libre', serif; direction:rtl; color:var(--color-crimson-deep); font-size:1.05rem; font-weight:700;">${tour.hebrew}</span>
+          </div>
+          <div style="font-size:0.76rem; color:#856404; font-weight:600; margin-bottom:4px; font-style:italic;">${tour.subtitle || ''}</div>
+          <div class="tour-card-desc">${tour.description}</div>
         </div>
-        <div style="font-family:'Frank Ruhl Libre', serif; direction:rtl; color:var(--color-crimson-deep); font-size:1rem;">${tour.hebrew}</div>
-        <div class="tour-card-desc">${tour.description}</div>
-      </div>
-    `).join("");
+      `;
+    }).join("");
 
     container.querySelectorAll(".tour-card").forEach(card => {
       card.addEventListener("click", () => {
@@ -1108,6 +1127,8 @@ class UIController {
       <div class="tour-hud-info">
         <div class="tour-hud-title">${this.activeTour.title}</div>
         <div class="tour-hud-step">Stop ${this.currentTourStopIndex + 1} of ${this.activeTour.stops.length}: <b>${stop.name}</b></div>
+        <div class="tour-hud-scripture" style="font-size:0.74rem; color:var(--color-gold); font-weight:700; margin-top:2px;">📖 ${stop.scripture}</div>
+        <div class="tour-hud-narrative" style="font-size:0.77rem; color:#EFE7D5; margin-top:2px; max-width:540px; line-height:1.35;">${stop.narrative}</div>
       </div>
       <div class="tour-hud-nav">
         <button id="tourPrevBtn" class="tour-hud-btn" ${this.currentTourStopIndex === 0 ? 'disabled style="opacity:0.4;"' : ''}>◀</button>
