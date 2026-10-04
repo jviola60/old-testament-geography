@@ -656,10 +656,15 @@
   }
 
   .base-check-mark {
+    display: none;
     font-size: 1.05rem !important;
     font-weight: 800 !important;
     color: var(--color-crimson) !important;
     margin-left: 0.5rem !important;
+  }
+
+  .mobile-base-item.active .base-check-mark {
+    display: inline-block !important;
   }
 
   .mob-era-chip {
@@ -772,6 +777,10 @@
     border-top: 1px solid var(--border-parchment, #E8DCC4) !important;
     background: #FAF5EB !important;
     flex-shrink: 0 !important;
+  }
+
+  .mobile-sheet-footer .btn {
+    width: 100% !important;
   }
 
   /* 10. Mobile Places Quick Jump Picker Sheet */
@@ -953,7 +962,6 @@
   .modal-body {
     padding: 0.85rem 1rem !important;
     overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
     flex: 1 !important;
     background: #FFFDF9 !important;
   }
