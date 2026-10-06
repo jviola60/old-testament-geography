@@ -26,6 +26,14 @@ class UIController {
     this.setupTravelCalculator();
     this.setupAncientLifeModal();
     this.populateQuickJumpSelect();
+
+    // Pre-populate default dossier (Jerusalem) so that whenever the Codex or tabs are opened,
+    // rich content is immediately present rather than blank empty divs
+    this.openDossier("jerusalem", false);
+    if (this.sidebar) {
+      this.sidebar.classList.add("closed");
+      this.sidebar.classList.remove("open", "peek", "expanded");
+    }
   }
 
   // Header Dropdowns (Regions, Map Themes)
@@ -254,13 +262,17 @@ class UIController {
     const toggleBtn = document.getElementById("sidebarToggleBtn");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
-        if (this.sidebar) this.sidebar.classList.toggle("closed");
+        if (!this.currentDossierId) {
+          this.openDossier("jerusalem", true);
+        } else if (this.sidebar) {
+          this.sidebar.classList.toggle("closed");
+        }
       });
     }
   }
 
   // Open & Render 5-Tab Dossier
-  openDossier(siteId) {
+  openDossier(siteId, shouldOpenDrawer = true) {
     this.currentDossierId = siteId;
     if (!this.sidebar) return;
 
@@ -456,6 +468,8 @@ class UIController {
       }
     }
 
+    if (!shouldOpenDrawer) return;
+
     // Open drawer (State 2: Peek on mobile, sliding timeline away)
     if (window.innerWidth <= 768 && window.app && window.app.mobile) {
       window.app.mobile.openPeekSheet();
@@ -638,6 +652,7 @@ class UIController {
   // Show 12 Tribe Allotment Dossier
   showTribeDossier(tribe) {
     if (!this.sidebar) return;
+    this.currentDossierId = "tribe-" + (tribe.id || tribe.name);
 
     const titleElem = document.getElementById("sidebarTitle");
     const hebrewScriptElem = document.getElementById("sidebarHebrewScript");
@@ -742,6 +757,7 @@ class UIController {
   // Show Divided Kingdom Dossier (Northern Kingdom of Israel or Southern Kingdom of Judah)
   showKingdomDossier(kingdom) {
     if (!this.sidebar || !kingdom) return;
+    this.currentDossierId = "kingdom-" + (kingdom.id || kingdom.name);
 
     const titleElem = document.getElementById("sidebarTitle");
     const hebrewScriptElem = document.getElementById("sidebarHebrewScript");

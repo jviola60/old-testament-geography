@@ -269,8 +269,8 @@ class MobileShell {
    */
   openPeekSheet() {
     if (!this.sidebar) return;
-    this.sidebar.classList.remove("closed", "expanded");
-    this.sidebar.classList.add("peek", "open");
+    this.sidebar.classList.remove("closed", "expanded", "open");
+    this.sidebar.classList.add("peek");
 
     // Smoothly tuck timeline off-screen
     const timeline = this.timelineFooter || document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
@@ -364,8 +364,14 @@ class MobileShell {
       codexBtn.addEventListener("click", () => {
         this.closeAllSheets();
         if (!this.sidebar) return;
+
+        // Ensure a valid dossier is loaded so codex is NEVER blank
+        if (window.app && window.app.ui && !window.app.ui.currentDossierId) {
+          window.app.ui.openDossier("jerusalem", false);
+        }
+
         if (this.sidebar.classList.contains("closed")) {
-          this.openPeekSheet();
+          this.openExpandedSheet();
         } else if (this.sidebar.classList.contains("peek")) {
           this.openExpandedSheet();
         } else {
@@ -463,8 +469,11 @@ class MobileShell {
     if (codexBtn) {
       codexBtn.addEventListener("click", () => {
         if (!this.sidebar) return;
+        if (window.app && window.app.ui && !window.app.ui.currentDossierId) {
+          window.app.ui.openDossier("jerusalem", false);
+        }
         if (this.sidebar.classList.contains("closed")) {
-          this.openPeekSheet();
+          this.openExpandedSheet();
         } else {
           this.closeCodexSheet();
         }

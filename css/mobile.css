@@ -599,11 +599,11 @@
     transform: translateY(115%) !important;
   }
 
-  /* State 2: Peek (~195px) */
+  /* State 2: Peek (~210px) */
   .detail-sidebar.peek {
     transform: translateY(0) !important;
-    height: 195px !important;
-    max-height: 195px !important;
+    height: 210px !important;
+    max-height: 210px !important;
   }
 
   .detail-sidebar.peek .sidebar-tabs {
@@ -611,20 +611,46 @@
   }
 
   .detail-sidebar.peek .sidebar-body {
-    padding: 0.25rem 0.9rem 0.6rem !important;
+    padding: 0.35rem 0.9rem 0.6rem !important;
     overflow: hidden !important;
+  }
+
+  .detail-sidebar.peek .hebrew-identity-card {
+    margin-top: 4px !important;
+    padding: 4px 8px !important;
+  }
+
+  .detail-sidebar.peek .hebrew-script {
+    font-size: 1.15rem !important;
+  }
+
+  .detail-sidebar.peek .hebrew-translit {
+    font-size: 0.72rem !important;
+  }
+
+  .detail-sidebar.peek .hebrew-meaning {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
   }
 
   /* State 3: Expanded (82dvh) */
   .detail-sidebar.expanded,
-  .detail-sidebar.open {
+  .detail-sidebar.open:not(.peek) {
     transform: translateY(0) !important;
     height: 82dvh !important;
     max-height: 85dvh !important;
   }
 
-  .detail-sidebar.expanded .sidebar-tabs {
+  .detail-sidebar.expanded .sidebar-tabs,
+  .detail-sidebar.open:not(.peek) .sidebar-tabs {
     display: flex !important;
+  }
+
+  .detail-sidebar.expanded .sidebar-body,
+  .detail-sidebar.open:not(.peek) .sidebar-body {
+    overflow-y: auto !important;
+    padding: 0.85rem 1rem !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   /* Mobile Drag Handle */
