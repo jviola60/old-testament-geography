@@ -251,6 +251,7 @@ class UIController {
       btn.addEventListener("click", () => this.closeDossier());
     });
 
+    const toggleBtn = document.getElementById("sidebarToggleBtn");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
         if (this.sidebar) this.sidebar.classList.toggle("closed");
