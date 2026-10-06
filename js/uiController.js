@@ -246,12 +246,10 @@ class UIController {
       });
     });
 
-    const closeBtn = document.getElementById("sidebarCloseBtn");
-    const toggleBtn = document.getElementById("sidebarToggleBtn");
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => this.closeDossier());
-    }
+    const closeBtns = document.querySelectorAll("#sidebarCloseBtn, #closeSidebarBtn, .sidebar-close-btn");
+    closeBtns.forEach(btn => {
+      btn.addEventListener("click", () => this.closeDossier());
+    });
 
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
@@ -457,11 +455,12 @@ class UIController {
       }
     }
 
-    // Open drawer
-    this.sidebar.classList.remove("closed", "peek");
-    this.sidebar.classList.add("open");
-    if (window.innerWidth <= 768) {
-      this.sidebar.classList.add("expanded");
+    // Open drawer (State 2: Peek on mobile, sliding timeline away)
+    if (window.innerWidth <= 768 && window.app && window.app.mobile) {
+      window.app.mobile.openPeekSheet();
+    } else {
+      this.sidebar.classList.remove("closed", "peek");
+      this.sidebar.classList.add("open");
     }
   }
 
@@ -731,10 +730,11 @@ class UIController {
     document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
     if (overviewPane) overviewPane.classList.add("active");
 
-    this.sidebar.classList.remove("closed", "peek");
-    this.sidebar.classList.add("open");
-    if (window.innerWidth <= 768) {
-      this.sidebar.classList.add("expanded");
+    if (window.innerWidth <= 768 && window.app && window.app.mobile) {
+      window.app.mobile.openPeekSheet();
+    } else {
+      this.sidebar.classList.remove("closed", "peek");
+      this.sidebar.classList.add("open");
     }
   }
 
@@ -883,10 +883,11 @@ class UIController {
     // Open sidebar and set to overview tab
     const overviewTabBtn = document.getElementById("tabBtn-overview");
     if (overviewTabBtn) overviewTabBtn.click();
-    this.sidebar.classList.remove("closed", "peek");
-    this.sidebar.classList.add("open");
-    if (window.innerWidth <= 768) {
-      this.sidebar.classList.add("expanded");
+    if (window.innerWidth <= 768 && window.app && window.app.mobile) {
+      window.app.mobile.openPeekSheet();
+    } else {
+      this.sidebar.classList.remove("closed", "peek");
+      this.sidebar.classList.add("open");
     }
   }
 
@@ -1020,11 +1021,17 @@ class UIController {
       this.sidebar.classList.add("closed");
       this.sidebar.classList.remove("open", "expanded", "peek");
     }
+    const timelineFooter = document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
+    if (timelineFooter) {
+      timelineFooter.classList.remove("timeline-hidden");
+    }
+    const expandBtn = document.getElementById("mobileExpandCodexBtn");
+    if (expandBtn) expandBtn.textContent = "⌃ Full Codex";
     if (window.app && window.app.map) {
       window.app.map.clearHighlight();
     }
-    if (window.app && window.app.mobileShell) {
-      window.app.mobileShell.closeAllSheets();
+    if (window.app && window.app.mobile) {
+      window.app.mobile.updateBottomNavState();
     }
   }
 

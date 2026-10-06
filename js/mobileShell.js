@@ -1,12 +1,17 @@
 /**
  * OLD TESTAMENT GEOGRAPHY - MOBILE SHELL CONTROLLER
- * Full Phone UI Architecture matching Book of Mormon & New Testament Geography:
- * - 52px thumb-friendly bottom navigation bar
- * - Collapsible bottom sheet dossier with thin 44px peek & drag handle
- * - Slide-out left navigation drawer (Cross-Atlas Trilogy, utilities, map styles, regions)
- * - Mobile layer & filter bottom sheet
- * - 142+ biblical locations quick picker with live search
- * - Touch swipe gestures & visual viewport management
+ * Full Dynamic Pill & 3-State Sheet Mobile Architecture:
+ * - 1. Top Floating Era Capsule (.floating-era-badge): ~34px pill [🟢 ERA: ~Year • Title ▾]
+ *      Collapsible #floatingEraBody with historical summary and clickable featured location chips.
+ * - 2. Floating Timeline Capsule (.app-timeline-footer): Glassmorphic pill resting ~60px from bottom.
+ *      Smooth slide transitions (.timeline-hidden) with zero layer collision.
+ * - 3. 3-State Codex Bottom Sheet (.detail-sidebar):
+ *      - State 1: Closed on Startup (transform: translateY(115%))
+ *      - State 2: Peek (~195px) on pin/search selection with ⌃ Full Codex toggle & auto timeline tuck
+ *      - State 3: Expanded (82dvh) with horizontally scrollable tab strip
+ *      - Dismissal (✕): Closes sheet and restores floating timeline capsule
+ * - 4. 5-Button Touch Navigation Bar (.mobile-bottom-bar, 52px, z-index: 1000):
+ *      [🗺️ Map], [🔍 Search], [⚙️ Filters], [📜 Codex], [☰ Menu]
  */
 
 class MobileShell {
@@ -17,21 +22,30 @@ class MobileShell {
     this.pickerSheet = null;
     this.backdrop = null;
     this.sidebar = null;
+    this.timelineFooter = null;
+    this.floatingEraBadge = null;
+    this.mobileExpandCodexBtn = null;
+    this.mobileDragHandle = null;
     this.touchStartY = 0;
     this.touchCurrentY = 0;
   }
 
   init() {
-    console.log("📱 Initializing Old Testament Mobile Shell Controller...");
+    console.log("📱 Initializing Old Testament Mobile Shell Controller (Dynamic Pill & 3-State Sheet)...");
 
     this.sidebar = document.getElementById("detailSidebar");
     this.navSheet = document.getElementById("mobileNavSheet");
     this.filtersSheet = document.getElementById("mobileFiltersSheet");
     this.pickerSheet = document.getElementById("mobilePickerSheet");
     this.backdrop = document.getElementById("mobileSheetBackdrop");
+    this.timelineFooter = document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
+    this.floatingEraBadge = document.getElementById("floatingEraBadge");
+    this.mobileExpandCodexBtn = document.getElementById("mobileExpandCodexBtn");
+    this.mobileDragHandle = document.getElementById("mobileDragHandle");
 
     this.checkMobile();
     this.setupViewportHeight();
+    this.setupFloatingEraCapsule();
     this.setupMobileMenu();
     this.setupMobileHeaderActions();
     this.setupBottomBar();
@@ -48,6 +62,13 @@ class MobileShell {
     if (window.visualViewport) {
       window.visualViewport.addEventListener("resize", () => this.setupViewportHeight());
     }
+
+    // Initial era capsule sync
+    if (window.app && window.app.timeline) {
+      const curYear = window.app.timeline.currentYear || -1000;
+      const era = window.app.timeline.getEraInfo(curYear);
+      this.updateEraCapsule(curYear, era);
+    }
   }
 
   checkMobile() {
@@ -56,10 +77,9 @@ class MobileShell {
     document.body.classList.toggle("layout-mobile", this.isMobile);
 
     if (this.isMobile && this.sidebar) {
-      // By default keep closed so map is completely clean and visible
-      if (!this.sidebar.classList.contains("open") && !this.sidebar.classList.contains("expanded")) {
-        this.sidebar.classList.add("closed");
-        this.sidebar.classList.remove("peek");
+      // State 1: By default closed on mobile so map canvas is completely unobstructed
+      if (!this.sidebar.classList.contains("open") && !this.sidebar.classList.contains("expanded") && !this.sidebar.classList.contains("peek")) {
+        this.closeCodexSheet();
       }
     }
   }
@@ -73,7 +93,323 @@ class MobileShell {
     }
   }
 
-  // 1. Mobile Left Slide-out Drawer
+  /* --------------------------------------------------------------------------
+     1. Specification 1: Top Floating Era Capsule (.floating-era-badge)
+     -------------------------------------------------------------------------- */
+  setupFloatingEraCapsule() {
+    if (!this.floatingEraBadge) return;
+
+    // Toggle dropdown card on badge click
+    this.floatingEraBadge.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        if (e.target.closest(".era-featured-chip")) return;
+        this.floatingEraBadge.classList.toggle("is-expanded");
+      }
+    });
+
+    // Dismiss when tapping outside on map canvas
+    const mapElement = document.getElementById("map");
+    if (mapElement) {
+      mapElement.addEventListener("click", (e) => {
+        if (this.floatingEraBadge && !e.target.closest("#floatingEraBadge")) {
+          this.floatingEraBadge.classList.remove("is-expanded");
+        }
+      });
+    }
+
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768 && this.floatingEraBadge) {
+        if (!e.target.closest("#floatingEraBadge")) {
+          this.floatingEraBadge.classList.remove("is-expanded");
+        }
+      }
+    });
+  }
+
+  updateEraCapsule(year, era) {
+    if (!era) return;
+    const tagEl = document.getElementById("floatingEraTag");
+    const titleEl = document.getElementById("floatingEraTitle");
+    const descEl = document.getElementById("floatingEraDesc");
+    const chipsEl = document.getElementById("floatingEraChips");
+
+    if (tagEl) tagEl.textContent = "ERA:";
+    if (titleEl) titleEl.textContent = `~${Math.abs(year)} BC • ${era.name}`;
+    if (descEl) descEl.textContent = era.summary;
+
+    if (chipsEl && era.featured && era.featured.length && typeof CITIES_DATA !== "undefined") {
+      chipsEl.innerHTML = "";
+      era.featured.forEach(cityId => {
+        const city = CITIES_DATA.find(c => c.id === cityId);
+        if (city) {
+          const chip = document.createElement("span");
+          chip.className = "era-featured-chip";
+          chip.textContent = city.name;
+          chip.setAttribute("data-city-id", city.id);
+          chip.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (this.floatingEraBadge) this.floatingEraBadge.classList.remove("is-expanded");
+            if (window.app && window.app.ui) {
+              window.app.ui.openDossier(city.id);
+            }
+            if (window.app && window.app.map) {
+              window.app.map.flyTo([city.lat, city.lng], 9);
+              window.app.map.highlightSite(city.id, [city.lat, city.lng]);
+            }
+          });
+          chipsEl.appendChild(chip);
+        }
+      });
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     2. Specification 3: 3-State Codex Bottom Sheet (.detail-sidebar)
+     -------------------------------------------------------------------------- */
+  setupBottomSheetSidebar() {
+    if (!this.sidebar) return;
+
+    // Expand / Collapse toggle button in header
+    if (this.mobileExpandCodexBtn) {
+      this.mobileExpandCodexBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleCodexMode();
+      });
+    }
+
+    // Drag handle tap to toggle
+    if (this.mobileDragHandle) {
+      this.mobileDragHandle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.toggleCodexMode();
+      });
+    }
+
+    // Dismissal (✕): Closes completely and restores floating timeline capsule
+    const closeBtns = document.querySelectorAll("#closeSidebarBtn, #sidebarCloseBtn, .sidebar-close-btn");
+    closeBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          this.closeCodexSheet();
+        } else if (window.app && window.app.ui) {
+          window.app.ui.closeDossier();
+        }
+      });
+    });
+
+    // Touch drag / swipe down gestures
+    const setupSwipe = (element, onSwipeDown) => {
+      if (!element) return;
+      let startY = 0;
+      let startX = 0;
+
+      element.addEventListener("touchstart", (e) => {
+        if (e.touches && e.touches[0]) {
+          startY = e.touches[0].clientY;
+          startX = e.touches[0].clientX;
+        }
+      }, { passive: true });
+
+      element.addEventListener("touchend", (e) => {
+        if (e.changedTouches && e.changedTouches[0]) {
+          const deltaY = e.changedTouches[0].clientY - startY;
+          const deltaX = Math.abs(e.changedTouches[0].clientX - startX);
+          if (deltaY > 35 && deltaY > deltaX) {
+            onSwipeDown();
+          }
+        }
+      }, { passive: true });
+    };
+
+    const handleSidebarSwipeDown = () => {
+      if (!this.sidebar || window.innerWidth > 768) return;
+      if (this.sidebar.classList.contains("expanded")) {
+        this.openPeekSheet();
+      } else if (this.sidebar.classList.contains("peek")) {
+        this.closeCodexSheet();
+      }
+    };
+
+    if (this.mobileDragHandle) setupSwipe(this.mobileDragHandle, handleSidebarSwipeDown);
+    const sidebarHeader = document.querySelector("#detailSidebar .sidebar-header");
+    if (sidebarHeader) setupSwipe(sidebarHeader, handleSidebarSwipeDown);
+  }
+
+  /**
+   * State 1: Closed on Startup or Dismissed (✕)
+   * Leaves map 100% visible and floating timeline fully usable.
+   */
+  closeCodexSheet() {
+    if (!this.sidebar) return;
+    this.sidebar.classList.add("closed");
+    this.sidebar.classList.remove("peek", "expanded", "open");
+
+    // Smoothly restore timeline capsule
+    const timeline = this.timelineFooter || document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
+    if (timeline) {
+      timeline.classList.remove("timeline-hidden");
+    }
+
+    if (this.mobileExpandCodexBtn) {
+      this.mobileExpandCodexBtn.textContent = "⌃ Full Codex";
+    }
+
+    if (window.app && window.app.map) {
+      window.app.map.clearHighlight();
+    }
+
+    this.updateBottomNavState();
+  }
+
+  /**
+   * State 2: Peek (~195px)
+   * Triggered when marker pin or search result is selected.
+   * CRITICAL: Automatically adds .timeline-hidden to timeline footer for zero collision.
+   */
+  openPeekSheet() {
+    if (!this.sidebar) return;
+    this.sidebar.classList.remove("closed", "expanded");
+    this.sidebar.classList.add("peek", "open");
+
+    // Smoothly tuck timeline off-screen
+    const timeline = this.timelineFooter || document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
+    if (timeline) {
+      timeline.classList.add("timeline-hidden");
+    }
+
+    if (this.mobileExpandCodexBtn) {
+      this.mobileExpandCodexBtn.textContent = "⌃ Full Codex";
+    }
+
+    this.updateBottomNavState();
+  }
+
+  /**
+   * State 3: Expanded (82dvh)
+   * Triggered by tapping ⌃ Full Codex or dragging drag handle up.
+   */
+  openExpandedSheet() {
+    if (!this.sidebar) return;
+    this.sidebar.classList.remove("closed", "peek");
+    this.sidebar.classList.add("expanded", "open");
+
+    const timeline = this.timelineFooter || document.querySelector(".app-timeline-footer") || document.getElementById("timelineBar");
+    if (timeline) {
+      timeline.classList.add("timeline-hidden");
+    }
+
+    if (this.mobileExpandCodexBtn) {
+      this.mobileExpandCodexBtn.textContent = "⌄ Collapse";
+    }
+
+    this.updateBottomNavState();
+  }
+
+  toggleCodexMode() {
+    if (!this.sidebar) return;
+    if (this.sidebar.classList.contains("expanded")) {
+      this.openPeekSheet();
+    } else {
+      this.openExpandedSheet();
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     3. Specification 4: Mobile Bottom Navigation Bar (52px, z-index: 1000)
+     [🗺️ Map], [🔍 Search], [⚙️ Filters], [📜 Codex], [☰ Menu]
+     -------------------------------------------------------------------------- */
+  setupBottomBar() {
+    const mapBtn = document.getElementById("mobBottomMapBtn");
+    const searchBtn = document.getElementById("mobBottomSearchBtn");
+    const filtersBtn = document.getElementById("mobBottomFiltersBtn");
+    const codexBtn = document.getElementById("mobBottomCodexBtn");
+    const menuBtn = document.getElementById("mobBottomMenuBtn") || document.getElementById("mobBottomToolsBtn");
+
+    // [🗺️ Map]: Primary return button: closes all modals/drawers and restores the clear map view
+    if (mapBtn) {
+      mapBtn.addEventListener("click", () => {
+        this.closeAllSheets();
+        this.closeCodexSheet();
+        this.updateBottomNavState();
+      });
+    }
+
+    // [🔍 Search]
+    if (searchBtn) {
+      searchBtn.addEventListener("click", () => {
+        const isOpen = this.pickerSheet && this.pickerSheet.classList.contains("open");
+        this.closeAllSheets();
+        if (!isOpen) {
+          this.openPickerSheet();
+        }
+        this.updateBottomNavState();
+      });
+    }
+
+    // [⚙️ Filters]
+    if (filtersBtn) {
+      filtersBtn.addEventListener("click", () => {
+        const isOpen = this.filtersSheet && this.filtersSheet.classList.contains("open");
+        this.closeAllSheets();
+        if (!isOpen) {
+          this.openFiltersSheet();
+        }
+        this.updateBottomNavState();
+      });
+    }
+
+    // [📜 Codex]
+    if (codexBtn) {
+      codexBtn.addEventListener("click", () => {
+        this.closeAllSheets();
+        if (!this.sidebar) return;
+        if (this.sidebar.classList.contains("closed")) {
+          this.openPeekSheet();
+        } else if (this.sidebar.classList.contains("peek")) {
+          this.openExpandedSheet();
+        } else {
+          this.closeCodexSheet();
+        }
+      });
+    }
+
+    // [☰ Menu]
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        const isOpen = this.navSheet && this.navSheet.classList.contains("open");
+        this.closeAllSheets();
+        if (!isOpen) {
+          this.openNavSheet();
+        }
+        this.updateBottomNavState();
+      });
+    }
+  }
+
+  updateBottomNavState() {
+    const mapBtn = document.getElementById("mobBottomMapBtn");
+    const searchBtn = document.getElementById("mobBottomSearchBtn");
+    const filtersBtn = document.getElementById("mobBottomFiltersBtn");
+    const codexBtn = document.getElementById("mobBottomCodexBtn");
+    const menuBtn = document.getElementById("mobBottomMenuBtn") || document.getElementById("mobBottomToolsBtn");
+
+    document.querySelectorAll(".mobile-bottom-btn").forEach(b => b.classList.remove("active"));
+
+    if (this.filtersSheet && this.filtersSheet.classList.contains("open")) {
+      if (filtersBtn) filtersBtn.classList.add("active");
+    } else if (this.pickerSheet && this.pickerSheet.classList.contains("open")) {
+      if (searchBtn) searchBtn.classList.add("active");
+    } else if (this.navSheet && this.navSheet.classList.contains("open")) {
+      if (menuBtn) menuBtn.classList.add("active");
+    } else if (this.sidebar && !this.sidebar.classList.contains("closed") && (this.sidebar.classList.contains("peek") || this.sidebar.classList.contains("expanded"))) {
+      if (codexBtn) codexBtn.classList.add("active");
+    } else {
+      if (mapBtn) mapBtn.classList.add("active");
+    }
+  }
+
+  // Mobile Left Slide-out Drawer Menu
   setupMobileMenu() {
     const menuBtn = document.getElementById("mobileMenuBtn");
     const closeBtn = document.getElementById("closeMobileNavBtn");
@@ -95,11 +431,13 @@ class MobileShell {
     this.closeAllSheets(false);
     if (this.navSheet) this.navSheet.classList.add("open");
     if (this.backdrop) this.backdrop.classList.add("active");
+    this.updateBottomNavState();
   }
 
   closeNavSheet() {
     if (this.navSheet) this.navSheet.classList.remove("open");
     if (this.backdrop) this.backdrop.classList.remove("active");
+    this.updateBottomNavState();
   }
 
   closeAllSheets(hideBackdrop = true) {
@@ -108,11 +446,12 @@ class MobileShell {
     if (this.pickerSheet) this.pickerSheet.classList.remove("open");
     if (hideBackdrop && this.backdrop) this.backdrop.classList.remove("active");
 
-    // Clear active states on bottom nav
-    document.querySelectorAll(".mobile-bottom-btn").forEach(btn => btn.classList.remove("active"));
+    const modals = document.querySelectorAll(".modal-backdrop.open");
+    modals.forEach(m => m.classList.remove("open"));
+
+    this.updateBottomNavState();
   }
 
-  // 2. Mobile Header Quick Action Buttons
   setupMobileHeaderActions() {
     const searchBtn = document.getElementById("mobileSearchToggleBtn");
     const codexBtn = document.getElementById("mobileCodexToggleBtn");
@@ -122,135 +461,18 @@ class MobileShell {
     }
 
     if (codexBtn) {
-      codexBtn.addEventListener("click", () => this.toggleSidebarCodex());
-    }
-  }
-
-  // 3. Thumb-Friendly Bottom Navigation Bar
-  setupBottomBar() {
-    const searchBtn = document.getElementById("mobBottomSearchBtn");
-    const jumpBtn = document.getElementById("mobBottomJumpBtn");
-    const toursBtn = document.getElementById("mobBottomToursBtn");
-    const filtersBtn = document.getElementById("mobBottomFiltersBtn");
-    const codexBtn = document.getElementById("mobBottomCodexBtn");
-
-    if (searchBtn) {
-      searchBtn.addEventListener("click", () => {
-        this.setActiveBottomBtn(searchBtn);
-        this.openPickerSheet();
-      });
-    }
-
-    if (jumpBtn) {
-      jumpBtn.addEventListener("click", () => {
-        this.setActiveBottomBtn(jumpBtn);
-        this.openPickerSheet();
-      });
-    }
-
-    if (toursBtn) {
-      toursBtn.addEventListener("click", () => {
-        this.setActiveBottomBtn(toursBtn);
-        this.closeAllSheets();
-        const toursModal = document.getElementById("toursModalBackdrop");
-        if (toursModal && window.app && window.app.ui) {
-          const toursList = document.getElementById("toursGridContainer");
-          window.app.ui.populateToursList(toursList);
-          toursModal.classList.add("open");
-        }
-      });
-    }
-
-    if (filtersBtn) {
-      filtersBtn.addEventListener("click", () => {
-        this.setActiveBottomBtn(filtersBtn);
-        this.openFiltersSheet();
-      });
-    }
-
-    if (codexBtn) {
       codexBtn.addEventListener("click", () => {
-        this.setActiveBottomBtn(codexBtn);
-        this.toggleSidebarCodex();
-      });
-    }
-  }
-
-  setActiveBottomBtn(activeBtn) {
-    document.querySelectorAll(".mobile-bottom-btn").forEach(b => b.classList.remove("active"));
-    if (activeBtn) activeBtn.classList.add("active");
-  }
-
-  // 4. Collapsible Bottom Sheet Detail Sidebar
-  setupBottomSheetSidebar() {
-    const dragHandle = document.getElementById("mobileDragHandle");
-    if (!this.sidebar) return;
-
-    if (dragHandle) {
-      dragHandle.addEventListener("click", () => {
-        this.toggleSidebarExpand();
-      });
-
-      // Touch drag gestures
-      dragHandle.addEventListener("touchstart", (e) => {
-        this.touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      dragHandle.addEventListener("touchmove", (e) => {
-        this.touchCurrentY = e.touches[0].clientY;
-      }, { passive: true });
-
-      dragHandle.addEventListener("touchend", () => {
-        const delta = this.touchCurrentY - this.touchStartY;
-        if (delta < -30) {
-          // Swiped up -> expand
-          this.expandSidebar();
-        } else if (delta > 30) {
-          // Swiped down -> collapse to peek
-          this.peekSidebar();
+        if (!this.sidebar) return;
+        if (this.sidebar.classList.contains("closed")) {
+          this.openPeekSheet();
+        } else {
+          this.closeCodexSheet();
         }
       });
     }
   }
 
-  toggleSidebarCodex() {
-    if (!this.sidebar) return;
-    if (this.sidebar.classList.contains("expanded") || (!this.sidebar.classList.contains("peek") && !this.sidebar.classList.contains("closed"))) {
-      this.peekSidebar();
-    } else {
-      this.expandSidebar();
-    }
-  }
-
-  toggleSidebarExpand() {
-    if (!this.sidebar) return;
-    if (this.sidebar.classList.contains("expanded") || (!this.sidebar.classList.contains("peek") && !this.sidebar.classList.contains("closed"))) {
-      this.peekSidebar();
-    } else {
-      this.expandSidebar();
-    }
-  }
-
-  expandSidebar() {
-    if (!this.sidebar) return;
-    this.closeAllSheets();
-    this.sidebar.classList.remove("closed", "peek");
-    this.sidebar.classList.add("expanded");
-  }
-
-  peekSidebar() {
-    if (!this.sidebar) return;
-    this.sidebar.classList.remove("closed", "expanded");
-    this.sidebar.classList.add("peek");
-  }
-
-  closeSidebar() {
-    if (!this.sidebar) return;
-    this.sidebar.classList.remove("expanded", "peek", "open");
-    this.sidebar.classList.add("closed");
-  }
-
-  // 5. Mobile Location Quick Jump Picker Sheet
+  // 142+ Biblical Locations Quick Picker Sheet
   setupMobilePicker() {
     const closeBtn = document.getElementById("closeMobilePickerBtn");
     const searchInput = document.getElementById("mobilePickerSearchInput");
@@ -279,11 +501,13 @@ class MobileShell {
       this.renderPickerList("");
       setTimeout(() => searchInput.focus(), 150);
     }
+    this.updateBottomNavState();
   }
 
   closePickerSheet() {
     if (this.pickerSheet) this.pickerSheet.classList.remove("open");
     if (this.backdrop) this.backdrop.classList.remove("active");
+    this.updateBottomNavState();
   }
 
   renderPickerList(filterText = "") {
@@ -300,27 +524,17 @@ class MobileShell {
     });
 
     if (filtered.length === 0) {
-      listContainer.innerHTML = `
-        <div style="padding:1.5rem; text-align:center; color:var(--text-muted); font-size:0.85rem;">
-          No matching biblical locations found.
-        </div>
-      `;
+      listContainer.innerHTML = `<div class="mobile-picker-empty">No biblical sites matching "${filterText}"</div>`;
       return;
     }
 
-    // Sort alphabetically
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
-
     listContainer.innerHTML = filtered.map(city => `
       <div class="mobile-picker-item" data-id="${city.id}">
-        <div>
-          <div class="mobile-picker-name">
-            <span>${city.name}</span>
-            <span class="mobile-picker-hebrew">${city.hebrew}</span>
-          </div>
+        <div class="mobile-picker-item-left">
+          <div class="mobile-picker-name">${city.name}</div>
           <div class="mobile-picker-meta">${city.transliteration} • ${city.region}</div>
         </div>
-        <span class="mobile-picker-badge">${city.category}</span>
+        <div class="mobile-picker-hebrew">${city.hebrew}</div>
       </div>
     `).join("");
 
@@ -334,12 +548,14 @@ class MobileShell {
           if (window.app.ui) window.app.ui.openDossier(found.id);
         }
         this.closePickerSheet();
-        this.expandSidebar();
+        if (window.innerWidth <= 768) {
+          this.openPeekSheet();
+        }
       });
     });
   }
 
-  // 6. Mobile Layers & Filters Bottom Sheet
+  // Mobile Layers & Filters Bottom Sheet
   setupMobileFilters() {
     const closeBtn = document.getElementById("closeMobileFiltersBtn");
     const doneBtn = document.getElementById("mobFiltersDoneBtn");
@@ -356,7 +572,6 @@ class MobileShell {
           if (filterKey === "all") {
             const newState = !isActive;
             this.filtersSheet.querySelectorAll(".filter-chip").forEach(c => c.classList.toggle("active", newState));
-            // Also sync desktop filter chips
             document.querySelectorAll(".layer-filter-bar .filter-chip").forEach(c => c.classList.toggle("active", newState));
             if (window.app && window.app.map) window.app.map.toggleLayer("all", newState);
             return;
@@ -365,7 +580,6 @@ class MobileShell {
           chip.classList.toggle("active");
           const activeNow = chip.classList.contains("active");
 
-          // Sync matching desktop chip
           const desktopChip = document.querySelector(`.layer-filter-bar .filter-chip[data-filter="${filterKey}"]`);
           if (desktopChip) desktopChip.classList.toggle("active", activeNow);
 
@@ -381,14 +595,16 @@ class MobileShell {
     this.closeAllSheets(false);
     if (this.filtersSheet) this.filtersSheet.classList.add("open");
     if (this.backdrop) this.backdrop.classList.add("active");
+    this.updateBottomNavState();
   }
 
   closeFiltersSheet() {
     if (this.filtersSheet) this.filtersSheet.classList.remove("open");
     if (this.backdrop) this.backdrop.classList.remove("active");
+    this.updateBottomNavState();
   }
 
-  // 7. Mobile Navigation Drawer Action Handlers
+  // Drawer Action Handlers
   setupMobileNavActions() {
     const searchNavBtn = document.getElementById("mobNavSearchBtn");
     const jumpNavBtn = document.getElementById("mobNavJumpBtn");
@@ -430,7 +646,9 @@ class MobileShell {
     if (codexNavBtn) {
       codexNavBtn.addEventListener("click", () => {
         this.closeNavSheet();
-        this.expandSidebar();
+        if (window.innerWidth <= 768) {
+          this.openPeekSheet();
+        }
       });
     }
 
@@ -462,7 +680,9 @@ class MobileShell {
     if (videosNavBtn) {
       videosNavBtn.addEventListener("click", () => {
         this.closeNavSheet();
-        this.expandSidebar();
+        if (window.innerWidth <= 768) {
+          this.openExpandedSheet();
+        }
         const tabVideos = document.getElementById("tabBtn-videos");
         if (tabVideos) tabVideos.click();
       });
@@ -484,7 +704,6 @@ class MobileShell {
           const styleKey = btn.getAttribute("data-style");
           if (styleKey && window.app && window.app.map) {
             window.app.map.setMapTheme(styleKey);
-            // Update checkmarks in drawer
             ["Parchment", "Satellite", "Modern"].forEach(s => {
               const b = document.getElementById(`mobStyle${s}`);
               const check = document.getElementById(`check${s}`);

@@ -65,47 +65,56 @@ class TimelineController {
     if (year <= -2300) {
       return {
         name: "Antediluvian & Patriarchal Era",
-        summary: "Creation, Adam & Eve, Enoch's Zion, Noah's Ark (Moses 1-8)"
+        summary: "Creation, Adam & Eve, Enoch's Zion, Noah's Ark (Moses 1-8)",
+        featured: ["ararat", "eden", "ur"]
       };
     } else if (year <= -1600) {
       return {
         name: "Patriarchal Covenant Era",
-        summary: "Abraham in Ur & Canaan, Isaac, Jacob/Israel, Joseph in Egypt (Genesis 12-50; Abraham 1-3)"
+        summary: "Abraham in Ur & Canaan, Isaac, Jacob/Israel, Joseph in Egypt (Genesis 12-50; Abraham 1-3)",
+        featured: ["hebron", "bethel", "shechem", "beersheba", "ur", "haran"]
       };
     } else if (year <= -1400) {
       return {
         name: "The Exodus & Wilderness",
-        summary: "Deliverance from Egypt, Red Sea, Law at Sinai, 40-Year Wanderings (Exodus; Numbers)"
+        summary: "Deliverance from Egypt, Red Sea, Law at Sinai, 40-Year Wanderings (Exodus; Numbers)",
+        featured: ["sinai", "kadesh-barnea", "rephidim", "mount-nebo"]
       };
     } else if (year <= -1050) {
       return {
         name: "Conquest & Era of the Judges",
-        summary: "Crossing the Jordan, Jericho, Shiloh Tabernacle, Gideon, Deborah, Samson (Joshua; Judges)"
+        summary: "Crossing the Jordan, Jericho, Shiloh Tabernacle, Gideon, Deborah, Samson (Joshua; Judges)",
+        featured: ["jericho", "shiloh", "ai", "hazor"]
       };
     } else if (year <= -930) {
       return {
         name: "United Monarchy (Saul, David, Solomon)",
-        summary: "Jerusalem as Capital, Golden Age, First Temple on Mount Moriah (1 & 2 Samuel; 1 Kings)"
+        summary: "Jerusalem as Capital, Golden Age, First Temple on Mount Moriah (1 & 2 Samuel; 1 Kings)",
+        featured: ["jerusalem", "bethlehem", "gezer", "megiddo", "ezion-geber"]
       };
     } else if (year <= -610) {
       return {
         name: "Divided Kingdoms (Israel & Judah)",
-        summary: "Elijah & Mount Carmel, Isaiah's Prophecies, Fall of Samaria (1 & 2 Kings)"
+        summary: "Elijah & Mount Carmel, Isaiah's Prophecies, Fall of Samaria (1 & 2 Kings)",
+        featured: ["samaria", "dan", "mount-carmel", "lachish", "jezreel"]
       };
     } else if (year <= -586) {
       return {
         name: "Reign of King Zedekiah • Lehi & Laban (~600 BC)",
-        summary: "King Zedekiah rules Judah; Lehi & Jeremiah warn Jerusalem; Lehi departs into the wilderness; Brass Plates obtained from Laban (1 Nephi 1–4; 2 Kings 24)"
+        summary: "King Zedekiah rules Judah; Lehi & Jeremiah warn Jerusalem; Lehi departs into the wilderness; Brass Plates obtained from Laban (1 Nephi 1–4; 2 Kings 24)",
+        featured: ["jerusalem", "valley-of-lemuel", "lachish"]
       };
     } else if (year <= -538) {
       return {
         name: "Babylonian Exile",
-        summary: "Destruction of Jerusalem, Ezekiel & Daniel in Babylon (2 Kings 25; Daniel)"
+        summary: "Destruction of Jerusalem, Ezekiel & Daniel in Babylon (2 Kings 25; Daniel)",
+        featured: ["babylon", "susa", "jerusalem"]
       };
     } else {
       return {
         name: "Persian Restoration & Return",
-        summary: "Cyrus Edict, Rebuilding the Temple & Walls, Ezra, Nehemiah, Malachi"
+        summary: "Cyrus Edict, Rebuilding the Temple & Walls, Ezra, Nehemiah, Malachi",
+        featured: ["jerusalem", "susa", "jericho"]
       };
     }
   }
@@ -128,6 +137,11 @@ class TimelineController {
       const isNearby = Math.abs(bYear - this.currentYear) < 150;
       btn.classList.toggle("active", isNearby);
     });
+
+    // Sync with Top Floating Era Capsule
+    if (window.app && window.app.mobile && typeof window.app.mobile.updateEraCapsule === "function") {
+      window.app.mobile.updateEraCapsule(this.currentYear, era);
+    }
   }
 
   togglePlay() {

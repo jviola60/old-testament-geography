@@ -57,7 +57,19 @@
   gap: 8px;
 }
 
-.sidebar-close-btn {
+.sidebar-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mobile-expand-btn {
+  display: none;
+}
+
+.sidebar-close-btn,
+.close-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(197, 160, 89, 0.4);
   color: #F8F5EE;
