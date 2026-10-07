@@ -310,7 +310,7 @@
     border-radius: 20px !important;
     padding: 5px 12px !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
-    z-index: 800 !important;
+    z-index: 950 !important;
     cursor: pointer !important;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
     -webkit-tap-highlight-color: transparent !important;
@@ -368,6 +368,7 @@
     padding: 8px 12px !important;
     max-width: 86vw !important;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28) !important;
+    z-index: 1200 !important;
   }
 
   .floating-era-badge.is-expanded .era-dropdown-caret {
@@ -376,6 +377,12 @@
 
   .floating-era-badge.is-expanded .floating-era-body {
     display: block !important;
+  }
+
+  /* Push Leaflet Zoom Control cleanly below Floating Era Badge */
+  .leaflet-top.leaflet-left .leaflet-control-zoom {
+    margin-top: 54px !important;
+    margin-left: 10px !important;
   }
 
   /* --------------------------------------------------------------------------

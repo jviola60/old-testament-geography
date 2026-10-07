@@ -305,3 +305,61 @@
   height: 3px;
   border-radius: 2px;
 }
+
+/* Divided Kingdoms Map Center Banners */
+.kingdom-banner-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.kingdom-map-badge {
+  background: rgba(255, 253, 248, 0.95);
+  border: 2px solid #8C1D18;
+  border-radius: 8px;
+  padding: 5px 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.kingdom-map-badge:hover,
+.kingdom-map-badge:active {
+  transform: scale(1.05);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.38);
+}
+
+.kingdom-badge-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.kingdom-badge-hebrew {
+  font-family: var(--font-hebrew, 'Frank Ruhl Libre', serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  direction: rtl;
+  line-height: 1.25;
+}
+
+.kingdom-badge-meta {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.65rem;
+  color: #555;
+  font-weight: 600;
+  line-height: 1.2;
+}

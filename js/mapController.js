@@ -285,13 +285,14 @@ class MapController {
       const labelIcon = L.divIcon({
         className: "kingdom-banner-icon",
         html: `
-          <div style="background:rgba(255,253,248,0.94); border:2.5px solid ${kingdom.color}; border-radius:6px; padding:5px 10px; box-shadow:0 3px 8px rgba(0,0,0,0.3); text-align:center; white-space:nowrap; pointer-events:auto; cursor:pointer;" onclick="if(window.app && window.app.ui) window.app.ui.showKingdomDossier(REGIONS_DATA.dividedKingdoms.find(k=>k.id==='${kingdom.id}'));">
-            <div style="font-size:0.72rem; font-weight:800; color:${kingdom.color}; letter-spacing:0.06em; text-transform:uppercase;">${kingdom.shortName}</div>
-            <div style="font-family:'Frank Ruhl Libre', serif; font-size:1.05rem; font-weight:700; color:#1a1a1a; direction:rtl;">${kingdom.hebrew}</div>
-            <div style="font-size:0.65rem; color:#555; font-weight:600;">Capital: ${kingdom.capital.split(' ')[0]} • ${kingdom.era.split(' ')[2]}</div>
+          <div class="kingdom-map-badge" style="border-color:${kingdom.color};" onclick="if(window.app && window.app.ui) window.app.ui.showKingdomDossier(REGIONS_DATA.dividedKingdoms.find(k=>k.id==='${kingdom.id}'));">
+            <div class="kingdom-badge-title" style="color:${kingdom.color};">${kingdom.shortName}</div>
+            <div class="kingdom-badge-hebrew">${kingdom.hebrew}</div>
+            <div class="kingdom-badge-meta">Capital: ${kingdom.capital.split(' ')[0]} • ${kingdom.era.split(' ')[2]}</div>
           </div>
         `,
-        iconAnchor: [70, 24]
+        iconSize: [180, 56],
+        iconAnchor: [90, 28]
       });
 
       const bannerMarker = L.marker(kingdom.center, { icon: labelIcon });
