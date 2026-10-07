@@ -18,9 +18,11 @@ class TimelineController {
     console.log("⏳ Initializing Old Testament Timeline Controller...");
 
     this.slider = document.getElementById("timelineSlider");
-    this.yearDisplay = document.getElementById("timelineYearDisplay");
-    this.eraDisplay = document.getElementById("timelineEraDisplay");
-    this.playBtn = document.getElementById("timelinePlayBtn");
+    this.yearDisplay = document.getElementById("timelineYearDisplay") || document.getElementById("displayYear");
+    this.eraDisplay = document.getElementById("timelineEraDisplay") || document.getElementById("displaySeason");
+    this.playBtn = document.getElementById("timelinePlayBtn") || document.getElementById("playPauseBtn");
+    this.playIcon = document.getElementById("timelinePlayIcon") || document.getElementById("playIcon");
+    this.pauseIcon = document.getElementById("timelinePauseIcon") || document.getElementById("pauseIcon");
 
     if (!this.slider) return;
 
@@ -37,6 +39,29 @@ class TimelineController {
       this.playBtn.addEventListener("click", () => this.togglePlay());
     }
 
+    const stepBackBtn = document.getElementById("timelineStepBackBtn") || document.getElementById("stepBackBtn");
+    if (stepBackBtn) {
+      stepBackBtn.addEventListener("click", () => this.stepYear(-100));
+    }
+
+    const stepFwdBtn = document.getElementById("timelineStepForwardBtn") || document.getElementById("stepForwardBtn");
+    if (stepFwdBtn) {
+      stepFwdBtn.addEventListener("click", () => this.stepYear(100));
+    }
+
+    // Keyboard Shortcuts (Arrow keys & Spacebar)
+    document.addEventListener("keydown", (e) => {
+      if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
+      if (e.code === "Space") {
+        e.preventDefault();
+        this.togglePlay();
+      } else if (e.code === "ArrowLeft") {
+        this.stepYear(-100);
+      } else if (e.code === "ArrowRight") {
+        this.stepYear(100);
+      }
+    });
+
     // Quick epoch jump buttons
     document.querySelectorAll(".epoch-jump-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -48,6 +73,13 @@ class TimelineController {
     });
 
     this.updateDisplay();
+  }
+
+  stepYear(amount) {
+    let nextYear = this.currentYear + amount;
+    if (nextYear < this.minYear) nextYear = this.minYear;
+    if (nextYear > this.maxYear) nextYear = this.maxYear;
+    this.setYear(nextYear);
   }
 
   setYear(year) {
@@ -154,15 +186,18 @@ class TimelineController {
 
   play() {
     this.isPlaying = true;
-    if (this.playBtn) {
+    if (this.playIcon && this.pauseIcon) {
+      this.playIcon.style.display = "none";
+      this.pauseIcon.style.display = "block";
+    } else if (this.playBtn) {
       this.playBtn.innerHTML = `
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
           <rect x="6" y="4" width="4" height="16"></rect>
           <rect x="14" y="4" width="4" height="16"></rect>
         </svg>
       `;
-      this.playBtn.title = "Pause Timeline Animation";
     }
+    if (this.playBtn) this.playBtn.title = "Pause Timeline Animation";
 
     this.playInterval = setInterval(() => {
       let nextYear = this.currentYear + 100;
@@ -176,14 +211,17 @@ class TimelineController {
   stop() {
     this.isPlaying = false;
     if (this.playInterval) clearInterval(this.playInterval);
-    if (this.playBtn) {
+    if (this.playIcon && this.pauseIcon) {
+      this.playIcon.style.display = "block";
+      this.pauseIcon.style.display = "none";
+    } else if (this.playBtn) {
       this.playBtn.innerHTML = `
         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
           <polygon points="5 3 19 12 5 21 5 3"></polygon>
         </svg>
       `;
-      this.playBtn.title = "Play Timeline Animation";
     }
+    if (this.playBtn) this.playBtn.title = "Play Timeline Animation";
   }
 }
 

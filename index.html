@@ -26,12 +26,12 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=3.9">
-  <link rel="stylesheet" href="css/map.css?v=3.9">
-  <link rel="stylesheet" href="css/sidebar.css?v=3.9">
-  <link rel="stylesheet" href="css/timeline.css?v=3.9">
-  <link rel="stylesheet" href="css/components.css?v=3.9">
-  <link rel="stylesheet" href="css/mobile.css?v=3.9">
+  <link rel="stylesheet" href="css/main.css?v=4.0">
+  <link rel="stylesheet" href="css/map.css?v=4.0">
+  <link rel="stylesheet" href="css/sidebar.css?v=4.0">
+  <link rel="stylesheet" href="css/timeline.css?v=4.0">
+  <link rel="stylesheet" href="css/components.css?v=4.0">
+  <link rel="stylesheet" href="css/mobile.css?v=4.0">
   <!-- Mobile Viewport & Phone Shell Detection (Map-First) -->
   <script>
     (function () {
@@ -332,15 +332,25 @@
 
   <!-- Bottom Timeline Scrubber -->
   <footer class="timeline-container app-timeline-footer" id="timelineBar">
-    <div class="timeline-header">
-      <div class="timeline-controls-left">
-        <button id="timelinePlayBtn" class="timeline-play-btn" title="Play Timeline Animation" aria-label="Play timeline animation">
-          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+    <div class="timeline-control-bar timeline-header">
+      <!-- Playback Controls -->
+      <div class="playback-controls timeline-controls-left">
+        <button id="timelineStepBackBtn" class="btn-ctrl" title="Step Back 100 Years (Left Arrow)" aria-label="Step back">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
         </button>
-        <div class="timeline-status">
-          <div class="timeline-year-display" id="timelineYearDisplay">1000 BC</div>
-          <div class="timeline-era-label" id="timelineEraDisplay">United Monarchy • Reign of King David & Golden Age of Israel</div>
-        </div>
+        <button id="timelinePlayBtn" class="btn-ctrl btn-play glow-gold timeline-play-btn" title="Play / Pause Timeline (Spacebar)" aria-label="Play timeline">
+          <svg id="timelinePlayIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <svg id="timelinePauseIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <button id="timelineStepForwardBtn" class="btn-ctrl" title="Step Forward 100 Years (Right Arrow)" aria-label="Step forward">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
+        </button>
+      </div>
+
+      <!-- Current Year Display with BC clarity -->
+      <div class="current-date-badge timeline-status" id="currentDateBadge">
+        <div class="badge-year timeline-year-display" id="timelineYearDisplay">1000 BC</div>
+        <div class="badge-season timeline-era-label" id="timelineEraDisplay">United Monarchy • Reign of King David & Golden Age of Israel</div>
       </div>
 
       <!-- Quick Epoch Jumps -->
@@ -357,7 +367,7 @@
     </div>
 
     <!-- Scrubber Slider -->
-    <div class="timeline-scrubber-wrapper">
+    <div class="timeline-scrubber-wrapper timeline-slider-track-wrap">
       <input type="range" class="timeline-slider" id="timelineSlider" min="-4000" max="-400" value="-1000" step="10" aria-label="Biblical Year Slider">
     </div>
 
