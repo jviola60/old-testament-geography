@@ -657,7 +657,7 @@
   .detail-sidebar.open:not(.peek) .sidebar-body {
     overflow-y: auto !important;
     padding: 0.85rem 1rem !important;
-    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
   }
 
   /* Mobile Drag Handle */
