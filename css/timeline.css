@@ -237,3 +237,9 @@
 .marker-tick:hover {
   color: var(--color-gold-light);
 }
+
+#timelinePauseIcon,
+#pauseIcon {
+  display: none;
+}
+
